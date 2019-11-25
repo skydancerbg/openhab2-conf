@@ -76,6 +76,8 @@ Number Gr_GF_SBdrm_Top_Light_RSSI      "WiFi Signal Strength [%d %%]"      <wifi
 
 
 /* RF Bridge */
+// https://iot.formatx.net/sonoff-bridge-openhab/
+
 Group  GF_Sonoff_RF                "RF Bridge"                      <sonoff_rf>     (Sonoff_RF)
 String GF_Sonoff_RF_Reachable      "Reachable: [%s]"                <contactable>   (GF_Sonoff_RF) { channel="mqtt:topic:MyMQTTthing:sonoffrfbridge1:reachable" }
 String GF_Sonoff_RF_Received_Data  "Received Data: [%s]"            <none>          (GF_Sonoff_RF) { channel="mqtt:topic:MyMQTTthing:sonoffrfbridge1:recieveddata" }
@@ -91,3 +93,12 @@ Number GF_Sonoff_RF_RSSI           "WiFi Signal Strength [%d %%]"   <wifi>      
 // Switch GF_Sonoff_RF_Button_4       "Button 4"                       <none>          (GF_Sonoff_RF) { channel="mqtt:topic:MyMQTTthing:sonoffrfbridge1:button4", autoupdate="false"}
 Switch GF_Sonoff_RF_Button_test       "Button test"                 <none>          (GF_Sonoff_RF) { channel="mqtt:topic:MyMQTTthing:sonoffrfbridge1:switchrfA", autoupdate="false"}
 
+/* RF PIR (motion) sensors trough Sonoff RF Bridge */
+
+// String items to use in rules
+// 
+String Sonoff_RF_PIR_1                     "[%s]"                  <motion> 
+String Sonoff_RF_PIR_2                     "[%s]"                  <motion> 
+String Sonoff_RF_PIR_3                     "[%s]"                  <motion> 
+String Sonoff_RF_PIR_4                     "[%s]"                  <motion> 
+String Sonoff_RF_PIR_5                     "[%s]"                  <motion> 

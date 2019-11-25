@@ -6,6 +6,7 @@ Room_Device_Function
 
 1. Първи две букви - Местоположение в къщата/двора:
 
+AТ - (Apartment) Апартамент
 GF - (Ground floor/First floor) - Партер (ет.1)
 GЕ - (Garage) - Гараж
 F2 - (Second floor) - Втори етаж (ет.2)

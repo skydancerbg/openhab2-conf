@@ -2,6 +2,15 @@
 sitemap default label="Апартамента на Деси и Стефан" {
 
 
+     Frame label="RF PIR СЕНЗОРИ КЪЩА:" icon="groundfloor" {
+            Text  item=Sonoff_RF_PIR_1 label="PRI 1:" 
+            Text  item=Sonoff_RF_PIR_2 label="PRI 2:" 
+            Text  item=Sonoff_RF_PIR_3 label="PRI 3:" 
+            Text  item=Sonoff_RF_PIR_4 label="PRI 4:" 
+            Text  item=Sonoff_RF_PIR_5 label="PRI 5:" 
+    }
+
+
      Frame label="ТЕМПЕРАТУРИ КЪЩА:" icon="groundfloor" {
             Text  item=XGW2_XA_THP_1_Temperature label="1:" 
             Text  item=XGW2_XA_THP_2_Temperature label="2:" 
