@@ -1,0 +1,137 @@
+
+
+// // // Items for Things connected to the Xiaomi MI Gateway 2  // // //
+
+// // Group for the Gateway 2 devices//
+Group gXiGW2
+////////
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //               Xiaomi Mi Smart Socket Plug
+
+Group gXiGW2_sensor_plug_1 
+//GOOGLE HOME!!!// ITEM SET WITH THE NAME "BED LIHGT" AND TAGGED ["Lighting"] IN ORDER FOR GOOGLE HOME TORECOGNIZE IT:
+Switch  XiGW2_sensor_plug_1_Power  "Xiaomi Ggateway 2 outlet 1" (gXiGW2,gXiGW2_sensor_plug_1,gAllLights,gAllPower) ["Lighting"] { channel="mihome:sensor_plug:158d000245ceae:power" }
+Switch  XiGW2_sensor_plug_1_InUse    "In Use" (gXiGW2,gXiGW2_sensor_plug_1) { channel="mihome:sensor_plug:158d000245ceae:inUse" }
+Number  XiGW2_sensor_plug_1_loadPower         "Provided Power"     <energy>           (gXiGW2,gXiGW2_sensor_plug_1) { channel="mihome:sensor_plug:158d000245ceae:loadPower" }
+Number  XiGW2_sensor_plug_1_powerConsumed       "Power Consumed"     <line-incline>         (gXiGW2,gXiGW2_sensor_plug_1) { channel="mihome:sensor_plug:158d000245ceae:powerConsumed" }
+
+// // ????Switch  XiaomiGateway_LightSwitch   <light> { channel="mihome:gateway:7811dce21750:brightness"  }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //                   Mijia & Aqara Door/Window Sensor
+
+// // Кухня ляв прозорец
+Group gXiGW2_door_window_1 
+Contact XiGW2_WindowSwitch_1_Status <window> (gXiGW2,gXiGW2_door_window_1) { channel="mihome:sensor_magnet:158d000231cd44:isOpen" }
+// minimum 30 seconds
+Number XiGW2_WindowSwitch_1_AlarmTimer <clock> (gXiGW2,gXiGW2_door_window_1){ channel="mihome:sensor_magnet:158d000231cd44:isOpenAlarmTimer" }
+DateTime XiGW2_WindowSwitch_1_LastOpened "[%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock-on> (gXiGW2,gXiGW2_door_window_1) { channel="mihome:sensor_magnet:158d000231cd44:lastOpened" }
+Number XiGW2_WindowSwitch_1_Battery <battery> (gXiGW2,gXiGW2_door_window_1, gAllBatteryLevel) { channel="mihome:sensor_magnet:158d000231cd44:batteryLevel" }
+Switch XiGW2_WindowSwitch_1_BatteryLow <energy> (gXiGW2,gXiGW2_door_window_1,gAllLowBattery) { channel="mihome:sensor_magnet:158d000231cd44:lowBattery" }
+
+// Mijia Motion Sensor
+Group gXiGW2_mia_motion_sensor_1
+Switch XiGW2_MotionSensor_1_MotionStatus <motion> (gXiGW2,gXiGW2_mia_motion_sensor_1) { channel="mihome:sensor_motion:158d00024e966a:motion" }
+// minimum 5 seconds - remember that the sensor only triggers every minute to save energy
+Number XiGW2_MotionSensor_1_MotionTimer <clock> (gXiGW2,gXiGW2_mia_motion_sensor_1) { channel="mihome:sensor_motion:158d00024e966a:motionOffTimer" }
+DateTime XiGW2_MotionSensor_1_LastMotion "Last motion: [%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock-on> (gXiGW2,gXiGW2_mia_motion_sensor_1)  { channel="mihome:sensor_motion:158d00024e966a:lastMotion" }
+Number XiGW2_MotionSensor_1_Battery <battery> (gXiGW2,gXiGW2_mia_motion_sensor_1, gAllBatteryLevel)   { channel="mihome:sensor_motion:158d00024e966a:batteryLevel" }
+Switch XiGW2_MotionSensor_1_BatteryLow <energy> (gXiGW2,gXiGW2_mia_motion_sensor_1, gAllLowBattery) { channel="mihome:sensor_motion:158d00024e966a:lowBattery" }
+
+Group gXiGW2_mia_motion_sensor_2
+Switch XiGW2_MotionSensor_2_MotionStatus <motion> (gXiGW2_mia_motion_sensor_2) { channel="mihome:sensor_motion:158d000222ee2f:motion" }
+// minimum 5 seconds - remember that the sensor only triggers every minute to save energy
+Number XiGW2_MotionSensor_2_MotionTimer <clock> (gXiGW2_mia_motion_sensor_2) { channel="mihome:sensor_motion:158d000222ee2f:motionOffTimer" }
+DateTime XiGW2_MotionSensor_2_LastMotion "Last motion: [%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock-on> (gXiGW2_mia_motion_sensor_2)  { channel="mihome:sensor_motion:158d000222ee2f:lastMotion" }
+Number XiGW2_MotionSensor_2_Battery <battery> (gXiGW2_mia_motion_sensor_2, gAllBatteryLevel)   { channel="mihome:sensor_motion:158d000222ee2f:batteryLevel" }
+Switch XiGW2_MotionSensor_2_BatteryLow <energy> (gXiGW2_mia_motion_sensor_2, gAllLowBattery) { channel="mihome:sensor_motion:158d000222ee2f:lowBattery" }
+
+Group gXiGW2_mia_motion_sensor_3
+Switch XiGW2_MotionSensor_3_MotionStatus <motion> (gXiGW2_mia_motion_sensor_3) { channel="mihome:sensor_motion:158d000222eff4:motion" }
+// minimum 5 seconds - remember that the sensor only triggers every minute to save energy
+Number XiGW2_MotionSensor_3_MotionTimer <clock> (gXiGW2_mia_motion_sensor_3) { channel="mihome:sensor_motion:158d000222eff4:motionOffTimer" }
+DateTime XiGW2_MotionSensor_3_LastMotion "Last motion: [%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock-on> (gXiGW2_mia_motion_sensor_3)  { channel="mihome:sensor_motion:158d000222eff4:lastMotion" }
+Number XiGW2_MotionSensor_3_Battery <battery> (gXiGW2_mia_motion_sensor_3, gAllBatteryLevel)   { channel="mihome:sensor_motion:158d000222eff4:batteryLevel" }
+Switch XiGW2_MotionSensor_3_BatteryLow <energy> (gXiGW2_mia_motion_sensor_3, gAllLowBattery) { channel="mihome:sensor_motion:158d000222eff4:lowBattery" }
+
+Group gXiGW2_mia_motion_sensor_4
+Switch XiGW2_MotionSensor_4_MotionStatus <motion> (gXiGW2_mia_motion_sensor_4) { channel="mihome:sensor_motion:158d0002119e8d:motion" }
+// minimum 5 seconds - remember that the sensor only triggers every minute to save energy
+Number XiGW2_MotionSensor_4_MotionTimer <clock> (gXiGW2_mia_motion_sensor_4) { channel="mihome:sensor_motion:158d0002119e8d:motionOffTimer" }
+DateTime XiGW2_MotionSensor_4_LastMotion "Last motion: [%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock-on> (gXiGW2_mia_motion_sensor_4)  { channel="mihome:sensor_motion:158d0002119e8d:lastMotion" }
+Number XiGW2_MotionSensor_4_Battery <battery> (gXiGW2_mia_motion_sensor_4, gAllBatteryLevel)   { channel="mihome:sensor_motion:158d0002119e8d:batteryLevel" }
+Switch XiGW2_MotionSensor_4_BatteryLow <energy> (gXiGW2_mia_motion_sensor_4, gAllLowBattery) { channel="mihome:sensor_motion:158d0002119e8d:lowBattery" }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //           Mijia & Aqara Wireless Switch - see "xiaomi.rules" for action triggers
+
+// Mijia Wireless Switch
+Group gXiGW2_mia_wireless_switch_1
+Number XiGW2_Xiaomi_Switch_1_Battery <battery> (gXiGW2_mia_wireless_switch_1, gAllBatteryLevel) { channel="mihome:sensor_switch:158d00024dc2db:batteryLevel" }
+Switch XiGW2_Xiaomi_Switch_1_BatteryLow <energy> (gXiGW2_mia_wireless_switch_1, gAllLowBattery)   { channel="mihome:sensor_switch:158d00024dc2db:lowBattery" }
+
+// Mijia Wireless Switch
+Group gXiGW2_mia_wireless_switch_2
+Number XiGW2_Xiaomi_Switch_2_Battery <battery> (gXiGW2_mia_wireless_switch_2, gAllBatteryLevel) { channel="mihome:sensor_switch:158d0001f9f27f:batteryLevel" }
+Switch XiGW2_Xiaomi_Switch_2_BatteryLow <energy> (gXiGW2_mia_wireless_switch_2, gAllLowBattery)   { channel="mihome:sensor_switch:158d0001f9f27f:lowBattery" }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// // Aqara Temperature, Humidity and Pressure Sensor
+
+// Temperature Range and Precision: -20℃– +50°C，±0.3℃ （-4℉– +122℉，±0.5°F）
+// Humidity Range and Precision: 0 – 100% RH (non-condensing), ±3%
+// Atmospheric Pressure Range and Precision: 30 kPa – 110 kPa, ±0.12 kPa
+
+// // // ???????? TEMPERATURE
+Group gMIGW2_XA_THP_sensor_1
+Number:Temperature      XGW2_XA_THP_1_Temperature   <temperature>  (gMIGW2_XA_THP_sensor_1,Gr_Temperature_measurments,Gr_House_Inside_Temperature) { channel="mihome:sensor_weather_v1:158d00036c13a7:temperature" }                                                                                                                                         
+Number:Dimensionless    XGW2_XA_THP_1_Humidity      <humidity>     (gMIGW2_XA_THP_sensor_1) { channel="mihome:sensor_weather_v1:158d00036c13a7:humidity" }
+Number:Pressure         XGW2_XA_THP_1_Pressure      <pressure>     (gMIGW2_XA_THP_sensor_1) { channel="mihome:sensor_weather_v1:158d00036c13a7:pressure" }
+Number                  XGW2_XA_THP_1_Battery       <battery>      (gMIGW2_XA_THP_sensor_1, gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d00036c13a7:batteryLevel" }
+Switch                  XGW2_XA_THP_1_BatteryLow    <energy>       (gMIGW2_XA_THP_sensor_1, gAllLowBattery) { channel="mihome:sensor_weather_v1:158d00036c13a7:lowBattery" }
+
+// // // ???????? TEMPERATURE
+Group gMIGW2_XA_THP_sensor_2
+Number:Temperature      XGW2_XA_THP_2_Temperature     <temperature>  (gMIGW2_XA_THP_sensor_2,Gr_Temperature_measurments,Gr_House_Inside_Temperature) { channel="mihome:sensor_weather_v1:158d00036c1313:temperature" }                                                                                                                                         
+Number:Dimensionless    XGW2_XA_THP_2_Humidity        <humidity>     (gMIGW2_XA_THP_sensor_2) { channel="mihome:sensor_weather_v1:158d00036c1313:humidity" }
+Number:Pressure         XGW2_XA_THP_2_Pressure        <pressure>     (gMIGW2_XA_THP_sensor_2) { channel="mihome:sensor_weather_v1:158d00036c1313:pressure" }
+Number                  XGW2_XA_THP_2_Battery         <battery>      (gMIGW2_XA_THP_sensor_2, gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d00036c1313:batteryLevel" }
+Switch                  XGW2_XA_THP_2_BatteryLow      <energy>       (gMIGW2_XA_THP_sensor_2, gAllLowBattery) { channel="mihome:sensor_weather_v1:158d00036c1313:lowBattery" }
+
+// // // ???????? TEMPERATURE
+Group gMIGW2_XA_THP_sensor_3
+Number:Temperature      XGW2_XA_THP_3_Temperature     <temperature>  (gMIGW2_XA_THP_sensor_3,Gr_Temperature_measurments,Gr_House_Inside_Temperature) { channel="mihome:sensor_weather_v1:158d00036c132b:temperature" }                                                                                                                                         
+Number:Dimensionless    XGW2_XA_THP_3_Humidity        <humidity>     (gMIGW2_XA_THP_sensor_3) { channel="mihome:sensor_weather_v1:158d00036c132b:humidity" }
+Number:Pressure         XGW2_XA_THP_3_Pressure        <pressure>     (gMIGW2_XA_THP_sensor_3) { channel="mihome:sensor_weather_v1:158d00036c132b:pressure" }
+Number                  XGW2_XA_THP_3_Battery         <battery>      (gMIGW2_XA_THP_sensor_3, gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d00036c132b:batteryLevel" }
+Switch                  XGW2_XA_THP_3_BatteryLow      <energy>       (gMIGW2_XA_THP_sensor_3, gAllLowBattery) { channel="mihome:sensor_weather_v1:158d00036c132b:lowBattery" }
+
+// // // ???????? TEMPERATURE
+Group gMIGW2_XA_THP_sensor_4
+Number:Temperature      XGW2_XA_THP_4_Temperature     <temperature>  (gMIGW2_XA_THP_sensor_4,Gr_Temperature_measurments,Gr_House_Inside_Temperature) { channel="mihome:sensor_weather_v1:158d00036c1301:temperature" }                                                                                                                                         
+Number:Dimensionless    XGW2_XA_THP_4_Humidity        <humidity>     (gMIGW2_XA_THP_sensor_4) { channel="mihome:sensor_weather_v1:158d00036c1301:humidity" }
+Number:Pressure         XGW2_XA_THP_4_Pressure        <pressure>     (gMIGW2_XA_THP_sensor_4) { channel="mihome:sensor_weather_v1:158d00036c1301:pressure" }
+Number                  XGW2_XA_THP_4_Battery         <battery>      (gMIGW2_XA_THP_sensor_4, gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d00036c1301:batteryLevel" }
+Switch                  XGW2_XA_THP_4_BatteryLow      <energy>       (gMIGW2_XA_THP_sensor_4, gAllLowBattery) { channel="mihome:sensor_weather_v1:158d00036c1301:lowBattery" }
+
+// // // ???????? TEMPERATURE
+Group gMIGW2_XA_THP_sensor_5
+Number:Temperature      XGW2_XA_THP_5_Temperature     <temperature>  (gMIGW2_XA_THP_sensor_5,Gr_Temperature_measurments,Gr_House_Inside_Temperature) { channel="mihome:sensor_weather_v1:158d00036c12c6:temperature" }                                                                                                                                         
+Number:Dimensionless    XGW2_XA_THP_5_Humidity        <humidity>     (gMIGW2_XA_THP_sensor_5) { channel="mihome:sensor_weather_v1:158d00036c12c6:humidity" }
+Number:Pressure         XGW2_XA_THP_5_Pressure        <pressure>     (gMIGW2_XA_THP_sensor_5) { channel="mihome:sensor_weather_v1:158d00036c12c6:pressure" }
+Number                  XGW2_XA_THP_5_Battery         <battery>      (gMIGW2_XA_THP_sensor_5, gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d00036c12c6:batteryLevel" }
+Switch                  XGW2_XA_THP_5_BatteryLow      <energy>       (gMIGW2_XA_THP_sensor_5, gAllLowBattery) { channel="mihome:sensor_weather_v1:158d00036c12c6:lowBattery" }
+
+// // // ???????? TEMPERATURE
+Group gMIGW2_XA_THP_sensor_6
+Number:Temperature      XGW2_XA_THP_6_Temperature     <temperature>  (gMIGW2_XA_THP_sensor_6,Gr_Temperature_measurments,Gr_House_Inside_Temperature) { channel="mihome:sensor_weather_v1:158d00036c1397:temperature" }                                                                                                                                         
+Number:Dimensionless    XGW2_XA_THP_6_Humidity        <humidity>     (gMIGW2_XA_THP_sensor_6) { channel="mihome:sensor_weather_v1:158d00036c1397:humidity" }
+Number:Pressure         XGW2_XA_THP_6_Pressure        <pressure>     (gMIGW2_XA_THP_sensor_6) { channel="mihome:sensor_weather_v1:158d00036c1397:pressure" }
+Number                  XGW2_XA_THP_6_Battery         <battery>      (gMIGW2_XA_THP_sensor_6, gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d00036c1397:batteryLevel" }
+Switch                  XGW2_XA_THP_6_BatteryLow      <energy>       (gMIGW2_XA_THP_sensor_6, gAllLowBattery) { channel="mihome:sensor_weather_v1:158d00036c1397:lowBattery" }
+
+

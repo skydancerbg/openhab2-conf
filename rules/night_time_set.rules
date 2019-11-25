@@ -1,0 +1,27 @@
+///////////////////////////////
+//SET NIGHT TIME BASED ON ASTRO SUNSET TO SUNRISE DATA FOR THE DAY 
+///-------------------------
+rule "Set Is_Night_Sunset_to_Sunrise_Var_ item 1900 or Sunset flag tst"
+when
+    // Time cron "0 0 19 ? * * *" or
+    Channel "astro:sun:home:set#event" triggered START
+then
+    Is_Night_Sunset_to_Sunrise_Var_.sendCommand(ON) //sets the dummy switch variable to "Can activate Night lamp"
+    // logInfo("Is_Night_Sunset_to_Sunrise_Var_", "Astro set#event has set Is_Night_Sunset_to_Sunrise_Var_ to ON")
+end
+
+
+/////////////////////////////
+////---------------------------
+rule "Turn Off Is_Night_Sunset_to_Sunrise_Var_ item"
+
+when
+    // Time cron "0 0 7 ? * * *" or //7am
+    Channel "astro:sun:home:rise#event" triggered START
+
+then
+    Is_Night_Sunset_to_Sunrise_Var_.sendCommand(OFF) //resets flag item at 6am
+    // logInfo("Is_Night_Sunset_to_Sunrise_Var_", "Astro rise#event has set Is_Night_Sunset_to_Sunrise_Var_ to OFF")
+end
+
+///////////////////////////////

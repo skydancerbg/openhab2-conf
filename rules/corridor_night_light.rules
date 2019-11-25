@@ -1,0 +1,79 @@
+// “turn on a lamp when motion is detected but only after sunset until sunrise”
+// https://community.openhab.org/t/help-to-create-a-rule-turn-on-a-lamp-when-motion-is-detected-but-only-after-sunset-until-sunrise/43905
+// see: https://community.openhab.org/t/sunset-light-on/37971/7 for refinment
+
+
+///////////////////////////////
+// Dummy Switch Corridor_NightLight_Rule_Switch is used to turn on off the automatic Night lamp usage 
+rule "Corridor Night Light Rule Switched to OFF"
+when
+    Item Corridor_NightLight_Rule_Switch changed
+then
+    // When you turn off the Night lamp Rule execution, if the Night lamp is ON at the moment
+    // switch off the Night lamp
+    if(Corridor_NightLight_Rule_Switch.state == OFF && XGW_Gateway_LightSwitch.state == ON ) {
+        XGW_Gateway1_LightSwitch.sendCommand(OFF)
+    }
+end
+
+
+
+
+////////////////////////////
+rule "CORRIDOR Night Light on when motion is detected between sunset and sunrise - _AQ_1 PIR sensor + MI MotionSensor PIR sensor"
+
+when
+    Item GF_COR_AQ_1_MotionSensor_MotionStatus changed or
+    Item MotionSensor_MotionStatus changed
+
+then
+
+if (Corridor_NightLight_Rule_Switch.state == ON && Is_Night_Sunset_to_Sunrise_Var_.state == ON && (GF_COR_AQ_1_MotionSensor_MotionStatus.state == ON || MotionSensor_MotionStatus.state == ON))  
+                                    {XGW_Gateway1_LightSwitch.sendCommand(ON)
+                                    logInfo("RuleMotionCtrlNightLamp", "Motion switched CORRIDOR NIGHT LIGHT - ON")
+                                    }
+    
+    else if (Corridor_NightLight_Rule_Switch.state == ON && Is_Night_Sunset_to_Sunrise_Var_.state == ON && (GF_COR_AQ_1_MotionSensor_MotionStatus.state == OFF && MotionSensor_MotionStatus.state == OFF)) 
+                                    {XGW_Gateway1_LightSwitch.sendCommand(OFF)
+                                    logInfo("RuleMotionCtrlNightLamp", "Motion switched CORRIDOR NIGHT LIGHT - OFF")
+                                    }
+
+end
+
+////////////////////////////
+////// The main rule includes this now!!!!!!!!!!!!!!!!!!!!!!!
+// rule "CORRIDOR Night Light on when motion is detected after 1900 or sunset - MI MotionSensor PIR sensor"
+
+// when
+//     Item MotionSensor_MotionStatus changed
+// then
+
+// if (Corridor_NightLight_Rule_Switch.state == ON && Is_Night_Sunset_to_Sunrise_Var_.state == ON && (GF_COR_AQ_1_MotionSensor_MotionStatus.state == ON || MotionSensor_MotionStatus.state == ON))  
+//                                     {XGW_Gateway_LightSwitch.sendCommand(ON)
+//                                     logInfo("RuleMotionCtrlNightLamp", "Motion switched GF_Sonoff_Dual_Power2 ON")
+//                                     }
+    
+//     else if (Corridor_NightLight_Rule_Switch.state == ON && Is_Night_Sunset_to_Sunrise_Var_.state == ON && (GF_COR_AQ_1_MotionSensor_MotionStatus.state == OFF && MotionSensor_MotionStatus.state == OFF)) 
+//                                     {XGW_Gateway_LightSwitch.sendCommand(OFF)
+//                                     logInfo("RuleMotionCtrlNightLamp", "Motion switched GF_Sonoff_Dual_Power2 OFF")
+//                                     }
+
+// end
+
+
+
+
+
+
+// when
+//     Item Motion_GF_Corridor_Stiege received update ON
+// then
+//     if (flagItem.state == ON) {
+//         Light_FF_Stiege.sendCommand(ON)
+//     }
+// end
+
+////////////////////////////////////////
+////////REMOVE!!!!!!!!!!!!!!!!!!!!!
+// // rule "Bed motion detected"
+// // when

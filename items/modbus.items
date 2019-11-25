@@ -1,0 +1,10 @@
+Number Thermostat1_OnOff    "Thermostat1_On/Off [%d]"  <switch>                { channel="modbus:data:thermostat_slave1:thermostat_slave1_holding:thermostat_slave1_onoff:number" }
+Number Thermostat1_temp    "Thermostat1_Temperature [%.1f]"  <temperature>          { channel="modbus:data:thermostat_slave1:thermostat_slave1_holding:thermostat_slave1_temperature:number" }
+// Number Thermostat1_temp1    "Thermostat1_Temperature testing  [%.1f]"  <temperature>          { channel="modbus:data:thermostat_slave1:thermostat_slave1_holding:thermostat_slave1_temperature:number" }
+Number Thermostat1_ManualAuto    "Thermostat1_Manual/Auto [%d]"  <temperature>      { channel="modbus:data:thermostat_slave1:thermostat_slave1_holding:thermostat_slave1_ManualAuto:number" }
+Number Thermostat1_HeatingOnOff   "Tthermostat Heating ON/OFF [%d]"  <temperature>  { channel="modbus:data:thermostat_slave1:thermostat_slave1_holding:thermostat_slave1_HeatingOnOff:number" }
+Number Thermostat1_Set_Temp    "Thermostat1_SET_Temperature [%.1f]"  <temperature>  { channel="modbus:data:thermostat_slave1:thermostat_slave1_holding:thermostat_slave1_set_temperature:number" }
+Number Thermostat1_Weekly_Mod_Set_Temp    "Thermostat1_Weekly_Mod_Set_Temp [%.1f]"  <temperature>  { channel="modbus:data:thermostat_slave1:thermostat_slave1_holding:thermostat_slave1_weekly_mod_set_temperature:number" }
+Number Thermostat1_LockUnlock   "Tthermostat Lock/Unlock [%d]"  <temperature>  { channel="modbus:data:thermostat_slave1:thermostat_slave1_holding:thermostat_slave1_LockUnlock:number" }
+
+// Number Thermostat1_temp    "Thermostat1_Temperature [%.1f]"  <temperature>  { channel="modbus:data:slave1:holding:holding4002:number", autoupdate="false" }

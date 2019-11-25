@@ -1,0 +1,12 @@
+sitemap administration label="Администрация на системата" {
+        Frame label="Устройства:" icon="groundfloor" {
+
+            Group item=Gr_GF_KN_Top_Light  label="Кухня осветление над шкафа"
+            Group item=Gr_GF_KN_Sink_Light  label="Кухня осветление на плота"
+            Group item=GF_Sonoff_S26_3  label="Свободен outlet S26"
+            Group item=GF_Sonoff_S20_1  label="Свободен outlet S20"
+            Group item=Gr_GF_SBdrm_Top_Light  label="Спалня на Стефан: Осветление таван"
+
+        }
+
+}

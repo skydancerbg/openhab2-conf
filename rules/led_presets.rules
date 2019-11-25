@@ -1,0 +1,254 @@
+var String color = ""
+var String SliderValue
+var red 
+var green
+var blue 
+
+/////////////////LED STRIP 1 KITCHEN TOP
+rule "LED strip 1 off at 1:30 AM"
+
+when
+    // Time cron "0 30 0 ? * * *"
+    Time cron "0 30 1 ? * * *"
+then
+    LED_1_power.sendCommand(OFF)
+end
+
+////////// LED STRIP 1 : PROGRAMS FROM MAGIC HOME CONTROLER 
+rule "Program - Strobe"
+when Item LED_1_preset_0 received command ON
+then
+LED_1_program.sendCommand(48)
+LED_1_preset_0.sendCommand(OFF)
+end
+
+rule "Program - Strobe - Custom 1"
+when Item LED_1_preset_1 received command ON
+then
+LED_1_program.sendCommand(96)
+LED_1_preset_1.sendCommand(OFF)
+end
+
+rule "Program - Strobe - Rot"
+when Item LED_1_preset_2 received command ON
+then
+LED_1_program.sendCommand(49)
+LED_1_preset_2.sendCommand(OFF)
+end
+
+rule "Program - Strobe - Grün"
+when Item LED_1_preset_3 received command ON
+then
+LED_1_program.sendCommand(50)
+LED_1_preset_3.sendCommand(OFF)
+end
+
+rule "Program - Strobe - Blau"
+when Item LED_1_preset_4 received command ON
+then
+LED_1_program.sendCommand(51)
+LED_1_preset_4.sendCommand(OFF)
+end
+
+rule "Program - Strobe - Cyan"
+when Item LED_1_preset_5 received command ON
+then
+LED_1_program.sendCommand(53)
+LED_1_preset_5.sendCommand(OFF)
+end
+
+rule "Program - Strobe - Lila"
+when Item LED_1_preset_6 received command ON
+then
+LED_1_program.sendCommand(54)
+LED_1_preset_6.sendCommand(OFF)
+end
+
+rule "Program - Strobe - Gelb"
+when Item LED_1_preset_7 received command ON
+then
+LED_1_program.sendCommand(52)
+LED_1_preset_7.sendCommand(OFF)
+end
+
+rule "Program - Strobe - Weiß"
+when Item LED_1_preset_8 received command ON
+then
+LED_1_program.sendCommand(55)
+LED_1_preset_8.sendCommand(OFF)
+end
+
+rule "Program - R/G/B"
+when Item LED_1_preset_9 received command ON
+then
+LED_1_program.sendCommand(57)
+LED_1_preset_9.sendCommand(OFF)
+end
+
+rule "Program - CrossFade - Rot/Grün"
+when Item LED_1_preset_10 received command ON
+then
+LED_1_program.sendCommand(45)
+LED_1_preset_10.sendCommand(OFF)
+end
+
+rule "Program - CrossFade - Rot/Blau"
+when Item LED_1_preset_11 received command ON
+then
+LED_1_program.sendCommand(46)
+LED_1_preset_11.sendCommand(OFF)
+end
+
+rule "Program - CrossFade - Blau/Grün"
+when Item LED_1_preset_12 received command ON
+then
+LED_1_program.sendCommand(47)
+LED_1_preset_12.sendCommand(OFF)
+end
+
+rule "Program - Fade"
+when Item LED_1_preset_13 received command ON
+then
+LED_1_program.sendCommand(37)
+LED_1_preset_13.sendCommand(OFF)
+end
+
+rule "Program - Fade - Weiß"
+when Item LED_1_preset_14 received command ON
+then
+LED_1_program.sendCommand(44)
+LED_1_preset_14.sendCommand(OFF)
+end
+
+rule "Program - Fade - Grün"
+when Item LED_1_preset_15 received command ON
+then
+LED_1_program.sendCommand(39)
+LED_1_preset_15.sendCommand(OFF)
+end
+
+rule "Program - Fade - Dunkelblau"
+when Item LED_1_preset_16 received command ON
+then
+LED_1_program.sendCommand(40)
+LED_1_preset_16.sendCommand(OFF)
+end
+
+rule "Program - Fade - Gelb"
+when Item LED_1_preset_17 received command ON
+then
+LED_1_program.sendCommand(41)
+LED_1_preset_17.sendCommand(OFF)
+end
+
+rule "Program - Fade - Rot"
+when Item LED_1_preset_18 received command ON
+then
+LED_1_program.sendCommand(38)
+LED_1_preset_18.sendCommand(OFF)
+end
+
+rule "Program - Fade - Hellblau"
+when Item LED_1_preset_19 received command ON
+then
+LED_1_program.sendCommand(42)
+LED_1_preset_19.sendCommand(OFF)
+end
+
+rule "Program - Fade - Lila"
+when Item LED_1_preset_20 received command ON
+then
+LED_1_program.sendCommand(43)
+LED_1_preset_20.sendCommand(OFF)
+end
+
+rule "Program - Fade - R/G/B"
+when Item LED_1_preset_21 received command ON
+then
+LED_1_program.sendCommand(45)
+LED_1_preset_21.sendCommand(OFF)
+end
+
+rule "Program - Jump"
+when Item LED_1_preset_22 received command ON
+then
+LED_1_program.sendCommand(56)
+LED_1_preset_22.sendCommand(OFF)
+end
+
+rule "Program - Jump - R/G/B"
+when Item LED_1_preset_23 received command ON
+then
+LED_1_program.sendCommand(99)
+LED_1_preset_23.sendCommand(OFF)
+end
+
+// // Това е тест за сетване на мой цвят
+// // Пробвах слайдер за брайтнес, но това всъщност не е яркостта на лентата а Brightness от HSB
+// // Поне е пример как се взима стойността от слайдер!!! - LED_1_brightness.getState().toString()
+rule "LED Green 10% brightness R/G/B"
+when Item LED_1_preset_1000 received command ON
+then
+//  'LED_1_color' accepts: [HSBType, PercentType, OnOffType, IncreaseDecreaseType, RefreshType].
+// val SliderValue = LED_1_brightness.getState().toString()  // for the tests not used anymore
+LED_1_power.sendCommand(ON)
+// LED_1_brightness.sendCommand(2)
+// color = "55,87,6" // Yelow-ish - low brightness...
+color = "55.714283,87.500000,6.274510" // Yelow-ish - low brightness...
+// color = "1,0,100" // WHITE - it's bluish in reality...
+// color = "60,100,100"
+// color = "222,100," + SliderValue.toString
+LED_1_color.sendCommand(new HSBType(color))
+// LED_1_color.sendCommand(color)
+// logInfo("LED_1_color.sendCommand(color)", color)
+LED_1_preset_1000.sendCommand(OFF)
+end
+
+// https://community.openhab.org/t/getting-hsb-values-from-colorpicker/13479/2
+rule "Show HSB values"
+  when
+    Item LED_1_color  received command //state changed
+  then
+
+        var hue = (LED_1_color.state as HSBType).getHue
+        var sat = (LED_1_color.state as HSBType).getSaturation
+        var br = (LED_1_color.state as HSBType).getBrightness
+        color = hue.toString +","+ sat.toString +","+br.toString 
+        logInfo("Show HSB values", "Wleze!!")
+        logInfo("HSB value =", color.toString)
+
+        // LED_1_hsb.postUpdate("test")     
+        LED_1_hsb.postUpdate(color.toString)     
+end  	
+
+
+
+
+
+////// Controllable color picker
+// // това е тест на код за определяне на RGB от Color Item (Collorpicker)
+// // В този случай не ни е нужен
+// // Трябва да се добави Item Led_1_color_picker в led_magic_home.items за да се тества....
+// https://community.openhab.org/t/example-convert-color-item-values-to-rgb-with-explanation/24014
+// rule "Controlable Color Item"
+//   when
+//     Item Led_1_color_picker received command
+//   then
+//   	if (receivedCommand instanceof HSBType)
+//   	{
+//     	val red = (receivedCommand as HSBType).red * 2.55
+//     	val green = (receivedCommand as HSBType).green * 2.55
+//     	val blue = (receivedCommand as HSBType).blue * 2.55
+	  	
+// 	  	Led_1_color_picker_r.sendCommand(red)
+// 	  	Led_1_color_picker_g.sendCommand(green)
+// 	  	Led_1_color_picker_b.sendCommand(blue)
+//   	}
+//   	else if (receivedCommand == ON){
+// 		 Led_1_color_picker.sendCommand(new HSBType("23,60,100"))
+//   	}
+//   	else if (receivedCommand == OFF){
+// 		 aacc_mode.sendCommand(0) // Fade-out lights very slowly. Implemented in the device code
+//   	}
+// end
+

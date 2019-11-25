@@ -1,0 +1,164 @@
+
+
+// // // Items for Things connected to the Xiaomi MI Gateway 1  // // //
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// //                   Xiaomi Mi Smart Socket Plug
+
+Group gXiGW_sensor_plug_1
+//GOOGLE HOME!!!// ITEM SET WITH THE NAME "BED LIHGT" AND TAGGED ["Lighting"] IN ORDER FOR GOOGLE HOME TORECOGNIZE IT:
+Switch  XiGW_sensor_plug_1_Power  "Bed light" (gXiGW_sensor_plug_1, gStefBedroomLights, gAllLights,gAllPower) ["Lighting"] { channel="mihome:sensor_plug:158d000245d081:power" }
+Switch  XiGW_sensor_plug_1_InUse    "In Use" (gXiGW_sensor_plug_1) { channel="mihome:sensor_plug:158d000245d081:inUse" }
+Number  XiGW_sensor_plug_1_loadPower         "Provided Power"     <energy>           (gXiGW_sensor_plug_1) { channel="mihome:sensor_plug:158d000245d081:loadPower" }
+Number  XiGW_sensor_plug_1_powerConsumed     "Power Consumed"     <line-incline>         (gXiGW_sensor_plug_1) { channel="mihome:sensor_plug:158d000245d081:powerConsumed" }
+
+// // ????Switch  XiaomiGateway_LightSwitch   <light> { channel="mihome:gateway:7811dce21750:brightness"  }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+// //                       Mijia & Aqara Door/Window Sensor
+
+// // Кухня ляв прозорец
+Group gXiGW_door_window_1
+Contact WindowSwitch_Status <window> (gXiGW_door_window_1, gAll_DW_Sensors) { channel="mihome:sensor_magnet:158d00024e9361:isOpen" }
+// minimum 30 seconds
+Number WindowSwitch_AlarmTimer <clock> (gXiGW_door_window_1){ channel="mihome:sensor_magnet:158d00024e9361:isOpenAlarmTimer" }
+DateTime WindowSwitch_LastOpened "[%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock-on> (gXiGW_door_window_1) { channel="mihome:sensor_magnet:158d00024e9361:lastOpened" }
+Number WindowSwitch_Battery <battery> (gXiGW_door_window_1, gAllBatteryLevel) { channel="mihome:sensor_magnet:158d00024e9361:batteryLevel" }
+Switch WindowSwitch_BatteryLow <energy> (gXiGW_door_window_1,gAllLowBattery) { channel="mihome:sensor_magnet:158d00024e9361:lowBattery" }
+
+// // Кухня десен прозорец
+Group gXiGW_door_window_2
+Contact KitchenRightWindowSwitch_Status <window> (gXiGW_door_window_2, gAll_DW_Sensors) { channel="mihome:sensor_magnet:158d0001c0e8a3:isOpen" }
+// minimum 30 seconds
+Number KitchenRightWindowSwitch_AlarmTimer <clock> (gXiGW_door_window_2){ channel="mihome:sensor_magnet:158d0001c0e8a3:isOpenAlarmTimer" }
+DateTime KitchenRightWindowSwitch_LastOpened "[%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock-on> (gXiGW_door_window_2) { channel="mihome:sensor_magnet:158d0001c0e8a3:lastOpened" }
+Number KitchenRightWindowSwitch_Battery <battery> (gXiGW_door_window_2, gAllBatteryLevel) { channel="mihome:sensor_magnet:158d0001c0e8a3:batteryLevel" }
+Switch KitchenRightWindowSwitch_BatteryLow <energy> (gXiGW_door_window_2,gAllLowBattery) { channel="mihome:sensor_magnet:158d0001c0e8a3:lowBattery" }
+
+// // Входна врата
+Group gXiGW_door_window_3
+Contact EntranceDoorSwitch_Status <door> (gXiGW_door_window_3, gAll_DW_Sensors) { channel="mihome:sensor_magnet_aq2:158d000346ce68:isOpen" }
+// minimum 30 seconds
+Number EntranceDoorSwitch_AlarmTimer <clock> (gXiGW_door_window_3){ channel="mihome:sensor_magnet_aq2:158d000346ce68:isOpenAlarmTimer" }
+DateTime EntranceDoorSwitch_LastOpened "[%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock-on> (gXiGW_door_window_3) { channel="mihome:sensor_magnet_aq2:158d000346ce68:lastOpened" }
+Number EntranceDoorSwitch_Battery <battery> (gXiGW_door_window_3, gAllBatteryLevel) { channel="mihome:sensor_magnet_aq2:158d000346ce68:batteryLevel" }
+Switch EntranceDoorSwitch_BatteryLow <energy> (gXiGW_door_window_3,gAllLowBattery) { channel="mihome:sensor_magnet_aq2:158d000346ce68:lowBattery" }
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+// //                            XIAOMI MIA MOTION SENSOR
+
+Group gXiGW_mia_motion_sensor_1
+Switch MotionSensor_MotionStatus <motion> (gXiGW_mia_motion_sensor_1, gCorridorNightLightControll) { channel="mihome:sensor_motion:158d000252ab15:motion" }
+// minimum 5 seconds - remember that the sensor only triggers every minute to save energy
+Number MotionSensor_MotionTimer <clock> (gXiGW_mia_motion_sensor_1) { channel="mihome:sensor_motion:158d000252ab15:motionOffTimer" }
+DateTime MotionSensor_LastMotion "Last motion: [%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock-on> (gXiGW_mia_motion_sensor_1)  { channel="mihome:sensor_motion:158d000252ab15:lastMotion" }
+Number MotionSensor_Battery <battery> (gXiGW_mia_motion_sensor_1, gAllBatteryLevel)   { channel="mihome:sensor_motion:158d000252ab15:batteryLevel" }
+Switch MotionSensor_BatteryLow <energy> (gXiGW_mia_motion_sensor_1, gAllLowBattery) { channel="mihome:sensor_motion:158d000252ab15:lowBattery" }
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+// //                       AQARA MOTION SENSOR
+
+// Aqara Motion Sensor 1 - Bigla Coridor on top of the Parradox Alarm PIR
+Group gGF_COR_AQ_1
+Switch GF_COR_AQ_1_MotionSensor_MotionStatus <motion> (gGF_COR_AQ_1, gCorridorNightLightControll) { channel="mihome:sensor_motion_aq2:158d00031b0dc5:motion" }
+// minimum 5 seconds - the sensor only triggers once every minute to save energy
+Number GF_COR_AQ_1_MotionSensor_MotionTimer <clock> (gGF_COR_AQ_1) { channel="mihome:sensor_motion_aq2:158d00031b0dc5:motionOffTimer" }
+DateTime GF_COR_AQ_1_MotionSensor_LastMotion "Last motion: [%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock> (gGF_COR_AQ_1) { channel="mihome:sensor_motion_aq2:158d00031b0dc5:lastMotion" }
+Number GF_COR_AQ_1_MotionSensor_Battery <battery> (gGF_COR_AQ_1, gAllBatteryLevel) { channel="mihome:sensor_motion_aq2:158d00031b0dc5:batteryLevel" }
+Switch GF_COR_AQ_1_MotionSensor_BatteryLow <energy> (gGF_COR_AQ_1, gAllLowBattery) { channel="mihome:sensor_motion_aq2:158d00031b0dc5:lowBattery" }
+Number GF_COR_AQ_1_MotionSensor_Lux "LUX [%.1f]" <sun> (gGF_COR_AQ_1) { channel="mihome:sensor_motion_aq2:158d00031b0dc5:illumination" }
+
+// Aqara Motion Sensor 1 - Bigla Coridor on top of the Parradox Alarm PIR
+Group Gr_GF_KN_AQ_Kitchen_Counter_Motion
+Switch GF_KN_AQ_Kitchen_Counter_Motion_MotionStatus <motion> (Gr_GF_KN_AQ_Kitchen_Counter_Motion, gKitchenConterLightControll) { channel="mihome:sensor_motion_aq2:158d000313c43f:motion" }
+// minimum 5 seconds - the sensor only triggers once every minute to save energy
+Number GF_KN_AQ_Kitchen_Counter_Motion_MotionTimer <clock> (Gr_GF_KN_AQ_Kitchen_Counter_Motion) { channel="mihome:sensor_motion_aq2:158d000313c43f:motionOffTimer" }
+DateTime GF_KN_AQ_Kitchen_Counter_Motion_LastMotion "Last motion: [%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock> (Gr_GF_KN_AQ_Kitchen_Counter_Motion) { channel="mihome:sensor_motion_aq2:158d000313c43f:lastMotion" }
+Number GF_KN_AQ_Kitchen_Counter_Motion_Battery <battery> (Gr_GF_KN_AQ_Kitchen_Counter_Motion, gAllBatteryLevel) { channel="mihome:sensor_motion_aq2:158d000313c43f:batteryLevel" }
+Switch GF_KN_AQ_Kitchen_Counter_Motion_BatteryLow <energy> (Gr_GF_KN_AQ_Kitchen_Counter_Motion, gAllLowBattery) { channel="mihome:sensor_motion_aq2:158d000313c43f:lowBattery" }
+Number GF_KN_AQ_Kitchen_Counter_Motion_Lux "LUX [%.1f]" <sun> (Gr_GF_KN_AQ_Kitchen_Counter_Motion) { channel="mihome:sensor_motion_aq2:158d000313c43f:illumination" }
+
+// Switch MotionSensor_MotionStatus <motion>  { channel="mihome:sensor_motion_aq2:<GwID>:<ID>:motion" }
+// // minimum 5 seconds - the sensor only triggers once every minute to save energy
+// Number MotionSensor_MotionTimer <clock> { channel="mihome:sensor_motion_aq2:<GwID>:<ID>:motionOffTimer" }
+// DateTime MotionSensor_LastMotion "[%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock-on> { channel="mihome:sensor_motion_aq2:<GwID>:<ID>:lastMotion" }
+// Number MotionSensor_Battery <battery> { channel="mihome:sensor_motion_aq2:<GwID>:<ID>:batteryLevel" }
+// Switch MotionSensor_BatteryLow <energy> { channel="mihome:sensor_motion_aq2:<GwID>:<ID>:lowBattery" }
+// Number MotionSensor_Lux "LUX [%.1f]" <sun> { channel="mihome:sensor_motion_aq2:<GwID>:<ID>:illumination" }
+
+// Mijia & Aqara Wireless Switch - see "xiaomi.rules" for action triggers
+Group gXiGW_mia_wireless_switch_1
+Number Xiaomi_Switch_1_Battery <battery> (gXiGW_mia_wireless_switch_1, gAllBatteryLevel) { channel="mihome:sensor_switch:158d0002519831:batteryLevel" }
+Switch Xiaomi_Switch_1_BatteryLow <energy> (gXiGW_mia_wireless_switch_1, gAllLowBattery)   { channel="mihome:sensor_switch:158d0002519831:lowBattery" }
+
+Group gXiGW1_Mi_wireless_switch_2
+Number Xiaomi_Switch_2_Battery <battery> (gXiGW_mia_wireless_switch_2,gAllBatteryLevel) { channel="mihome:sensor_switch:158d0001d87ccf:batteryLevel" }
+Switch Xiaomi_Switch_2_BatteryLow <energy> (gXiGW_mia_wireless_switch_2, gAllLowBattery)   { channel="mihome:sensor_switch:158d0001d87ccf:lowBattery" }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //                   AQARA THP - Temperature, Humidity and Pressure Sensor
+
+// Temperature Range and Precision: -20℃– +50°C，±0.3℃ （-4℉– +122℉，±0.5°F）
+// Humidity Range and Precision: 0 – 100% RH (non-condensing), ±3%
+// Atmospheric Pressure Range and Precision: 30 kPa – 110 kPa, ±0.12 kPa
+
+
+// // STEFANS BEDROM TEMPERATURE
+Group gMIGW_XA_THP_sensor_1
+Number:Temperature      MIGW_XA_THP_Temperature_1    <temperature>  (gMIGW_XA_THP_sensor_1,Gr_Temperature_measurments,Gr_S_Bdrm_Temperature) { channel="mihome:sensor_weather_v1:158d00036b1dc4:temperature" }
+Number:Dimensionless    MIGW_XA_THP_Humidity_1       <humidity>     (gMIGW_XA_THP_sensor_1) { channel="mihome:sensor_weather_v1:158d00036b1dc4:humidity" }
+Number:Pressure         MIGW_XA_THP_Pressure_1       <pressure>     (gMIGW_XA_THP_sensor_1) { channel="mihome:sensor_weather_v1:158d00036b1dc4:pressure" }
+Number                  MIGW_XA_THP_Battery_1        <battery>      (gMIGW_XA_THP_sensor_1, gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d00036b1dc4:batteryLevel" }
+Switch                  MIGW_XA_THP_BatteryLow_1     <energy>       (gMIGW_XA_THP_sensor_1, gAllLowBattery) { channel="mihome:sensor_weather_v1:158d00036b1dc4:lowBattery" }
+
+// // DESI'S BEDROOM TEMPERATURE
+Group gMIGW_XA_THP_sensor_2
+Number:Temperature      MIGW_XA_THP_Temperature_2    <temperature>  (gMIGW_XA_THP_sensor_2,Gr_Temperature_measurments) { channel="mihome:sensor_weather_v1:158d000322f4f5:temperature" }
+Number:Dimensionless    MIGW_XA_THP_Humidity_2       <humidity>     (gMIGW_XA_THP_sensor_2) { channel="mihome:sensor_weather_v1:158d000322f4f5:humidity" }
+Number:Pressure         MIGW_XA_THP_Pressure_2       <pressure>     (gMIGW_XA_THP_sensor_2) { channel="mihome:sensor_weather_v1:158d000322f4f5:pressure" }
+Number                  MIGW_XA_THP_Battery_2        <battery>      (gMIGW_XA_THP_sensor_2,gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d000322f4f5:batteryLevel" }
+Switch                  MIGW_XA_THP_BatteryLow_2     <energy>       (gMIGW_XA_THP_sensor_2, gAllLowBattery) { channel="mihome:sensor_weather_v1:158d000322f4f5:lowBattery" }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //                           AQARA WATER LEAK SENSOR
+
+// // KITCHEN REFRIGERATOR WATER LEAK SENSOR
+
+Group gMIGW_AQ_WL_sensor_1 
+// Number Aquara_WaterLeak_1_Alarm_Flood  <rain> (gMIGW_AQ_WL_sensor_1,gKitchen_Refrigerator_WF_Sensors){ channel="mihome:sensor_wleak_aq1:158d0002835662:leak" }
+Number Aquara_WaterLeak_1_Alarm_Flood "Water flood: [%s]" <rain> (gMIGW_AQ_WL_sensor_1,gKitchen_Refrigerator_WF_Sensors){ channel="mihome:sensor_wleak_aq1:158d0002835662:leak" }
+Number Aquara_WaterLeak_1_Battery     <battery>      (gMIGW_AQ_WL_sensor_1, gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d000322f4f5:batteryLevel" }
+Switch Aquara_WaterLeak_1_BatteryLow <energy> (gMIGW_AQ_WL_sensor_1) { channel="mihome:sensor_wleak_aq1:158d0002835662:lowBattery" }
+
+
+// // Aqara Wirelss Light Control (1 Button) - see "xiaomi.rules" for action triggers
+// Number AqaraSwitch1_Battery <battery> { channel="mihome:86sw1:<GwID>:<ID>:batteryLevel" }
+// Switch AqaraSwitch1_BatteryLow <energy> { channel="mihome:86sw1:<GwID>:<ID>:lowBattery" }
+
+// // Aqara Wirelss Light Control (2 Button) - see "xiaomi.rules" for action triggers
+// Number AqaraSwitch2_Battery <battery> { channel="mihome:86sw2:<GwID>:<ID>:batteryLevel" }
+// Switch AqaraSwitch2_BatteryLow <energy> { channel="mihome:86sw2:<GwID>:<ID>:lowBattery" }
+
+// // Aqara Wall Switch (1 Button)
+// Switch AqaraWallSwitch <switch> { channel="mihome:ctrl_neutral1:<GwID>:<ID>:ch1" }
+
+// // Aqara Wall Switch (2 Button)
+// Switch AqaraWallSwitch1 <switch> { channel="mihome:ctrl_neutral2:<GwID>:<ID>:ch1" }
+// Switch AqaraWallSwitch2 <switch> { channel="mihome:ctrl_neutral2:<GwID>:<ID>:ch2" }
+
+// // Aqara Wall Switch (1 Button & without neutral line)
+// Switch AqaraWallSwitch <switch> { channel="mihome:ctrl_ln1:<GwID>:<ID>:ch1" }
+
+// // Aqara Wall Switch (2 Button & without neutral line)
+// Switch AqaraWallSwitch1 <switch> { channel="mihome:ctrl_ln2:<GwID>:<ID>:ch1" }
+// Switch AqaraWallSwitch2 <switch> { channel="mihome:ctrl_ln2:<GwID>:<ID>:ch2" }
+
+// // Aqara Curtain Motor
+// Rollershutter CurtainMotorControl <blinds> { channel="curtain:<GwID>:<ID>:curtainControl" }

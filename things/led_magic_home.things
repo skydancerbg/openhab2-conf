@@ -1,0 +1,15 @@
+
+// /// // https://www.youtube.com/watch?v=0Lg7y6yLOks
+// // // Example config files: https://mega.nz/#!UrYhnSqT!_ri18L-UeEM0aqAcIYzfeAuK72RDP2rF1vz0nvM-sBI
+// // // Downloaded copy at D:\Users\Stefan Shivarov\Documents\Smart home\SHome 2019\Magic_Home-OH\MagicHomeLed+Openhab
+
+
+
+Thing wifiled:wifiled:C44F33AE9317 [ ip="192.168.1.178", port=5577, pollingPeriod=3000, protocol="LD382A", driver="CLASSIC", fadeDurationInMs=1000, fadeSteps=100 ]
+
+
+// /// /// ///  Example Site Things:
+
+// Thing wifiled:wifiled:F0FE6B19CB2B [ ip="10.10.10.11", port=5577, pollingPeriod=3000, protocol="LD382A", driver="CLASSIC", fadeDurationInMs=1000, fadeSteps=100 ]
+// Thing wifiled:wifiled:F0FE6B19CB2C [ ip="10.10.10.12", port=5577, pollingPeriod=3000, protocol="LD382A", driver="CLASSIC", fadeDurationInMs=1000, fadeSteps=100 ]
+// Thing wifiled:wifiled:F0FE6B19CB2A [ ip="10.10.10.10", port=5577, pollingPeriod=3000, protocol="LD686", driver="CLASSIC", fadeDurationInMs=1000, fadeSteps=100 ]

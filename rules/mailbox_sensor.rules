@@ -1,0 +1,31 @@
+rule "Mailbox Got mail"
+when
+  Item Mailbox_sensor_havemail changed to CLOSED
+then
+    logInfo("Mailbox sensor", "New mail in the mailbox!(Sensor CLOSED)")
+    sendNotification("sshivarov@yahoo.com", "MailboxSensor: Имате писмо!")
+    // sendNotification("sshivarov@yahoo.com", "MailboxSensor: You've got mail!")
+end
+rule "Mailbox Empty"
+when
+  Item Mailbox_sensor_havemail changed to OPEN
+then
+    logInfo("Mailbox sensor", "No mail in the mailbox! (Sensor OPEN)")
+    sendNotification("sshivarov@yahoo.com", "MailboxSensor: No new mail in the mailbox!")
+end
+
+rule "Mailbox Door CLOSED"
+when
+  Item Mailbox_sensor_mailboxdoor changed to CLOSED
+then
+    logInfo("Mailbox sensor", "Mailbox door was closed!")
+    // sendNotification("sshivarov@yahoo.com", "MailboxSensor: Mailbox door was CLOSED!")
+end
+
+rule "Mailbox Door OPEN"
+when
+  Item Mailbox_sensor_mailboxdoor changed to OPEN
+then
+    logInfo("Mailbox sensor", "Mailbox door was opened!")
+    // sendNotification("sshivarov@yahoo.com", "MailboxSensor: Mailbox door OPEN!")
+end

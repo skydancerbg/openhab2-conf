@@ -1,0 +1,13 @@
+
+
+//   // DIY Kitchen water shutoff  
+
+Group  Gr_GF_KN_Refrigerator_Water_Shutoff_Valve           "Refrigerator water shutoff valv /Only one switch should be on!/"                   <water> 
+Switch Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Power1    "Отвори кран хладилник"        <switch>     (Gr_GF_KN_Refrigerator_Water_Shutoff_Valve)             { channel="mqtt:topic:MyMQTTthing:fridge_water_valve:openvalve" }       
+Switch Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Power2    "Затвори кран хладилник"       <switch>     (Gr_GF_KN_Refrigerator_Water_Shutoff_Valve)  { channel="mqtt:topic:MyMQTTthing:fridge_water_valve:closevalve" }       
+Switch Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Sensor_Open    "Кранът е напълно отворен"        <switch>     (Gr_GF_KN_Refrigerator_Water_Shutoff_Valve)             { channel="mqtt:topic:MyMQTTthing:fridge_water_valve:isfullyopen" }       
+Switch Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Sensor_Closed    "Кранът е напълно затворен"       <switch>     (Gr_GF_KN_Refrigerator_Water_Shutoff_Valve)  { channel="mqtt:topic:MyMQTTthing:fridge_water_valve:isfullyclosed" }       
+String Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Reachable "Reachable: [%s]"              <presence>   (Gr_GF_KN_Refrigerator_Water_Shutoff_Valve)             { channel="mqtt:topic:MyMQTTthing:fridge_water_valve:reachable" }
+Number Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_RSSI      "WiFi Signal Strength [%d %%]" <network>    (Gr_GF_KN_Refrigerator_Water_Shutoff_Valve)             { channel="mqtt:topic:MyMQTTthing:fridge_water_valve:rssi" }
+String Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Fully_Opened "Otworen li e krana: [%s]" <water> (Gr_GF_KN_Refrigerator_Water_Shutoff_Valve) { channel="mqtt:topic:MyMQTTthing:fridge_water_valve:valveopened" }
+String Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Fully_Closed "Zatworen li e krana: [%s]" <water> (Gr_GF_KN_Refrigerator_Water_Shutoff_Valve) { channel="mqtt:topic:MyMQTTthing:fridge_water_valve:valveclosed" }

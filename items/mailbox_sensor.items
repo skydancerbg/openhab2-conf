@@ -1,0 +1,29 @@
+
+// TEST
+String WUnderground_URL "<a href='https://www.wunderground.com'>Weather Underground</a>"
+
+
+Group  Gr_Mailbox_sensor        "Mailbox sensor"    <group> //(Kitchen_Top_Light)
+String Mailbox_sensor_Reachable "Reachable: [%s]"              <presence>  (Gr_Mailbox_sensor) { channel="mqtt:topic:MyMQTTthing:mailbox_sensor:reachable" }
+Switch Mailbox_sensor_resetmailboxstate    "Reset gotMail state"            <switch>    (Gr_Mailbox_sensor) { channel="mqtt:topic:MyMQTTthing:mailbox_sensor:resetmailstate" }       
+Switch Mailbox_sensor_restartcontroler     "Restart controler"            <switch>    (Gr_Mailbox_sensor) { channel="mqtt:topic:MyMQTTthing:mailbox_sensor:restartcontroler" }       
+String Mailbox_sensor_havemail "Cot mail?: [MAP(gotmail.map):%s]"              <presence>  (Gr_Mailbox_sensor) { channel="mqtt:topic:MyMQTTthing:mailbox_sensor:havemail" }
+// String Mailbox_sensor_havemail "Има ли поща?: [MAP(gotmail.map):%s]"              <presence>  (Gr_Mailbox_sensor) { channel="mqtt:topic:MyMQTTthing:mailbox_sensor:havemail" }
+String Mailbox_sensor_mailboxdoor "Mailbox door is: [%s]"              <presence>  (Gr_Mailbox_sensor) { channel="mqtt:topic:MyMQTTthing:mailbox_sensor:mailboxdoor" }
+// String Mailbox_sensor_mailboxdoor "Вратата на пощенската кутия е: [%s]"              <presence>  (Gr_Mailbox_sensor) { channel="mqtt:topic:MyMQTTthing:mailbox_sensor:mailboxdoor" }
+
+// Number Mailbox_sensor_RSSI      "WiFi Signal Strength [%d %%]" <network>   (Gr_Mailbox_sensor) { channel="mqtt:topic:MyMQTTthing:mailbox_sensor:rssi" }
+
+
+
+// //    // MQTT DIY MAILBOX SENSOR
+//     Thing topic mailbox_sensor "Mailbox sensor" @ "Outside stairs" {
+//     Channels:
+//         Type string : reachable "Reachable"              [ stateTopic="tele/WiFi_Mailbox_sensor/LWT" ]
+//         Type switch : resetmailstate     "Reset gotMail state"                [ stateTopic="stat/WiFi_Mailbox_sensor/State", commandTopic="cmnd/WiFi_Mailbox_sensor/ResetMailState" ]
+//         Type switch : restartcontroler     "Restart controler"                [ commandTopic="cmnd/WiFi_Mailbox_sensor/RestartController" ]        
+//         // Type switch : restartcontroler     "Restart controler"                [ stateTopic="stat/WiFi_Mailbox_sensor/State", commandTopic="cmnd/WiFi_Mailbox_sensor/RestartController" ]        
+//         // Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/sonoff_dual_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+//         Type string : havemail      "Got mail?" [ stateTopic="stat/WiFi_Mailbox_sensor/HaveMail"]
+//         Type string : mailboxdoor      "Mailbox door" [ stateTopic="stat/WiFi_Mailbox_sensor/MailboxDoor"]
+//     }

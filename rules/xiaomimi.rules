@@ -1,0 +1,141 @@
+
+// // // Mi BUTTON IN STEFAN's BEDROOM 
+// // //   // SINGLE PRESS - BED LIGHTS, DOUBLE PRESS - NIGHT LIGHT, LONG PRESS TOP LIGHT
+
+rule "Mi 1 Button STEFAN'S BEDROOM sensor_switch triggered"
+when
+    Channel "mihome:sensor_switch:158d0002519831:button" triggered
+then
+                // logInfo("XiaomiMiaWirelessSwitch", "Xiaomi Button Trigerd!")
+    var actionName = receivedEvent.getEvent()
+    switch(actionName) {
+        case "SHORT_PRESSED": {
+                // Xiaomi_Switch_Single_Click_Dummy.sendCommand(ON)
+                if( XiGW_sensor_plug_1_Power.state==OFF ) {
+                        XiGW_sensor_plug_1_Power.sendCommand(ON)
+                } else {
+                    XiGW_sensor_plug_1_Power.sendCommand(OFF)
+                }
+                // logInfo("XiaomiMiaWirelessSwitch", "SHORT_PRESSED")
+        }        
+        case "DOUBLE_PRESSED": {
+                if( GF_Sonoff_Dual_Power2.state==OFF ) {
+                        GF_Sonoff_Dual_Power2.sendCommand(ON)
+                } else {
+                    GF_Sonoff_Dual_Power2.sendCommand(OFF)
+                }
+                // logInfo("XiaomiMiaWirelessSwitch", "DOUBLE_PRESSED")        
+        }
+        case "LONG_PRESSED": {
+                if( Gr_GF_SBdrm_Top_Light_Power.state==OFF ) {
+                        Gr_GF_SBdrm_Top_Light_Power.sendCommand(ON)
+                } else {
+                    Gr_GF_SBdrm_Top_Light_Power.sendCommand(OFF)
+                }
+
+                // Xiaomi_Switch_Long_Press_Dummy.sendCommand(ON)
+                // logInfo("XiaomiMiaWirelessSwitch", "LONG_PRESSED")        
+        }
+        case "LONG_RELEASED": {
+                // logInfo("XiaomiMiaWirelessSwitch", "LONG_RELEASED")        
+        }
+    }                 
+end
+
+
+
+// // // Mi BUTTON IN THE KITCHEN OVER THE SINK 
+// // //   // SINGLE PRESS - BOTH LIGHTS, DOUBLE PRESS - TOP LIGHT, LONG PRESS SINK LIGHT
+
+rule "Mi 2 Button  KITCHEN sensor_switch triggered"
+when
+    Channel "mihome:sensor_switch:158d0001d87ccf:button" triggered
+then
+                // logInfo("XiaomiMiaWirelessSwitch", "Xiaomi Button Trigerd!")
+    var actionName = receivedEvent.getEvent()
+    switch(actionName) {
+        case "SHORT_PRESSED": {
+                // Xiaomi_Switch_Single_Click_Dummy.sendCommand(ON)
+                if( GF_KN_Top_Light_Power.state==OFF || GF_KN_Sink_Light_Power.state==OFF ) {
+                        GF_KN_Top_Light_Power.sendCommand(ON)
+                        GF_KN_Sink_Light_Power.sendCommand(ON)
+                } else {
+                    GF_KN_Top_Light_Power.sendCommand(OFF)
+                    GF_KN_Sink_Light_Power.sendCommand(OFF)
+                }
+                // logInfo("XiaomiMiaWirelessSwitch", "SHORT_PRESSED")
+        }        
+        case "DOUBLE_PRESSED": {
+                if( GF_KN_Top_Light_Power.state==OFF ) {
+                        GF_KN_Top_Light_Power.sendCommand(ON)
+                } else {
+                    GF_KN_Top_Light_Power.sendCommand(OFF)
+                }
+                // logInfo("XiaomiMiaWirelessSwitch", "DOUBLE_PRESSED")        
+        }
+        case "LONG_PRESSED": {
+                if( GF_KN_Sink_Light_Power.state==OFF ) {
+                        GF_KN_Sink_Light_Power.sendCommand(ON)
+                } else {
+                    GF_KN_Sink_Light_Power.sendCommand(OFF)
+                }
+
+                // logInfo("XiaomiMiaWirelessSwitch", "LONG_PRESSED")        
+        }
+        case "LONG_RELEASED": {
+                // Xiaomi_Switch_Long_Press_End_Dummy.sendCommand(ON)
+                logInfo("XiaomiMiaWirelessSwitch", "LONG_RELEASED")        
+        }
+    }                 
+end
+
+/////////////////////////////////////////////////////////////////////////////
+
+rule "Play quiet knock-knock ringtone with the Xiaomi Gateway 1"
+when
+    Item XiaomiGateway1_Play_Sound_Dummy changed to ON
+then
+    XGW_Gateway1_SoundVolume.sendCommand(2)
+    XGW_Gateway1_Sound.sendCommand(11)
+    Thread::sleep(4000) /* wait for 2 seconds */
+    XGW_Gateway1_Sound.sendCommand(10000)
+    XGW_Gateway1_SoundVolume.sendCommand(0)
+end
+
+rule "Play quiet knock-knock ringtone with the Xiaomi Gateway 2"
+when
+    Item XiaomiGateway2_Play_Sound_Dummy changed to ON
+then
+    XGW_Gateway2_SoundVolume.sendCommand(2)
+    XGW_Gateway2_Sound.sendCommand(11)
+    Thread::sleep(4000) /* wait for 2 seconds */
+    XGW_Gateway2_Sound.sendCommand(10000)
+    XGW_Gateway2_SoundVolume.sendCommand(0)
+end
+////////////////////////////////////////////////////////////////////////////
+
+
+// rule "Mijia & Aqara Wireless Switch"
+// when
+//     Channel "mihome:sensor_switch:158d0002519831:button" triggered
+// then
+//     var actionName = receivedEvent.getEvent()
+//     switch(actionName) {
+//         case "SHORT_PRESSED": {
+//                 Xiaomi_Switch_Single_Click_Dummy.sendCommand(ON)
+//                 logInfo("XiaomiMiaWirelessSwitch", "SHORT_PRESSED") 
+//         }       
+//         case "DOUBLE_PRESSED": {
+//                  Xiaomi_Switch_Double_Click_Dummy.sendCommand(ON)
+//                 logInfo("XiaomiMiaWirelessSwitch", "DOUBLE_PRESSED")        
+//         }
+//         case "LONG_PRESSED": {
+//                 Xiaomi_Switch_Long_Press_Dummy.sendCommand(ON)
+//                 logInfo("XiaomiMiaWirelessSwitch", "LONG_PRESSED")        
+//         }
+//         case "LONG_RELEASED": {
+//                 Xiaomi_Switch_Long_Press_End_Dummy.sendCommand(ON)
+//                 logInfo("XiaomiMiaWirelessSwitch", "LONG_RELEASED")        
+//         }
+//     }
+// end

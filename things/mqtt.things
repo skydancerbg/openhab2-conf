@@ -1,0 +1,195 @@
+
+// Thing <binding_id>:<type_id>:<thing_id> "Label" @ "Location" [ <parameters> ]
+
+// Bridge mqtt:broker:mosquitto "Mosquitto" [ host="localhost", port=1883, secure=false, username="openhabian", password="Cessna152", clientID="openHAB2" ]
+Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secure=false, username="openhabian", password="Cessna152", clientID="oh2" ]
+
+{
+//    // MQTT DIY MAILBOX SENSOR
+    Thing topic mailbox_sensor "Mailbox sensor" @ "Outside stairs" {
+    Channels:
+        Type string : reachable "Reachable"              [ stateTopic="tele/WiFi_Mailbox_sensor/LWT" ]
+        Type switch : resetmailstate     "Reset gotMail state"                [ stateTopic="stat/WiFi_Mailbox_sensor/State", commandTopic="cmnd/WiFi_Mailbox_sensor/ResetMailState" ]
+        Type switch : restartcontroler     "Restart controler"                [ commandTopic="cmnd/WiFi_Mailbox_sensor/RestartController" ]        
+        // Type switch : restartcontroler     "Restart controler"                [ stateTopic="stat/WiFi_Mailbox_sensor/State", commandTopic="cmnd/WiFi_Mailbox_sensor/RestartController" ]        
+        // Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/sonoff_dual_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+        Type string : havemail      "Got mail?" [ stateTopic="stat/WiFi_Mailbox_sensor/HaveMail"]
+        Type string : mailboxdoor      "Mailbox door" [ stateTopic="stat/WiFi_Mailbox_sensor/MailboxDoor"]
+    }
+
+
+
+
+
+//    // SONOF DEVICES
+
+ // // SONOFF DUAL   
+    Thing topic sonoff_dual "Sonoff Dual" @ "Living Room" {
+    Channels:
+        Type string : reachable "Reachable"              [ stateTopic="tele/sonoff_dual_1/LWT" ]
+        Type switch : power1     "Power1"                [ stateTopic="stat/sonoff_dual_1/POWER1", commandTopic="cmnd/sonoff_dual_1/POWER1" ]
+        Type switch : power2     "Power2"                [ stateTopic="stat/sonoff_dual_1/POWER2", commandTopic="cmnd/sonoff_dual_1/POWER2" ]        
+        Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/sonoff_dual_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+// // SONOFF POW
+    
+    // // RECUPERATOR on sonoff_pow_1 
+    // https://community.openhab.org/t/solved-sonoff-pow-openhab2-integration/77122/8 
+    
+    Thing topic recuperator "Recuperator" @ "Living Room" {
+    Channels:
+        Type string : reachable "Reachable"              [ stateTopic="tele/sonoff_pow_1/LWT" ]
+        Type switch : power     "Power"                  [ stateTopic="stat/sonoff_pow_1/POWER", commandTopic="cmnd/sonoff_pow_1/POWER" ]
+        Type number : powerload "Power load"             [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+        Type number : voltage   "Line voltage"           [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
+        Type number : current   "Line current"           [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
+        Type number : total     "Total energy today"     [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+        Type number : totalyest "Total energy yesterday" [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+        Type number : rssi      "WiFi Signal Strength"   [ stateTopic="tele/sonoff_pow_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    } 
+
+
+ // // SONOFF S20 OUTLETS
+    
+    // // Kitchen top light on sonoff_s20_1 S20 OUTLET   
+    Thing topic s20_1_power_outlet "S20 power outlet" @ "Kitchen" {
+    Channels:
+        Type string : reachable "Reachable"              [ stateTopic="tele/sonoff_s20_1/LWT" ]
+        Type switch : power     "Power"                [ stateTopic="stat/sonoff_s20_1/POWER", commandTopic="cmnd/sonoff_s20_1/POWER" ]
+        Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/sonoff_s20_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+// // SONOFF S26 OUTLETS
+    Thing topic kithcen_top_light_on_s26 "Kitchen top light" @ "Kitchen" {
+    Channels:
+        Type string : reachable "Reachable"              [ stateTopic="tele/s26_kitchen_top_light/LWT" ]
+        Type switch : power     "Power"                [ stateTopic="stat/s26_kitchen_top_light/POWER", commandTopic="cmnd/s26_kitchen_top_light/POWER" ]
+        Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/s26_kitchen_top_light/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+    Thing topic kithcen_sink_light_on_s26 "Kitchen sink light" @ "Kitchen" {
+    Channels:
+        Type string : reachable "Reachable"              [ stateTopic="tele/s26_2_kitchen_sink_light/LWT" ]
+        Type switch : power     "Power"                [ stateTopic="stat/s26_2_kitchen_sink_light/POWER", commandTopic="cmnd/s26_2_kitchen_sink_light/POWER" ]
+        Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/s26_2_kitchen_sink_light/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+    Thing topic s26_3_power_outlet "S26 power outlet" @ "Kitchen" {
+    Channels:
+        Type string : reachable "Reachable"              [ stateTopic="tele/s26_3_power_outlet/LWT" ]
+        Type switch : power     "Power"                [ stateTopic="stat/s26_3_power_outlet/POWER", commandTopic="cmnd/s26_3_power_outlet/POWER" ]
+        Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/s26_3_power_outlet/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+// // SONOFF SLAMPHER RF
+
+    Thing topic slampher_stefans_bedroom "Slampher Stefan's bedroom top light" @ "Stefan's Bedroom" {
+    Channels:
+        Type string : reachable "Reachable"            [ stateTopic="tele/slmph_1_s_bdrm_top_light/LWT" ]
+        Type switch : power     "Power"                [ stateTopic="stat/slmph_1_s_bdrm_top_light/POWER", commandTopic="cmnd/slmph_1_s_bdrm_top_light/POWER" ]
+        Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/slmph_1_s_bdrm_top_light/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+
+
+// // SONOFF RF BRIDGE
+	Thing topic sonoffrfbridge1  {
+	Channels:
+        Type string : reachable     "Reachable"            [ stateTopic="tele/sonoff_RF_Bridge_1/LWT" ]
+        Type string : recieveddata  "Received Data"        [ stateTopic="tele/sonoff_RF_Bridge_1/RESULT", transformationPattern="JSONPATH:$.RfReceived.Data"]
+        Type string : recievedsync  "Received Sync"        [ stateTopic="tele/sonoff_RF_Bridge_1/RESULT", transformationPattern="JSONPATH:$.RfReceived.Sync"]
+        Type string : recievedlow   "Received Low"         [ stateTopic="tele/sonoff_RF_Bridge_1/RESULT", transformationPattern="JSONPATH:$.RfReceived.Low"]
+        Type string : recievedhigh  "Received High"        [ stateTopic="tele/sonoff_RF_Bridge_1/RESULT", transformationPattern="JSONPATH:$.RfReceived.High"]
+        Type string : recievedrfkey "Received RfKey"       [ stateTopic="tele/sonoff_RF_Bridge_1/RESULT", transformationPattern="JSONPATH:$.RfReceived.RfKey"]
+        Type number : rssi          "WiFi Signal Strength" [ stateTopic="tele/sonoff_RF_Bridge_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+ 
+// Custom already programmed 16 buttons:
+
+        // Type switch : button1       "Button 1"             [ stateTopic="stat/sonoff_RF_Bridge_1/RESULT", commandTopic="cmnd/sonoff_RF_Bridge_1/RfKey1", on="6", transformationPattern="JSONPATH:$.RfKey1" ]
+        // Type switch : button2       "Button 2"             [ stateTopic="stat/sonoff_RF_Bridge_1/RESULT", commandTopic="cmnd/sonoff_RF_Bridge_1/RfKey2", on="6", transformationPattern="JSONPATH:$.RfKey2" ]
+
+        // Type switch : button1       "Button 1"             [ stateTopic="stat/sonoff_RF_Bridge_1/RESULT", commandTopic="cmnd/sonoff_RF_Bridge_1/RfKey1", transformationPattern="JSONPATH:$.RfKey1" ]
+        // Type switch : button2       "Button 2"             [ stateTopic="stat/sonoff_RF_Bridge_1/RESULT", commandTopic="cmnd/sonoff_RF_Bridge_1/RfKey2", transformationPattern="JSONPATH:$.RfKey2" ]
+        // Type switch : button3       "Button 3"             [ stateTopic="stat/sonoff_RF_Bridge_1/RESULT", commandTopic="cmnd/sonoff_RF_Bridge_1/RFKEY3", transformationPattern="JSONPATH:$.RfKey3" ]
+        // Type switch : button4       "Button 4"             [ stateTopic="stat/sonoff_RF_Bridge_1/RESULT", commandTopic="cmnd/sonoff_RF_Bridge_1/RFKEY4", transformationPattern="JSONPATH:$.RfKey4" ]
+        // Type switch : button5       "Button 5"             [ stateTopic="stat/sonoff_RF_Bridge_1/RESULT", commandTopic="cmnd/sonoff_RF_Bridge_1/RFKEY5", transformationPattern="JSONPATH:$.RfKey5" ]
+        // Type switch : button6       "Button 6"             [ stateTopic="stat/sonoff_RF_Bridge_1/RESULT", commandTopic="cmnd/sonoff_RF_Bridge_1/RFKEY6", transformationPattern="JSONPATH:$.RfKey6" ]
+            
+        Type switch : switchrfA "Switch rf A" [ stateTopic="stat/sonoff_RF_Bridge_1/RESULT", commandTopic="cmnd/sonoff_RF_Bridge_1/Backlog", on="RfSync 8080; RfLow 260; RfHigh 800; RfCode #7172648", off="RfSync 8080; RfLow 260; RfHigh 800; RfCode #7172648"]
+        }
+
+// // ESP8266(TASMOTA) KITCHEN REFRIGERATOR WATER VALVE
+    Thing topic fridge_water_valve "Refrigerator water valve" @ "Kitchen" {
+    Channels:
+        Type string : reachable     "Reachable"            [ stateTopic="tele/kitchen_water_valve/LWT" ]
+        Type switch : openvalve     "Open water valve"    [ stateTopic="stat/kitchen_water_valve/POWER1", commandTopic="cmnd/kitchen_water_valve/POWER1" ]
+        Type switch : closevalve    "Close water valve"   [ stateTopic="stat/kitchen_water_valve/POWER2", commandTopic="cmnd/kitchen_water_valve/POWER2" ]     
+        Type switch : isfullyopen     "Open water valve"    [ stateTopic="stat/kitchen_water_shutoff_feedback/POWER3", commandTopic="cmnd/kitchen_water_shutoff_feedback/POWER3" ]
+        Type switch : isfullyclosed    "Close water valve"   [ stateTopic="stat/kitchen_water_shutoff_feedback/POWER4", commandTopic="cmnd/kitchen_water_shutoff_feedback/POWER4" ]     
+        Type string : valveopened "valve opened" [ stateTopic="tele/kitchen_water_valve/SENSOR", transformationPattern="JSONPATH:$.Switch3"]
+        Type string : valveclosed "valve closed" [ stateTopic="tele/kitchen_water_valve/SENSOR", transformationPattern="JSONPATH:$.Switch4"]
+        Type number : rssi          "WiFi Signal Strength" [ stateTopic="tele/kitchen_water_valve/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+}
+
+
+
+
+
+
+
+
+    // Thing topic sonoffs20 "Sonoff S20" @ "Some Room" {
+    // Channels:
+    //     Type string : reachable "Reachable"            [ stateTopic="tele/sonoff-s20/LWT" ]
+    //     Type switch : power     "Power"                [ stateTopic="stat/sonoff-s20/POWER", commandTopic="cmnd/sonoff-s20/POWER" ]
+    //     Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/sonoff-s20/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    // }
+
+    // Thing topic sonoffb1 "Sonoff B1" @ "Some Room" {
+    // Channels:
+    //     Type string   : reachable  "Reachable"            [ stateTopic="tele/sonoff-b1/LWT" ]
+    //     Type switch   : power      "Power"                [ stateTopic="stat/sonoff-b1/POWER", commandTopic="cmnd/sonoff-b1/POWER" ]
+    //     Type switch   : fade       "Fade"                 [ stateTopic="tele/sonoff-b1/STATE", commandTopic="cmnd/sonoff-b1/FADE", transformationPattern="JSONPATH:$.Fade" ]
+    //     Type dimmer   : dimmer     "Dimmer"               [ stateTopic="tele/sonoff-b1/STATE", commandTopic="cmnd/sonoff-b1/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
+    //     Type string   : mode       "Mode"                 [ stateTopic="tele/sonoff-b1/STATE", commandTopic="cmnd/sonoff-b1/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
+    //     Type colorHSB : colour     "Colour"               [ stateTopic="tele/sonoff-b1/STATE", commandTopic="cmnd/sonoff-b1/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+    //     Type number   : rssi       "WiFi Signal Strength" [ stateTopic="tele/sonoff-b1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    // }
+
+    // Thing topic sonoffpow "Sonoff POW" @ "Some Other Room" {
+    // Channels:
+    //     Type string : reachable "Reachable"              [ stateTopic="tele/sonoff_pow_1/LWT" ]
+    //     Type switch : power     "Power"                  [ stateTopic="stat/sonoff_pow_1/POWER", commandTopic="cmnd/sonoff_pow_1/POWER" ]
+    //     Type number : powerload "Power load"             [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+    //     Type number : voltage   "Line voltage"           [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
+    //     Type number : current   "Line current"           [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
+    //     Type number : total     "Total energy today"     [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+    //     Type number : totalyest "Total energy yesterday" [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+    //     Type number : rssi      "WiFi Signal Strength"   [ stateTopic="tele/sonoff_pow_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    // }
+
+    // Thing topic sonoffsc "Sonoff SC" @ "Another Room" {
+    // Channels:
+    //     Type string : reachable   "Reachable"            [ stateTopic="tele/sonoff-sc/LWT" ]
+    //     Type number : temperature "Temperature"          [ stateTopic="tele/sonoff-sc/SENSOR", transformationPattern="JSONPATH:$.SonoffSC.Temperature"]
+    //     Type number : humidity    "Humidity"             [ stateTopic="tele/sonoff-sc/SENSOR", transformationPattern="JSONPATH:$.SonoffSC.Humidity"]
+    //     Type number : light       "Light"                [ stateTopic="tele/sonoff-sc/SENSOR", transformationPattern="JSONPATH:$.SonoffSC.Light"]
+    //     Type number : noise       "Noise"                [ stateTopic="tele/sonoff-sc/SENSOR", transformationPattern="JSONPATH:$.SonoffSC.Noise"]
+    //     Type number : airquality  "Air Quality"          [ stateTopic="tele/sonoff-sc/SENSOR", transformationPattern="JSONPATH:$.SonoffSC.AirQuality"]
+    //     Type number : rssi        "WiFi Signal Strength" [ stateTopic="tele/sonoff-sc/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    // }
+
+    // Thing topic sonoffrf "RF Bridge" @ "Yet Another Room" {
+    //     Type string : reachable     "Reachable"            [ stateTopic="tele/sonoff-rf/LWT" ]
+    //     Type string : recieveddata  "Received Data"        [ stateTopic="tele/sonoff-rf/RESULT", transformationPattern="JSONPATH:$.RfReceived.Data"]
+    //     Type string : recievedsync  "Received Sync"        [ stateTopic="tele/sonoff-rf/RESULT", transformationPattern="JSONPATH:$.RfReceived.Sync"]
+    //     Type string : recievedlow   "Received Low"         [ stateTopic="tele/sonoff-rf/RESULT", transformationPattern="JSONPATH:$.RfReceived.Low"]
+    //     Type string : recievedhigh  "Received High"        [ stateTopic="tele/sonoff-rf/RESULT", transformationPattern="JSONPATH:$.RfReceived.High"]
+    //     Type string : recievedrfkey "Received RfKey"       [ stateTopic="tele/sonoff-rf/RESULT", transformationPattern="JSONPATH:$.RfReceived.RfKey"]
+    //     Type switch : button1       "Button 1"             [ stateTopic="stat/sonoff-rf/RESULT", commandTopic="cmnd/sonoff-rf/RFKEY1", transformationPattern="JSONPATH:$.RfKey1" ]
+    //     ...
+    //     Type switch : button16      "Button 16"            [ stateTopic="stat/sonoff-rf/RESULT", commandTopic="cmnd/sonoff-rf/RFKEY16", transformationPattern="JSONPATH:$.RfKey16" ]
+    //     Type number : rssi          "WiFi Signal Strength" [ stateTopic="tele/sonoff-rf/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    // }

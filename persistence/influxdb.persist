@@ -1,0 +1,44 @@
+
+Strategies { 
+everyMinute : "0 * * * * ?"
+everyHour : "0 0 * * * ?"
+everyDay : "0 0 0 * * ?"
+every2Minutes : "0 */2 * ? * *"
+every1Minutes : "0 */1 * ? * *"
+//If no strategy is defined, everyChange will be used.
+default = everyChange
+}
+
+Items {
+gAllBatteryLevel* : strategy = everyChange, restoreOnStartup
+Gr_Temperature_measurments* : strategy = everyChange, every1Minutes
+StefanBedNightLight_Rule_Switch, Corridor_NightLight_Rule_Switch : strategy = everyChange, restoreOnStartup
+
+}
+
+////////////////EXAMPLE/////////////////////////////////////////
+// // FROM: https://www.smarthomeblog.net/openhab-persistence-tutorial/
+///////////////////////////////////////////////////////////////
+/////////// Strategies 
+///////////   { 
+///////////   //The value of the item is persisted every hour. 
+///////////   everyHour : "0 0 * * * ?"
+///////////   //Every day at midnight, an even is fired to store the value 
+///////////   everyDayAtMidnight : "0 0 0 * * ?"
+///////////   //Every Tuesday at 5PM...I can't really find a legitimate use for this...
+///////////   everyTuesdayAtFive : "0 0 0,17 ? * TUE *" 
+///////////   //If no strategy is defined, everyChange will be used.
+///////////   default = everyChange 
+///////////   }
+///////// 
+/////////// Items 
+///////////   {
+///////////   //Persist the value for all the members of the group gTemperatureSensors using the default strategy
+///////////   gTemperatureSensors*
+///////////   // Persist the value for all the members of the group gLivingroomLights every time they change and restore them after a restart
+///////////   gLivingroomLights* : everyChange, restoreOnStartup
+///////////   //Persist the value of the group itself
+///////////   gLivingroomLights : everyUpdate, restoreOnStartup
+///////////   //store the value of the temperature every Tuesday at 5PM...So useful...who wouldn't wanna know that?
+///////////   mqtt_outside_temperature : everyTuesdayAtFive
+///////////   }

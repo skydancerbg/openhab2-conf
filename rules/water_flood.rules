@@ -1,0 +1,68 @@
+rule "Water flood from the fridge Neo Coolcam water leak sensor"
+when
+    
+    // Item Neo_DW_4_C changed
+    Item NeoWaterLeak_1_Alarm_flood changed
+then
+
+    
+    // if(Neo_DW_4_C.state == CLOSED) GF_Sonoff_Dual_Power1.sendCommand(ON) 
+    // else GF_Sonoff_Dual_Power1.sendCommand(OFF)
+
+    if(NeoWaterLeak_1_Alarm_flood.state == ON) {
+        Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Power1.sendCommand(OFF)
+        Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Power2.sendCommand(ON)
+    logInfo("Fridge Neo CC water sensor", "Fridge NeoCC water sensor: WATER FLOOD! Shutting off the water!")
+    sendNotification("sshivarov@yahoo.com", "NeoSensor: ВНИМАНИЕ! Наводнение от хладилника в кухнята!!!!")
+    }
+    
+    // //////// WARNING !!!!!!!!!!!!!!!!!!
+    // Comment out the else statement. In production mode, we need it to keep closed the water. 
+    // Should start the water with dummy button from the panel. 
+    // else GF_Sonoff_Dual_Power1.sendCommand(OFF)
+end
+
+rule "Water flood from the fridge Aqara water leak sensor Shut off water"
+when
+    Item Aquara_WaterLeak_1_Alarm_Flood changed from 0 to 1
+then
+        Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Power1.sendCommand(OFF)
+        Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Power2.sendCommand(ON)
+        logInfo("Fridge Aqara water sensor", "Fridge Aqara water valve: WATER FLOOD! Shutting off the water!")
+        sendNotification("sshivarov@yahoo.com", "AqaraSensor: ВНИМАНИЕ! Наводнение от хладилника в кухнята!!!")
+
+end
+
+rule "Water flood Neo Coolcam sensor offline/online"
+when
+    
+    Item Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Reachable changed
+
+then
+
+    logInfo("Neo Coolcam water flood sensor", "Neo Coolcam water flood sensor Reachable changed")
+
+    // if(Gr_GF_KN_Refrigerator_Water_Shutoff_Valve_Reachable.state == "Offline") 
+    // logInfo("Neo Coolcam water flood sensor", "Neo Coolcam water flood sensor is OFFLINE !!!")
+    // else     
+    // logInfo("Neo Coolcam water flood sensor", "Neo Coolcam water flood sensor is ONLINE")
+end
+
+// https://community.openhab.org/t/detecting-offline-things-in-a-less-stupid-way/34535/6
+
+rule "Fridge water valve reachable OFFLINE"
+when
+    Thing 'fridge_water_valve' changed from ONLINE to OFFLINE
+then
+    logInfo("Fridge water valve", "Fridge water valve is offline!")
+    // sendNotification("me@example.comt", "Onkyo is offline!")
+end
+
+rule "fridge water valve reachable ONLINE"
+when
+    Thing 'fridge_water_valve' changed from OFFLINE to ONLINE
+then
+    logInfo("Fridge water valve", "Fridge water valve is now ONLINE")
+    // sendNotification("me@example.com", "Onkyo is online!")
+end
+

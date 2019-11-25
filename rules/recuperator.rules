@@ -1,0 +1,13 @@
+rule "Recuperator switch onoff at given time"
+when
+    Time cron "0 0 6 ? * * *"
+then
+    GF_LR_Recuperator_Power.sendCommand(ON)
+end
+rule "rec off"
+when
+    // Time cron "0 30 0 ? * * *"
+    Time cron "0 30 1 ? * * *"
+then
+    GF_LR_Recuperator_Power.sendCommand(OFF)
+end

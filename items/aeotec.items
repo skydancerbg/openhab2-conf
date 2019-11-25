@@ -1,0 +1,32 @@
+
+// //   Aeotec 6 in 1 PIR sensor 1 Stefan's Bedroom
+Group Gr_Aeotec_6in1_1
+Number  Aeotec61_1_Temperature   "Aeotec6in1 sensor 1 - Temperature [%.1f °C]" <temperature> (Gr_Aeotec_6in1_1, Gr_Temperature_measurments,Gr_S_Bdrm_Temperature) { channel="zwave:device:24ba193b:node13:sensor_temperature" }
+Number  Aeotec61_1_Luninance     "Aeotec6in1 sensor 1 - Luminance [%s]"        <sunrise>     (Gr_Aeotec_6in1_1) { channel="zwave:device:24ba193b:node13:sensor_luminance" }
+Number  Aeotec61_1_Ultraviolet   "Aeotec6in1 sensor 1 - Ultraviolet [%s]"      <sunrise>     (Gr_Aeotec_6in1_1) { channel="zwave:device:24ba193b:node13:sensor_ultraviolet" }
+Number  Aeotec61_1_Humidity      "Aeotec6in1 sensor 1 - Humidity [%s]"         <sunrise>     (Gr_Aeotec_6in1_1) { channel="zwave:device:24ba193b:node13:sensor_relhumidity" }
+Switch  Aeotec61_1_Alarm_Motion  "Aeotec6in1 sensor 1 - Motion_Alarm"          <siren>       (Gr_Aeotec_6in1_1) { channel="zwave:device:24ba193b:node13:alarm_motion" }
+Switch  Aeotec61_1_Alarm_Tamper  "Aeotec6in1 sensor 1 - Tamper_Alarm"          <siren>       (Gr_Aeotec_6in1_1) { channel="zwave:device:24ba193b:node13:alarm_tamper" }
+Number  Aeotec61_1_Bat_Level     "Aeotec6in1 sensor 1 - Battery_Level [%d %%]" <battery>     (Gr_Aeotec_6in1_1) { channel="zwave:device:24ba193b:node13:battery-level" }
+
+
+
+// //   Aeotec 6 in 1 PIR sensor 2
+Group Gr_Aeotec_6in1_2
+Number  Aeotec61_2_Temperature   "Aeotec6in1 sensor 2 - Temperature [%.1f °C]" <temperature> (Gr_Aeotec_6in1_2,Gr_Temperature_measurments) { channel="zwave:device:24ba193b:node12:sensor_temperature" }
+Number  Aeotec61_2_Luninance     "Aeotec6in1 sensor 2 - Luminance [%s]"        <sunrise>     (Gr_Aeotec_6in1_2) { channel="zwave:device:24ba193b:node12:sensor_luminance" }
+Number  Aeotec61_2_Ultraviolet   "Aeotec6in1 sensor 2 - Ultraviolet [%s]"      <sunrise>     (Gr_Aeotec_6in1_2) { channel="zwave:device:24ba193b:node12:sensor_ultraviolet" }
+Number  Aeotec61_2_Humidity      "Aeotec6in1 sensor 2 - Humidity [%s]"         <sunrise>     (Gr_Aeotec_6in1_2) { channel="zwave:device:24ba193b:node12:sensor_relhumidity" }
+Switch  Aeotec61_2_Alarm_Motion  "Aeotec6in1 sensor 2 - Motion_Alarm"          <siren>       (Gr_Aeotec_6in1_2) { channel="zwave:device:24ba193b:node12:alarm_motion" }
+Switch  Aeotec61_2_Alarm_Tamper  "Aeotec6in1 sensor 2 - Tamper_Alarm"          <siren>       (Gr_Aeotec_6in1_2) { channel="zwave:device:24ba193b:node12:alarm_tamper" }
+Number  Aeotec61_2_Bat_Level     "Aeotec6in1 sensor 2 - Battery_Level [%d %%]" <battery>     (Gr_Aeotec_6in1_2) { channel="zwave:device:24ba193b:node12:battery-level" }
+
+
+// // //   Aeotec 3 in 1 PIR sensor 
+Group Gr_Aeotec_3in1_1
+Number  Aeotec31_1_Temperature   "Aeotec3in1 sensor 1 - Temperature [%.1f °C]" <temperature> (Gr_Aeotec_3in1_1, Gr_Temperature_measurments,Gr_S_Bdrm_Temperature) { channel="zwave:device:24ba193b:node15:sensor_temperature" }
+// Number:Temperature  Aeotec31_1_Temperature   "Aeotec3in1 sensor 1 - Temperature [%.1f °C]" <temperature> (Gr_Aeotec_3in1_1, Gr_Temperature_measurments) { channel="zwave:device:24ba193b:node15:sensor_temperature" }
+Number  Aeotec31_1_Luninance     "Aeotec3in1 sensor 1 - Luminance [%s]"        <sunrise>     (Gr_Aeotec_3in1_1) { channel="zwave:device:24ba193b:node15:sensor_luminance" }
+Switch  Aeotec31_1_Alarm_Motion  "Aeotec3in1 sensor 1 - Motion_Alarm"          <siren>       (Gr_Aeotec_3in1_1) { channel="zwave:device:24ba193b:node15:alarm_motion" }
+Number  Aeotec31_1_Bat_Level     "Aeotec3in1 sensor 1 - Battery_Level [%d %%]" <battery>     (Gr_Aeotec_3in1_1, gAllBatteryLevel) { channel="zwave:device:24ba193b:node15:battery-level" }
+

@@ -1,0 +1,139 @@
+
+// In the traditional standard, [entity] numbers for those entities start with a digit, followed by a number of four digits in range 1–9,999:
+
+// coils numbers start with a zero and then span from 00001 to 09999
+// discrete input numbers start with a one and then span from 10001 to 19999
+// input register numbers start with a three and then span from 30001 to 39999
+// holding register numbers start with a four and then span from 40001 to 49999
+// This translates into [entity] addresses between 0 and 9,998 in data frames.
+
+// Note that entity begins counting at 1, data frame address at 0.
+
+
+/////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/////////////////////////
+    // If you have been editing your Things, I would recommend a binding restart or a system reboot now. 
+    // Changes in Things do not make it into pollers that are already running. !!!!!!
+/////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/////////////////////////
+
+// https://community.openhab.org/t/modbus-2-configuration/69584/9
+//slave 0x80 = 128 - First Smoke Detector
+// Bridge modbus:serial:slave1 [port="/dev/usb-1a86_USB2.0-Serial-if00-port0",baud=9600,id=1,stopBits="1.0",parity="none",dataBits=8,encoding="rtu"]
+Bridge modbus:serial:thermostat_slave1 [port="/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0",baud=9600,id=1,stopBits="1.0",parity="none",dataBits=8,encoding="rtu"]
+// Bridge modbus:serial:thermostat_slave1 [port="/dev/ttyUSB0",baud=9600,id=1,stopBits="1.0",parity="none",dataBits=8,encoding="rtu"]
+{  
+
+    // //Holding Register = 40001 + 1 = 40002
+    // Bridge poller Thermostat [start=1, length=1, refresh=1000,type="input"]
+    // {
+    //     Thing data thermostat01[readStart="1",readValueType="int32"]           
+    //     // Thing data thermostat01[readStart="1",readValueType="int32",readTransform="JS(conversion.js)"]  //Working one         
+    // }
+    
+    // //Reset the SmokeDetector at register 0xAD
+    // Bridge poller resetSmokeDetector [ start=173, length=2, refresh=0,type="coil"]
+    // {
+    //     Thing data resetSmokeDetector01[writeTransform="01",writeStart="173",writeValueType="bit",writeType="coil"]
+    // }
+            // //Holding Register start = 40001 + 1 = 40002
+        Bridge poller thermostat_slave1_holding [ start=0, length=7, refresh=1000, type="holding", maxTries=3 ] 
+        {
+            // readStart - Input as zero-based index number, e.g. in place of 400001 (first holding register), 
+            // use the address "0". Must be between (poller start) and (poller start + poller length - 1) (inclusive).
+            // Also see : https://www.openhab.org/addons/bindings/modbus/#scaling-example
+
+            Thing data thermostat_slave1_onoff [ readStart="0", readValueType="int16", writeStart="0", writeValueType="int16", writeType="holding" ]
+            Thing data thermostat_slave1_temperature [ readStart="1", readValueType="int16",  readTransform="JS(divide10.js)", writeStart="1", writeValueType="int16", writeType="holding" , writeTransform="JS(multiply10.js)" ]
+            Thing data thermostat_slave1_ManualAuto [ readStart="2", readValueType="int16", writeStart="2", writeValueType="int16", writeType="holding"]
+            Thing data thermostat_slave1_HeatingOnOff [ readStart="3", readValueType="int16", writeStart="3", writeValueType="int16", writeType="holding"]
+            Thing data thermostat_slave1_set_temperature [ readStart="4", readValueType="int16",  readTransform="JS(divide10.js)", writeStart="4", writeValueType="int16", writeType="holding" , writeTransform="JS(multiply10.js)" ]
+            Thing data thermostat_slave1_weekly_mod_set_temperature [ readStart="5", readValueType="int16",  readTransform="JS(divide10.js)", writeStart="5", writeValueType="int16", writeType="holding" , writeTransform="JS(multiply10.js)" ]
+            // Thing data thermostat_slave1_set_temperature [ readStart="4", readValueType="int16",  readTransform="JS(divide10.js)", writeStart="4", writeValueType="int16", writeType="holding" , writeTransform="JS(multiply10.js)" ]
+            Thing data thermostat_slave1_LockUnlock [ readStart="6", readValueType="int16", writeStart="6", writeValueType="int16", writeType="holding" ]
+
+        }
+
+
+        // Bridge poller thermostat_slave1_holding_4005 [ start=4, length=1, refresh=1000, type="holding", maxTries=3 ] 
+        // {
+        //     // readStart - Input as zero-based index number, e.g. in place of 400001 (first holding register), 
+        //     // use the address "0". Must be between (poller start) and (poller start + poller length - 1) (inclusive).
+        //     // Also see : https://www.openhab.org/addons/bindings/modbus/#scaling-example
+        //     Thing data thermostat_slave1_temperature [ readStart="4", readValueType="int16",  readTransform="JS(divide10.js)", writeStart="4", writeValueType="int16", writeType="holding" , writeTransform="JS(multiply10.js)" ]
+        // }
+
+}
+
+
+
+
+
+
+
+// https://stackoverflow.com/questions/52683035/openhab2-access-to-modbus-rtu-slave-device
+
+
+// My OpenHAB2 configuration is
+
+// .sitemap
+
+//     sitemap boiler label="My home" 
+//     {
+//         Frame label="Date" 
+//         {
+//           Text item=Date
+//           Text item=holding1501 label="Holding1501 out[%.1f °C]"
+//           Text item=holding1500 label="Holding1500 out[%.1f °C]"
+//         }
+//     }
+// .items
+
+//     DateTime Date  "Date [%1$tA, %1$td.%1$tm.%1$tY %1$tH:%1$tM:%1$tS]"  { channel="ntp:ntp:local:dateTime" }
+//     Number holding1501 "Holding1501 [%.1f]" <temperature> {channel="modbus:data:localSerial:holding:holding1501:number"}
+//     Number holding1500 "Holding1500 [%.1f]" <temperature> {channel="modbus:data:localSerial:holding:holding1500:number"}
+// and .things
+
+//     Bridge modbus:serial:localSerial [port="COM6", id=10, baud=19200, stopBits="1", parity="even", dataBits=8, encoding="rtu"]
+//     {
+//         Bridge poller holding [ start=1500, length=1, refresh=1000, type="holding" ] 
+//         {
+//             Thing data holding1500 [ readStart="1500", readValueType="int16", writeStart="1500", writeValueType="int16", writeType="holding" ]
+//             Thing data holding15011 [ readStart="1501", readValueType="int16", writeStart="1501", writeValueType="int16", writeType="holding" ] 
+//         }
+//         Thing data holding1500 [ readStart="1500", readValueType="int16", writeStart="1500", writeValueType="int16", writeType="holding" ]
+//         Thing data holding15011 [ readStart="1501", readValueType="int16", writeStart="1501", writeValueType="int16", writeType="holding" ] 
+//     }
+
+
+// https://forum.arduino.cc/index.php?topic=560573.0
+
+
+// modbus.things:
+// Bridge modbus:serial:localhostTCP3 [ port="COM3", baud=9600, id=1, stopBits="1.0", parity="none",dataBits=8, echo=false, encoding="rtu", flowControlIn="none", flowControlOut="none", receiveTimeoutMillis=1500 ] {
+//     Bridge poller holdingPoller [ start=1, length=1, refresh=5000, type="holding" ] {
+//         Thing data holding5Scaled [ readStart="1", readValueType="int16", writeStart="1", writeValueType="int16", writeType="holding" ]
+//     }
+// }
+
+// modbus.items:
+// Number Holding5Scaled            "Holding index 5  [%.1f]"   { channel="modbus:data:localhostTCP3:holdingPoller:holding5Scaled:number" }
+
+// modbus.sitemap:
+// sitemap modbus label="modbus_ex_scaling"
+// {
+//     Frame {
+//         Text item=Holding5Scaled
+//         Setpoint item=Holding5Scaled minValue=0 maxValue=100 step=20
+//     }
+// }
+
+// For anyone trying to use OpenHab modbus binding on ubuntu it is necessary to give openhab permision to use serial:
+
+// Add openhab to some groups:
+
+// sudo adduser openhab dialout
+// sudo adduser openhab tty   # ?
+
+// You need to edit openhab2 file aswell:
+// sudo nano /etc/default/openhab2
+
+// EXTRA_JAVA_OPTS="-Dgnu.io.rxtx.SerialPorts=/dev/ttyUSB0:/dev/ttyS0:/dev/ttyS2:/dev/ttyACM0:/dev/ttyAMA0"

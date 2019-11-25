@@ -1,0 +1,126 @@
+// “turn on a lamp when motion is detected but only after sunset until sunrise”
+// https://community.openhab.org/t/help-to-create-a-rule-turn-on-a-lamp-when-motion-is-detected-but-only-after-sunset-until-sunrise/43905
+// see: https://community.openhab.org/t/sunset-light-on/37971/7 for refinment
+
+///////////////////////////////
+// Dummy Switch StefanBedNightLight_Rule_Switch is used to turn on off the automatic Night lamp
+rule "Stefan's Bedroom Night light Rule Switched to OFF"
+when
+    Item StefanBedNightLight_Rule_Switch changed
+then
+    // When you turn off the Night lamp Rule execution, if the Night lamp is ON at the moment
+    // switch off the Night lamp
+    if(StefanBedNightLight_Rule_Switch.state == OFF && GF_Sonoff_Dual_Power2.state == ON ) {
+        GF_Sonoff_Dual_Power2.sendCommand(OFF)
+    }
+end
+
+
+
+////////////////////////////
+rule " STEFAN's Night Light on when motion is detected after 1900 or sunset - NeoPIR_1_Alarm_Motion PIR sensor "
+
+when
+    Item NeoPIR_2_Alarm_Motion changed
+then
+    //  logInfo("NeoPIR_1_Alarm_Motion", "CHANGED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
+if (StefanBedNightLight_Rule_Switch.state == ON && Is_Night_Sunset_to_Sunrise_Var_.state == ON && NeoPIR_2_Alarm_Motion.state == ON )  
+                                    {GF_Sonoff_Dual_Power2.sendCommand(ON)
+                                    // logInfo("RuleMotionCtrlNightLamp", "Motion switched GF_Sonoff_Dual_Power2 ON")
+                                    }
+    
+    else if (StefanBedNightLight_Rule_Switch.state == ON && Is_Night_Sunset_to_Sunrise_Var_.state == ON && NeoPIR_2_Alarm_Motion.state == OFF) 
+                                    {GF_Sonoff_Dual_Power2.sendCommand(OFF)
+                                    // logInfo("RuleMotionCtrlNightLamp", "Motion switched GF_Sonoff_Dual_Power2 OFF")
+                                    }
+
+end
+
+
+
+
+
+
+
+///////////////////////////////
+
+// ///-------------------------
+// rule "Set 1900 or Sunset flag tst"
+// when
+//     // Time cron "0 0 19 ? * * *" or
+//     Channel "astro:sun:home:set#event" triggered START
+// then
+//     StefanBedNightLight_Var_.sendCommand(ON) //sets the dummy switch variable to "Can activate Night lamp"
+//     logInfo("StefanBedNightLight_Var_", "Astro set#event has set StefanBedNightLight_Var_ to ON")
+// end
+
+
+// /////////////////////////////
+// ////---------------------------
+// rule "Turn Off flag item tst"
+
+// when
+//     // Time cron "0 0 7 ? * * *" or //7am
+//     Channel "astro:sun:home:rise#event" triggered START
+
+// then
+//     StefanBedNightLight_Var_.sendCommand(OFF) //resets flag item at 6am
+//     logInfo("BedNightLight_Var", "Astro rise#event has set StefanBedNightLight_Var_ to OFF")
+// end
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// when
+//     Item Motion_GF_Corridor_Stiege received update ON
+// then
+//     if (flagItem.state == ON) {
+//         Light_FF_Stiege.sendCommand(ON)
+//     }
+// end
+
+////////////////////////////////////////
+////////REMOVE!!!!!!!!!!!!!!!!!!!!!
+// // rule "Bed motion detected"
+// // when
+    
+
+// //     Item NeoPIR_1_Alarm_Motion changed
+// // then
+
+// //     if(NeoPIR_1_Alarm_Motion.state == ON) {
+// //         GF_Sonoff_Dual_Power2.sendCommand(ON)
+// //         logInfo("RuleMotionCtrlNightLamp", "ON command sent")
+// //     }
+    
+// //     else {
+// //         GF_Sonoff_Dual_Power2.sendCommand(OFF)
+// //         logInfo("RuleMotionCtrlNightLamp", "OFF command sent")
+// //     }
+// // end
+
+
+
+// rule "Switch lamp on door open-close"
+// when
+    
+//     // Item Neo_DW_4_C changed
+//     Item NeoPIR_1_Alarm_Motion changed
+// then
+
+    
+//     // if(Neo_DW_4_C.state == CLOSED) GF_Sonoff_Dual_Power1.sendCommand(ON) 
+//     // else GF_Sonoff_Dual_Power1.sendCommand(OFF)
+
+//     if(NeoPIR_1_Alarm_Motion.state == ON) GF_Sonoff_Dual_Power1.sendCommand(ON)
+    
+    
+//     // //////// WARNING !!!!!!!!!!!!!!!!!!
+//     // Comment out the else statement. In production mode, we need it to keep closed the water. 
+//     // Should start the water with dummy button from the panel. 
+//     else if (NeoPIR_1_Alarm_Motion.state == OFF) GF_Sonoff_Dual_Power1.sendCommand(OFF)
+
+
+// end
+

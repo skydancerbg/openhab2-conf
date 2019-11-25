@@ -1,0 +1,91 @@
+
+Room_Device_Function
+
+Именуване на Items:
+    GF_KN_AQ_Kitchen_Counter_Motion_Lux
+
+1. Първи две букви - Местоположение в къщата/двора:
+
+GF - (Ground floor/First floor) - Партер (ет.1)
+GЕ - (Garage) - Гараж
+F2 - (Second floor) - Втори етаж (ет.2)
+F3 - (Third floor/Top floor) - Трети етаж (ет.3)
+GN - (Garden) - Градина
+BQ - (Barbeque)
+
+
+2. Втори две букви - Местоположение на етажа/ в локацията:
+
+****-**** COMMON:
+LR -(Living room) - Хол
+KN кухня (важи за Бигла, защото има и отделен хол)
+HO - (Home office) Домашен офис
+CR - (Corridor)
+LR - (Lalundry room)
+WG - зимна градина
+RF - (Roof) покрив от вън
+SR - (Storage room)   склад
+CR - (Cellar) Мазе
+
+****-**** BEDROOMS:
+BR - (Bedroom) - Спалня 
+MB - (Master Bedroom) - Родителска спалня 
+GB - (Guest bedroom) - Спалня за гости
+CB - (Children bedroom) Детска спалня
+WD - (Wardrobe room Desi) - Гардеробна Деси)
+
+****-**** BATHROOMS and TOILETTES:
+BA - (Bathroom) - Баня
+BS - (Bathroom small) - Баня малка
+TO - (Toilet) toaletna
+
+****-**** Technical:
+TR - (Technical room)
+HR - (Heating technical room)
+WS - (Workshop) Работилница
+
+    коридор към гаража
+    работилница
+    коридор ет 1
+    коридор ет2
+    коридор ет 3
+    
+    стълби между 1 и 2 ет.
+    стълби между 2 и 3 ет.
+    ограда
+    поливна с-ма
+
+3. Трети две букви - протокол
+
+    WF - WIFI
+    ZW - Z-wave generic
+    ZB - Zigbee generic
+    MB - Modbus
+    LN - LAN
+    MT - MQTT ???
+
+5. Вид устройство
+
+DW - (Door/Window sensor)
+MN - Motion sensor)
+TR - Temperature sensor
+TH - Temperature/Humidity
+THP - Temperature/Humidity/Pressure
+АТ - Actuator
+VV - Valve
+TH - Thermostat
+VT - Virtual Thermostat
+SW - Switch 
+
+
+ 
+Производител:
+
+    XA - Xiaomi Aquara - Zigbee
+    XM - Xiaomi Mijia -Zigbee 
+    NCC - Neo Coolcam Z-wave 
+    SF - Sonoff/MQTT
+    AE - Aeon Labs
+    DY - DIY WIFI
+    DL - DIY LAN
+

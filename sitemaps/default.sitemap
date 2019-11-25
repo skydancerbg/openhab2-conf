@@ -1,0 +1,625 @@
+    
+sitemap default label="Апартамента на Деси и Стефан" {
+
+
+     Frame label="ТЕМПЕРАТУРИ КЪЩА:" icon="groundfloor" {
+            Text  item=XGW2_XA_THP_1_Temperature label="1:" 
+            Text  item=XGW2_XA_THP_2_Temperature label="2:" 
+            Text  item=XGW2_XA_THP_3_Temperature label="3:" 
+            Text  item=XGW2_XA_THP_4_Temperature label="4:" 
+            Text  item=XGW2_XA_THP_5_Temperature label="5:" 
+            Text  item=XGW2_XA_THP_6_Temperature label="6:" 
+    }
+
+        Frame label="ВЪНШНА ТЕМПЕРАТУРА:" icon="groundfloor" {
+            Text  item=XGW2_XA_THP_1_Temperature label="БЕНКОВСКИ" 
+            Text  item=Aeotec61_2_Temperature label="БИГЛА" 
+    }
+        Frame label="ОСВЕТЛЕНИЕ:" icon="light" {    
+            Switch item=gAllLights icon="light"
+            Group item=gAllLights
+        }
+
+        Frame label="РОЗЕТКИ, КОНТАКТИ И РАЗКЛОНИТЕЛИ:" icon="groundfloor" {    
+            Switch item=gAllPower icon="poweroutlet"
+            Group item=gAllPower
+        }
+
+        Frame label="ДАТЧИЦИ ВРАТИ И ПРОЗОРЦИ:" icon="groundfloor" {    
+            Switch item=gAll_DW_Sensors icon="frontdoor"
+            Group item=gAll_DW_Sensors // tuk ne stava s ikona????? icon ="frontdoor"
+        }
+
+        Frame label="Сензор на пощенската кутия:" icon="mail" {
+
+            Group item=Gr_Mailbox_sensor  label="Пощенска кутия"
+
+        }
+
+        Frame label="Моторизиран кран за водата на хладилника:" {
+        Group item=Gr_GF_KN_Refrigerator_Water_Shutoff_Valve label="Кран за вода на хладилника /Само единия ключ трябва да е включен!/"    
+        }  
+
+    
+   
+        Frame label="ТЕМПЕРАТУРА В СПАЛНЯТА НА ДЕСИ:" icon="temperature" {
+            Text  item=MIGW_XA_THP_Temperature_2 label="DESI's BEDROOM TEMPERATURE - Aqara" 
+        }
+
+        Frame label="Температура в спалнята на Стефан:" icon="temperature" {
+                Group item=Gr_S_Bdrm_Temperature label="Средно измерена температура: [%.1f °C]" icon="temperature"
+                // Text item=Aeotec31_1_Temperature label="Aeotec 3 in 1"
+                // Text item=Aeotec61_1_Temperature label="Aeotec 6 in 1"
+                // Text item=MIGW_XA_THP_Temperature_1 label="Xiaomi"
+                // Text item=NeoPIR_2_Temperature label="Neo Coolcam"
+            
+                Text label="Графика на измерените температури" icon="temperature" {
+                        Frame label="Температура в спалнята на Стефан" 
+                            {
+                            // Chart [item=<itemname>] [icon="<iconname>"] [label="<labelname>"] [refresh=xxxx] [period=xxxx] [service="<service>"] [begin=yyyyMMddHHmm] [end=yyyyMMddHHmm] [legend=true/false]
+                            // period is the scale of the time axis. Valid values are h, 4h, 8h, 12h, D, 2D, 3D, W, 2W, M, 2M, 4M or Y
+                            // refresh defines the refresh period of the Image (in milliseconds).
+
+                                Chart item=Gr_S_Bdrm_Temperature refresh=6000 period=12h
+                                // Chart item=Gr_Temperature_measurments refresh=300 period=12h
+                                // Chart item=Aeotec61_1_Temperature refresh=300 period=h
+
+                            }
+                }
+        }
+    // // To Do: За да проработи трябва да се качи нов рендеринг енджин в Grafana    
+    // Frame label="Grafana" 
+    // 	{
+    //         Webview url="http://code.bg"
+    //         // Webview url="http://localhost:3000/d/gT8LqKzgz/temperatures?orgId=1" 
+    //         // Webview url="http://openhab:3000/d/gT8LqKzgz/temperatures?orgId=1&from=1573358587957&to=1573380187957&panelId=2&fullscreen" 
+    //         // Image refresh=60000 url="http://openhab:3000/d/gT8LqKzgz/temperatures?orgId=1&from=now-6h&to=now&panelId=2&fullscreen"
+    //         // Image refresh=60000 url="http://www.code.bg"
+    //         // Image refresh=60000 url="http://openhab:3000/d/gT8LqKzgz/temperatures?orgId=1&from=1573358587957&to=1573380187957&panelId=2&fullscreen"
+    //     }
+
+    //     Frame label="ТЕМПЕРАТУРА В СПАЛНЯТА НА СТЕФАН:" icon="temperature" {
+    //         Text  item=MIGW_XA_THP_Temperature_1 label="STEFAN's BEDROOM TEMPERATURE - Aqara" 
+    //         Text  item=Aeotec61_1_Temperature label="STEFAN's BEDROOM TEMPERATURE - Aeotec 6in1" 
+    //         Text  item=Aeotec31_1_Temperature label="STEFAN's BEDROOM TEMPERATURE - Aeotec 3in1" 
+    //         Text  item=NeoPIR_2_Temperature label="STEFAN's BEDROOM TEMPERATURE - NEO PIR 2 magnet"
+
+    //         // Text  item=NeoPIR_1_Temperature label="STEFAN's BEDROOM TEMPERATURE - NEO PIR" 
+    // }
+
+        Frame label="Температура в къщата (Бенковски):" icon="temperature" {
+                Group item=Gr_House_Inside_Temperature label="Средно измерена температура: [%.1f °C]" icon="temperature"
+                // Text item=Aeotec31_1_Temperature label="Aeotec 3 in 1"
+                // Text item=Aeotec61_1_Temperature label="Aeotec 6 in 1"
+                // Text item=MIGW_XA_THP_Temperature_1 label="Xiaomi"
+                // Text item=NeoPIR_2_Temperature label="Neo Coolcam"
+            
+                Text label="Графика на измерените температури" icon="temperature" {
+                        Frame label="Температура в къщата (Бенковски)" 
+                            {
+                            // Chart [item=<itemname>] [icon="<iconname>"] [label="<labelname>"] [refresh=xxxx] [period=xxxx] [service="<service>"] [begin=yyyyMMddHHmm] [end=yyyyMMddHHmm] [legend=true/false]
+                            // period is the scale of the time axis. Valid values are h, 4h, 8h, 12h, D, 2D, 3D, W, 2W, M, 2M, 4M or Y
+                            // refresh defines the refresh period of the Image (in milliseconds).
+
+                                Chart item=Gr_House_Inside_Temperature refresh=6000 period=12h
+                                // Chart item=Gr_Temperature_measurments refresh=300 period=12h
+                                // Chart item=Aeotec61_1_Temperature refresh=300 period=h
+
+                            }
+                }
+        }    
+
+
+
+
+        Frame label="ИЗГРЕВ И ЗАЛЕЗ СЛЪНЦЕ:" {
+            Text item=Sunrise_Time
+            Text item=Sunset_Time
+        }    
+
+        Frame label="УПРАВЛЕНИЕ НА ПРАВИЛАТА ЗА АВТОМАТИЧНИ НОЩНИ ЛАМПИ:" icon="groundfloor" {
+            Group item=gCorridorNightLightControll label="CORRIDOR Night Light Rules Control"
+            Group item=gStefansBedroomNightLightControll label="STEFANS BEDROOM Night Light Rules Control"
+        }
+
+
+        Frame label="УСТРОЙСТВА НА БАТЕРИИ - НИВО НА БАТЕРИЯТА:" icon="battery" {    
+            // Text item=gAllBatteryLevel //icon="batterylevel"
+            Group item=gAllBatteryLevel icon="batterylevel"
+
+        }
+
+        Frame label="Xiaomi УСТРОЙСТВА - АЛАРМА ЗА НИСКО НИВО НА БАТЕРИЯТА:" icon="groundfloor" {    
+            Switch item=gAllLowBattery icon="lowbattery"
+            Group item=gAllLowBattery icon="lowbattery"
+        }
+
+        Frame label="ОСВЕТЛЕНИЕ В СПАЛНЯТА НА СТЕФАН:" icon="light" {    
+            Switch item=gStefBedroomLights icon="light"
+            Group item=gStefBedroomLights icon="light"
+        }
+
+        // Frame label="УПРАВЛЕНИЕ АВТОМАТИЧНА НОЩНА ЛАМПА СТЕФАН" {
+        //     Switch item=StefanBedNightLight_Rule_Switch
+        //     Switch item=StefanBedNightLight_Var_ 
+        // }    
+
+        Frame label="Советеност на кухненския плот:" icon="light" {
+
+            Text item=GF_KN_AQ_Kitchen_Counter_Motion_Lux  label="Осветеност в LUX:"
+            Group item=Gr_GF_KN_AQ_Kitchen_Counter_Motion  label="Сензор за движение"
+        }    
+    
+
+
+        Frame label="РАЗНИ:" icon="groundfloor" {
+
+            Group item=Gr_GF_KN_Top_Light  label="Кухня осветление над шкафа"
+            Group item=Gr_GF_KN_Sink_Light  label="Кухня осветление на плота"
+            Group item=GF_Sonoff_S26_3  label="Свободен outlet S26"
+            Group item=GF_Sonoff_S20_1  label="Свободен outlet S20"
+            Group item=Gr_GF_SBdrm_Top_Light  label="Спалня на Стефан: Осветление таван"
+
+        }
+
+        Frame label="MODBUS THERMOSTATS"{
+            Text label="ТЕРМОСТАТ 1 - ПОДОВО" icon="groundfloor" {
+                Frame label="Термостат 1 за водно подово отопление"{
+                    Text item=Thermostat1_OnOff
+                    Text item=Thermostat1_temp
+                    Text item=Thermostat1_ManualAuto
+                    Text item=Thermostat1_HeatingOnOff
+                    Text item=Thermostat1_Set_Temp
+                    Setpoint item=Thermostat1_Set_Temp minValue=5 maxValue=35 step=0.5
+                    Text item=Thermostat1_Weekly_Mod_Set_Temp
+                    Text item=Thermostat1_LockUnlock
+                    // Setpoint item=Thermostat1_set_temp minValue=5 maxValue=35 step=0.1
+                }
+            }
+        }         
+
+        Frame label="LED ленти Magic Home" icon="groundfloor" {
+            Text label="LED лента 1" icon="groundfloor" {
+
+                        Frame label="LED лента 1 RGB)"
+            // /// // https://www.youtube.com/watch?v=0Lg7y6yLOks
+            // // // Example config files: https://mega.nz/#!UrYhnSqT!_ri18L-UeEM0aqAcIYzfeAuK72RDP2rF1vz0nvM-sBI
+            // // // Downloaded copy at D:\Users\Stefan Shivarov\Documents\Smart home\SHome 2019\Magic_Home-OH\MagicHomeLed+Openhab
+                            {
+                            // Switch       item=MyWiFiLight_power  label="Power_RGB"  	 
+                            // Colorpicker  item=MyWiFiLight_color  label="Color_RGB"
+                            // Text item=MyWiFiLight_progran label="Program_RGB"
+                            // Slider item=MyWiFiLight_progranSpped label="Program_Speed_RGB"
+                                Switch item=LED_1_power   label="Power_RGB"
+                                Colorpicker item=LED_1_color   label="Color_RGB"
+                                Text  item=LED_1_hsb label="HSB values: [%s]"
+                                Slider item=LED_1_white //label="Program_Speed_RGB"
+                                Slider item=LED_1_white2 //label="Program_Speed_RGB"
+                                Slider item=LED_1_speed label="Program_Speed_RGB"
+                                Switch item=LED_1_preset_1000
+                                
+                                // // това е тест на код за определяне на RGB от Color Item (Collorpicker)
+                                // Colorpicker item=Led_1_color_picker   label="Controlable Color_RGB"
+                                // // Този брайтнес е част от HSB и определя цвета а не яркостта!!!! 
+                                // // Как да променя яркостта ?????                    
+                                // Switch item=LED_1_preset_1000 label="My color with brightnes from slider _RGB" 
+                                // Slider item=LED_1_brightness label="Brightness for HHSV/HSB Value _RGB"
+
+                                Text item=LED_1_program label="Program_RGB [%s]"
+                                        Switch item=LED_1_preset_0
+                                        // Switch item=LED_1_preset_1 // This is Strobe Custom 1, We do not have Custom set...
+                                        Switch item=LED_1_preset_2
+                                        Switch item=LED_1_preset_3
+                                        Switch item=LED_1_preset_4
+                                        Switch item=LED_1_preset_5
+                                        Switch item=LED_1_preset_6
+                                        Switch item=LED_1_preset_7
+                                        Switch item=LED_1_preset_8
+                                        Switch item=LED_1_preset_9
+                                        Switch item=LED_1_preset_10
+                                        Switch item=LED_1_preset_11
+                                        Switch item=LED_1_preset_12
+                                        Switch item=LED_1_preset_13
+                                        Switch item=LED_1_preset_14
+                                        Switch item=LED_1_preset_15
+                                        Switch item=LED_1_preset_16
+                                        Switch item=LED_1_preset_17
+                                        Switch item=LED_1_preset_18
+                                        Switch item=LED_1_preset_19
+                                        Switch item=LED_1_preset_20
+                                        Switch item=LED_1_preset_21
+                                        Switch item=LED_1_preset_22
+                                        Switch item=LED_1_preset_23
+
+                            }
+            }
+        }
+
+
+    // https://www.smarthomeblog.net/presence-detection-with-openhab/
+
+
+
+        Frame label="Xiaomi Gateways Control" icon="groundfloor" {
+            Text label="Xiaomi Gateway 1" icon="groundfloor" {
+                    
+
+                    Frame label="XiaomiGateway1" icon="groundfloor" {
+
+                        // Group item=gXiaomiGateway       label="Xiaomi MI Gateway"
+                        Switch  item=XGW_Gateway1_EnableInclusion
+                        Switch  item=XGW_Gateway1_LightSwitch
+                        Slider  item=XGW_Gateway1_Brightness
+                        Colorpicker    item=XGW_Gateway1_Color
+                        Slider  item=XGW_Gateway1_ColorTemperature
+                        Text  item=XGW_Gateway1_AmbientLight
+                        Switch  item=XGW_Gateway1_SoundSwitch
+                        Slider  item=XGW_Gateway1_SoundVolume            
+                    // Selection for Xiaomi Gateway Sounds
+                    // 10000 is STOP
+                    // >10001 are own sounds you uploaded to the gateway
+                        Selection item=XGW_Gateway1_Sound mappings=[ 0="police car 1",
+                                                                    1="police car 2",
+                                                                    2="accident",
+                                                                    3="countdown",
+                                                                    4="ghost",
+                                                                    5="sniper rifle",
+                                                                    6="battle",
+                                                                    7="air raid",
+                                                                    8="bark",
+                                                                    10="doorbell",
+                                                                    11="knock at a door",
+                                                                    12="amuse",
+                                                                    13="alarm clock",
+                                                                    20="mimix",
+                                                                    21="enthusuastic",
+                                                                    22="guitar classic",
+                                                                    23="ice world piano",
+                                                                    24="leisure time",
+                                                                    25="child hood",
+                                                                    26="morning stream liet",
+                                                                    27="music box",
+                                                                    28="orange",
+                                                                    29="thinker"]   
+
+                        Switch item=XiaomiGateway1_Play_Sound_Dummy label="Play Knock-Knock w Rule"
+                    }
+            }
+            Text label="Xiaomi Gateway 2" icon="groundfloor" {
+                    
+
+                    Frame label="XiaomiGateway2" icon="groundfloor" {
+
+                        // Group item=gXiaomiGateway       label="Xiaomi MI Gateway"
+                        Switch  item=XGW_Gateway2_EnableInclusion
+                        Switch  item=XGW_Gateway2_LightSwitch
+                        Slider  item=XGW_Gateway2_Brightness
+                        Colorpicker    item=XGW_Gateway2_Color
+                        Slider  item=XGW_Gateway2_ColorTemperature
+                        Text  item=XGW_Gateway2_AmbientLight
+                        Switch  item=XGW_Gateway2_SoundSwitch
+                        Slider  item=XGW_Gateway2_SoundVolume            
+                    // Selection for Xiaomi Gateway Sounds
+                    // 10000 is STOP
+                    // >10001 are own sounds you uploaded to the gateway
+                        Selection item=XGW_Gateway2_Sound mappings=[ 0="police car 1",
+                                                                    1="police car 2",
+                                                                    2="accident",
+                                                                    3="countdown",
+                                                                    4="ghost",
+                                                                    5="sniper rifle",
+                                                                    6="battle",
+                                                                    7="air raid",
+                                                                    8="bark",
+                                                                    10="doorbell",
+                                                                    11="knock at a door",
+                                                                    12="amuse",
+                                                                    13="alarm clock",
+                                                                    20="mimix",
+                                                                    21="enthusuastic",
+                                                                    22="guitar classic",
+                                                                    23="ice world piano",
+                                                                    24="leisure time",
+                                                                    25="child hood",
+                                                                    26="morning stream liet",
+                                                                    27="music box",
+                                                                    28="orange",
+                                                                    29="thinker"]   
+
+                        Switch item=XiaomiGateway2_Play_Sound_Dummy label="Play Knock-Knock w Rule"
+                    }
+            }
+
+        }
+
+        Frame label="Xiaomi Gateways Sensors and Devices" icon="groundfloor" {
+            Text label="Xiaomi Gateway 1" icon="groundfloor" {
+                Frame label="Gateway 1 Sensors/Devices" icon="groundfloor" {
+                        Frame label="GW1 Devices" icon="groundfloor" {          
+                            Group item=gXiGW_door_window_3  label="MI D/W Датчик Входна врата"
+                            Group item=gXiGW_door_window_1  label="MI D/W Датчик кухня ляв прозорец"
+                            Group item=gXiGW_door_window_2  label="MI D/W Датчик кухня десен прозорец"
+                            Group item=gXiGW_sensor_plug_1  label="MI sensor_plug лампа ляво нощно шкафче Стефан"
+                            Group item=gXiGW_mia_wireless_switch_1  label="MI wireless_switch Бутон дясно нощно шкафче Стефан"
+                            Group item=gMIGW_XA_THP_sensor_1    label="Aqara THP - Температура, влажност, налягане - спалня Стефан"
+                            Group item=gMIGW_XA_THP_sensor_2    label="Aqara THP - Температура, влажност, налягане - спалня Деси"
+                            Group item=gXiGW_mia_motion_sensor_1    label="MI motion_sensor PIR в коридора срещу банята"
+                            Group item=gGF_COR_AQ_1 label="Aqara Motion - PIR в коридора над Paradox PIR"
+                            Group item=gMIGW_AQ_WL_sensor_1 label="Aqara Water leak - Датчик за наводнение под предната част на хладилника"
+                            // // Кухня десен прозорец
+                            // Switch item=Single_Click_Dummy 
+                            // Switch item=Double_Click_Dummy 
+                            // Switch item=Long_Press_Dummy 
+                            // Switch item=Press_End_Dummy
+                            // Switch item=XiaomiGateway_Play_Sound_Dummy 
+                        }
+                }
+            }
+            Text label="Xiaomi Gateway 2" icon="groundfloor" {
+                Frame label="Gateway 2 Sensors/Devices" icon="groundfloor" {
+                    
+                    Frame label="Xiaomi Gateway 2 Devices" icon="groundfloor" {     
+                        Group item=gXiGW2_sensor_plug_1  label="MI GW 2 sensor_plug"
+                        Group item=gXiGW2_door_window_1  label="MI GW 2 door_window_1"
+                        Group item=gXiGW2_mia_motion_sensor_1  label="MI GW 2 motion_sensor_1"
+                        Group item=gXiGW2_mia_motion_sensor_2  label="MI GW 2 motion_sensor_2"
+                        Group item=gXiGW2_mia_motion_sensor_3  label="MI GW 2 motion_sensor_3"
+                        Group item=gXiGW2_mia_motion_sensor_4  label="MI GW 2 motion_sensor_4"
+                        Group item=gXiGW2_mia_wireless_switch_1  label="MI GW 2 wireless_switch_1"
+                        Group item=gXiGW2_mia_wireless_switch_2  label="MI GW 2 wireless_switch_2"
+                        Group item=gMIGW2_XA_THP_sensor_1  label="MI GW 2 THP_sensor_1"
+                        Group item=gMIGW2_XA_THP_sensor_2  label="MI GW 2 THP_sensor_2"
+                        Group item=gMIGW2_XA_THP_sensor_3  label="MI GW 2 THP_sensor_3"
+                        Group item=gMIGW2_XA_THP_sensor_4  label="MI GW 2 THP_sensor_4"
+                        Group item=gMIGW2_XA_THP_sensor_5  label="MI GW 2 THP_sensor_5"
+                        Group item=gMIGW2_XA_THP_sensor_6  label="MI GW 2 THP_sensor_6"
+                    }
+                }
+            }           
+        }
+
+
+        Frame label="ПЪРВИ ЕТАЖ:" icon="groundfloor" {
+
+            Group item=GF_Sonoff_Dual       label="Sonoff_Dual"
+            Group item=GF_LR_Recuperator    label="Recuperator"
+            Group  item=Gr_GF_KN_Top_Light   label="Top light"
+
+    }
+
+        Frame label="Aeotec 6 in 1 PIR 1 Stefan's Bedroom"{
+
+            Text    item=Aeotec61_1_Temperature 
+            Text    item=Aeotec61_1_Luninance   
+            Text    item=Aeotec61_1_Ultraviolet 
+            Text    item=Aeotec61_1_Humidity    
+            Text    item=Aeotec61_1_Bat_Level   
+            Switch  item=Aeotec61_1_Alarm_Motion
+            Switch  item=Aeotec61_1_Alarm_Tamper
+    }
+
+        Frame label="Aeotec 3 in 1 PIR 1 Stefan's Bedroom"{
+
+            Text    item=Aeotec31_1_Temperature 
+            Text    item=Aeotec31_1_Luninance   
+            Text    item=Aeotec31_1_Bat_Level   
+            Switch  item=Aeotec31_1_Alarm_Motion
+    }
+
+        Frame label="Aeotec 6 in 1 PIR 2 Outside Temperature"{
+
+            Text    item=Aeotec61_2_Temperature 
+            Text    item=Aeotec61_2_Luninance   
+            Text    item=Aeotec61_2_Ultraviolet 
+            Text    item=Aeotec61_2_Humidity    
+            Text    item=Aeotec61_2_Bat_Level   
+            Switch  item=Aeotec61_2_Alarm_Motion
+            Switch  item=Aeotec61_2_Alarm_Tamper
+    }
+
+
+
+
+
+//    Frame label="Recuperator"{
+
+//             Text item=GF_LR_Recuperator_Reachable
+//             Switch  item=GF_LR_Recuperator_Power
+//             Text  item=GF_LR_Recuperator_RSSI
+//     }
+    Frame label="Neo Coolcam Door Sensor 4"{
+
+            Text item=Neo_DW_4_C
+            Switch  item=Neo_DW_4_A
+            Text  item=Neo_DW_4_Bat
+    }
+
+    Frame label="Neo Coolcam Door Sensor 7"{
+
+            Text item=Neo_DW_7_C
+            Switch  item=Neo_DW_7_A 
+            Text item=Neo_DW_7_Bat 
+    }
+    Frame label="Neo Coolcam PIR 1"{
+
+            Text  item=NeoPIR_1_Luninance   
+            Text  item=NeoPIR_1_Temperature 
+            Text  item=NeoPIR_1_Bat_Level   
+            Switch  item=NeoPIR_1_Alarm_Motion
+    }
+
+        Frame label="Neo Coolcam PIR 2"{
+
+            Text  item=NeoPIR_2_Luninance   
+            Text  item=NeoPIR_2_Temperature 
+            Text  item=NeoPIR_2_Bat_Level   
+            Switch  item=NeoPIR_2_Alarm_Motion
+    }
+       Frame label="Aqara Water Leak 1 Kitchen Refrigerator"{
+        //    https://community.openhab.org/t/number-channel-to-switch-item-how-to-map-0-1-to-on-off/46477
+            Switch item=Aquara_WaterLeak_1_Alarm_Flood mappings=[0="OFF",1="ON"]
+            // Text  item=Aquara_WaterLeak_1_Alarm_Flood
+            Text  item=Aquara_WaterLeak_1_Battery   
+            Switch item=Aquara_WaterLeak_1_BatteryLow
+    }
+
+       Frame label="Neo Coolcam Water Leak 1 Kitchen Refrigerator"{
+
+            Switch  item=NeoWaterLeak_1_Alarm_flood
+            Text  item=NeoWaterLeak_1_Bat_Level   
+    }
+       Frame label="Sonoff RF Bridge 1"{
+
+        // Group item=GF_Sonoff_RF {
+            Text item=GF_Sonoff_RF_Reachable label="Status [%s]"
+            Text item=GF_Sonoff_RF_Received_Data label="Data [%s]"
+            Text item=GF_Sonoff_RF_Received_Sync label="Sync [%s]"
+            Text item=GF_Sonoff_RF_Received_Low label="Low [%s]"
+            Text item=GF_Sonoff_RF_Received_High label="High [%s]"
+            Text item=GF_Sonoff_RF_Received_RfKey label="RfKey [%s]"
+            Text item=GF_Sonoff_RF_RSSI label="WiFi Signal Strength [%d %%]"
+            // Switch item=GF_Sonoff_RF_Button_1 label="RfKey1" mappings=[ON="RfKey1"]
+            // Switch item=GF_Sonoff_RF_Button_2 label="RfKey2" mappings=[ON="Key 2"]
+            // Switch item=GF_Sonoff_RF_Button_3 label="RfKey3" mappings=[ON="Key 3"]
+            // Switch item=GF_Sonoff_RF_Button_4 label="RfKey4" mappings=[ON="Key 4"]
+
+            Switch item=GF_Sonoff_RF_Button_test
+        }
+    
+        Frame label="ДАТА И ЧАС:" {
+            Text item=Date
+            Text item=DateStr
+        }    
+
+
+        Frame label="ВРЕМЕТО В МОМЕНТА (OpenWeather):" {
+            Text item=Condition
+            Text item=Temperature
+            Text item=Wind_Speed
+            Text item=Wind_Speed_Beaufort
+            Text item=Wind_Direction
+            Text item=Wind_Degree   
+        }    
+            // Sitemap element idea from http://www.zitnik.si/wordpress/2016/02/04/part-23-openhab-rpi-leds-camera/
+        Frame label="Видеокамери" {
+            Text label="Камера IP webcam - Samsung S5" icon="video" {
+                Frame label="Камера Samsung S5" {
+                // Video url="http://192.168.1.5:80" encoding="mjpeg"
+                Video url="http://212.91.171.210:8080/video" encoding="mjpeg"
+                // Video url="http://192.168.1.151:8080/video" encoding="mjpeg"
+                } 
+            }
+            Text label="Изображение от камерата" icon="screen" {
+                Frame label="Снимка на всяка секунда (snapshot)" {
+                Image url="http://212.91.171.210:8080/shot.jpg " refresh=500 //1 сек. в miliseconds (60000=1 мин.), ако е външна камера може например на всеки 5 сек. - 5000
+                // Image url="http://192.168.1.151:8080/shot.jpg " refresh=1000 //1 сек. в miliseconds (60000=1 мин.), ако е външна камера може например на всеки 5 сек. - 5000
+                }
+            }
+        }
+    Frame label="ПРИСЪСТВИЕ" 
+    	{
+    	Switch item=gPresence icon="parents_3_3" label="В къщи са:"
+    	Text label="Кой си е у дома?:" icon="parents_3_3" 
+    		{
+    		Switch item=Network_Stefan_S7_Online icon="boy_3" label="Стефан S7"
+    		Switch item=Network_Stefan_S5_Online icon="boy_3" label="Стефан S5"
+            Switch item=Network_Desi_N8_Online icon="girl_3" label="Деси"	    		
+    		}
+         }
+	// Frame {
+	// 	Text item=Network_Stefan_S7_Online label="StefanPhone S7 [%s]"
+	// 	Text item=Network_Stefan_S5_Online label="StefanPhone S5 [%s]"
+	// 	Text item=Network_Desi_N8_Online label="DesiPhone [%s]"
+	// }
+
+
+
+}
+ 
+    // }  
+
+// // //
+
+
+
+// //
+    //     Frame label="Neo Coolcam PIR 2"{
+
+    //     Text  NeoPIR_2_Luninance   
+    //     Text  NeoPIR_2_Temperature 
+    //     Text  NeoPIR_2_Bat_Level   
+    //     Switch  NeoPIR_2_Alarm_Motion       
+
+    // //             Switch  item=NeoPIR_1_sensor            label="PIR1 Beweging detectie"          icon="movecontrol"  mappings=[ON="OPEN/CLOSE"]
+    // //             Switch  item=NeoPIR_1_burglar           label="PIR1 Inbraak detectie"           icon="motion"       mappings=[ON="OPEN/CLOSE"]
+    // //             Text    item=NeoPIR_1_temperature       label="PIR1 Temperatuur [%s]"           icon="temperature"  
+    // //                                                     valuecolor=[Last_Update=="Uninitialized"="gray", >=25="orange", >=15="green", 0="white", <15="blue"]
+    // //             Text    item=NeoPIR_1_level             label="PIR1 Level [%s]"                 icon="battery"
+    // //             Text    item=NeoPIR_1_luninance         label="PIR1 Luminance"                 icon="licht"
+
+    // }
+
+
+
+
+
+    // Group item=gTest 					  label="Test pagina sensors" 	icon="sensor" {
+    //             Switch  item=DeurSensor_1_Contact           label="Voordeur Contact (1)"    icon="frontdoor"
+    //             Switch  item=DeurSensor_1_Alarm_Access      label="Voordeur Alarm"          icon="frontdoor"    mappings=[ON="OPEN/CLOSE"]    
+    //             Text    item=DeurSensor_1_Battery_Level     label="Schuifpui Sensor battery level [%s %%]"   icon="batterylevel"
+    //             Default item=DeurSensor_1_Battery_Level     label="Sensor battery level [%s %%]"    icon="batterylevel" 
+    //             //
+    //             Switch  item=DeurSensor_2_Contact          label="Garagedeur Contact (2)"           icon="frontdoor"
+    //             Switch  item=DeurSensor_2_Alarm_Access     label="Garagedeur Alarm: "               icon="frontdoor"  mappings=[ON="OPEN/CLOSE"]
+    //             Text    item=DeurSensor_2_Battery_Level    label="Garagedeur Sensor battery level [%s %%]"  icon="batterylevel"
+    //             Text    item=placeholder
+    //             //
+    //             Switch  item=DeurSensor_3_Contact           label="Serredeur Contact (3)"    icon="frontdoor"
+    //             Switch  item=DeurSensor_3_Alarm_Access      label="Serredeur Alarm"          icon="frontdoor"    mappings=[ON="OPEN/CLOSE"]    
+    //             Text    item=DeurSensor_3_Battery_Level     label="Serredeur Sensor battery level [%s %%]"   icon="batterylevel"
+    //             Default item=DeurSensor_3_Battery_Level     label="Serredeur battery level"    icon="batterylevel"
+    //             //
+    //             Default item=DeurSensor_4_Contact           label="Schuifpui Contact (4)"           icon="frontdoor"
+    //             Switch  item=DeurSensor_4_Alarm_Access      label="Schuifpui Alarm"                 icon="frontdoor"    mappings=[ON="OPEN/CLOSE"]    
+    //             Text    item=DeurSensor_4_Battery_Level     label="Schuifpui Sensor battery level [%s %%]"  icon="batterylevel"
+    //             Default item=DeurSensor_4_Battery_Level     label="Sensor battery level (Default)"  icon="batterylevel"
+    //             //
+    //             Switch  item=NeoPIR_1_sensor            label="PIR1 Beweging detectie"          icon="movecontrol"  mappings=[ON="OPEN/CLOSE"]
+    //             Switch  item=NeoPIR_1_burglar           label="PIR1 Inbraak detectie"           icon="motion"       mappings=[ON="OPEN/CLOSE"]
+    //             Text    item=NeoPIR_1_temperature       label="PIR1 Temperatuur [%s]"           icon="temperature"  
+    //                                                     valuecolor=[Last_Update=="Uninitialized"="gray", >=25="orange", >=15="green", 0="white", <15="blue"]
+    //             Text    item=NeoPIR_1_level             label="PIR1 Level [%s]"                 icon="battery"
+    //             Text    item=NeoPIR_1_luninance         label="PIR1 Luminance"                 icon="licht"
+                     
+    //     }
+    //  Frame label="Neo Coolcam Door Sensor 4 "{
+    // // Text        Zwave_contact_16_sensor 
+    // // Switch     Zwave_contact_16_tamper 
+    // // Number      FrontDoorBattery   
+    //  }     
+// }
+//         sitemap robcosHome label="Robco's-SmartHouse"
+// {
+//        Frame label="sonoff rele"
+//        {
+//           //  Switch item=sonoff_test_switch
+//            Switch item=Light_GF_Living_Ceiling
+//            Switch item=Light_GF_Living_Reading
+            
+//              Text item=Sonoff_01_alive1 icon=""
+//              Text item=Sonoff_01_alive11 
+//              Text item=Sonoff_01_alive111 
+
+//            // Switch item=Sonoff_01_alive
+//             Text item=wifi
+//             Text item=mqtt
+//            // Switch   Sonoff_01_alive_txt
+          
+//        }
+
+//        Frame label="Presence"
+//        {
+//            Text item=Presence_StefanTablet 
+//        }
+// }
+

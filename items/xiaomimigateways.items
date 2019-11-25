@@ -1,0 +1,57 @@
+
+// // Xiaomi MI Gateway 1
+
+Group gXiaomiGateway1
+
+Switch  XGW_Gateway1_EnableInclusion    "Enable Device Inclusion"   (gXiaomiGateway1) { channel="mihome:gateway:7811dce21750:joinPermission" }
+ 
+Switch  XGW_Gateway1_LightSwitch         <light>             (gXiaomiGateway1) { channel="mihome:gateway:7811dce21750:brightness" }
+Dimmer  XGW_Gateway1_Brightness          <dimmablelight>     (gXiaomiGateway1)   { channel="mihome:gateway:7811dce21750:brightness" }
+Color   XGW_Gateway1_Color               <rgb>               (gXiaomiGateway1) { channel="mihome:gateway:7811dce21750:color" }
+Dimmer  XGW_Gateway1_ColorTemperature    <heating>           (gXiaomiGateway1) { channel="mihome:gateway:7811dce21750:colorTemperature" }
+Number  XGW_Gateway1_AmbientLight        <sun>               (gXiaomiGateway1) { channel="mihome:gateway:7811dce21750:illumination" }
+Number  XGW_Gateway1_Sound               <soundvolume-0>     (gXiaomiGateway1) { channel="mihome:gateway:7811dce21750:sound" }
+Switch  XGW_Gateway1_SoundSwitch         <soundvolume_mute>  (gXiaomiGateway1) { channel="mihome:gateway:7811dce21750:enableSound" }
+Dimmer  XGW_Gateway1_SoundVolume         <soundvolume>       (gXiaomiGateway1) { channel="mihome:gateway:7811dce21750:volume" }
+
+
+// // Xiaomi MI Gateway 2
+
+Group gXiaomiGateway2
+
+Switch  XGW_Gateway2_EnableInclusion    "Enable Device Inclusion"   (gXiaomiGateway2) { channel="mihome:gateway:7811dcfd6181:joinPermission" }
+ 
+Switch  XGW_Gateway2_LightSwitch         <light>             (gXiaomiGateway2) { channel="mihome:gateway:7811dcfd6181:brightness" }
+Dimmer  XGW_Gateway2_Brightness          <dimmablelight>     (gXiaomiGateway2)   { channel="mihome:gateway:7811dcfd6181:brightness" }
+Color   XGW_Gateway2_Color               <rgb>               (gXiaomiGateway2) { channel="mihome:gateway:7811dcfd6181:color" }
+Dimmer  XGW_Gateway2_ColorTemperature    <heating>           (gXiaomiGateway2) { channel="mihome:gateway:7811dcfd6181:colorTemperature" }
+Number  XGW_Gateway2_AmbientLight        <sun>               (gXiaomiGateway2) { channel="mihome:gateway:7811dcfd6181:illumination" }
+Number  XGW_Gateway2_Sound               <soundvolume-0>     (gXiaomiGateway2) { channel="mihome:gateway:7811dcfd6181:sound" }
+Switch  XGW_Gateway2_SoundSwitch         <soundvolume_mute>  (gXiaomiGateway2) { channel="mihome:gateway:7811dcfd6181:enableSound" }
+Dimmer  XGW_Gateway2_SoundVolume         <soundvolume>       (gXiaomiGateway2) { channel="mihome:gateway:7811dcfd6181:volume" }
+
+
+
+
+
+// // ????Switch  XiaomiGateway_LightSwitch   <light> { channel="mihome:gateway:7811dce21750:brightness"  }
+// Dimmer  XiaomiGatewayBrightness         "Brightness"                (gXiaomiGateway) { channel="mihome:gateway:7811dce21750:brightness" }
+// Number  XiaomiGatewayIllumination       "Illumination"              (gXiaomiGateway) { channel="mihome:gateway:7811dce21750:illumination" }
+// Color   XiaomiGatewayColor              "Color"                     (gXiaomiGateway) { channel="mihome:gateway:7811dce21750:color" }
+// Dimmer  XiaomiGatewayColorTemperature   "Color Temperature"         (gXiaomiGateway) { channel="mihome:gateway:7811dce21750:colorTemperature" }
+// // Switch to turn sound off when playing:
+// Switch  XiaomiGatewayEnableSound        "Sound Enable "  <soundvolume_mute>    (gXiaomiGateway) { channel="mihome:gateway:7811dce21750:enableSound" }
+// Number  XiaomiGatewaySoundSelector      "Sound Selector"   <soundvolume-0>         (gXiaomiGateway) { channel="mihome:gateway:7811dce21750:sound" }
+// Dimmer  XiaomiGatewaySoundVolume        "Sound Volume"     <soundvolume>         (gXiaomiGateway) { channel="mihome:gateway:7811dce21750:volume" }
+// Gateway 
+// Switch Gateway_LightSwitch <light> { channel="mihome:gateway:<GwID>:<ID>:brightness" }
+// Dimmer Gateway_Brightness <dimmablelight> { channel="mihome:gateway:<GwID>:<ID>:brightness" }
+// Color Gateway_Color <rgb> { channel="mihome:gateway:<GwID>:<ID>:color" }
+// Dimmer Gateway_ColorTemperature <heating> { channel="mihome:gateway:<GwID>:<ID>:colorTemperature" }
+// Number Gateway_AmbientLight <sun> { channel="mihome:gateway:<GwID>:<ID>:illumination" }
+// Number Gateway_Sound <soundvolume-0> { channel="mihome:gateway:<GwID>:<ID>:sound" }
+// Switch Gateway_SoundSwitch <soundvolume_mute> { channel="mihome:gateway:<GwID>:<ID>:enableSound" }
+// Dimmer Gateway_SoundVolume <soundvolume> { channel="mihome:gateway:<GwID>:<ID>:volume" }
+
+
+

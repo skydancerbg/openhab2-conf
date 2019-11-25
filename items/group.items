@@ -1,0 +1,60 @@
+
+//// LIGHTNING
+Group:Switch:OR(ON, OFF)    gAllLights   "Осветление всички [%d ВКЛЮЧЕН(И)]"
+Group:Switch:OR(ON, OFF)    gStefBedroomLights   "Осветление спалня Стефан [%d ON]"
+Group:Switch:OR(ON, OFF)    Gr_Kitchen_Lights   "Осветление кухня [%d ON]"
+//// DOOR WINDOW SENSORS
+// Group:Switch:OR(ON, OFF)    gAll_DW_Sensors   "Осветление всички [%d ON]"
+// Group:Switch:OR(OPEN, CLOSED)    gAll_DW_Sensors   "Датчици на врати и прозорци [%d OPEN]"
+// Group:Switch:OR(CLOSED, OPEN)    gAll_DW_Sensors   "Датчици на врати и прозорци [%d OPEN]"
+Group:Number:SUM     gAll_DW_Sensors   "Датчици на врати и прозорци [%d ОТВОРЕН(И)]"
+
+Group:Number:SUM     gKitchen_Refrigerator_WF_Sensors   "Кухня - хладилник: Датчици за теч на вода [%d ОТВОРЕН(И)]"
+
+
+// Group:Number:SUM 				gnuDoorSensor_Glasbruch_Status      "Glasbruchmelder Status sum [(%d)]"
+// Group:Switch:OR(ON,OFF) 		gswDoorSensor_Glasbruch_Status_All  "Glasbruchmelder Status alle [(%d)]"
+
+//// POWER
+Group:Switch:OR(ON, OFF)    gAllPower   "Консуматори  [%d ВКЛЮЧЕН(И)]"
+
+//// LOW BATTERY ALERT
+Group:Switch:OR(ON, OFF)    gAllLowBattery  "Батерии за подмяна  [%d ИЗТОЩЕНА(И) БАТЕРИИ]"
+
+Group:Switch:OR(ON, OFF)    gAllBatteryLevel   "НИВО БАТЕРИИ  [БРОЙ УСТРОЙСТВА ДОКЛАДВАЩИ НИВО: %d]"
+
+
+Group Gr_GF             "Ground Floor"  <groundfloor>   ["GroundFloor"]
+Group Garden            "Garden"        <garden>        ["Garden"]
+Group Presence          "Presence"     <presence>     ["Presence"]
+Group HeatingCooling    "Heating and Cooling"     <presence>     ["HeatingCooling"]
+
+// // // // TEMPERATURES
+Group Gr_Temperature_measurments
+Group:Number:AVG Gr_S_Bdrm_Temperature "Stefan's Temperatures [%.1f °C]"
+
+Group:Number:AVG Gr_House_Inside_Temperature "Къща средна температура: [%.1f °C]"
+
+Group gStefansBedroomNightLightControll
+Group gCorridorNightLightControll
+Group gKitchenNightLightControll
+Group gKitchenConterLightControll
+
+
+
+
+
+
+
+
+
+
+// // Template for devices ON/OFF counter group
+// Group:Switch:OR(ON, OFF)    x   "x[%d ON]"
+// Switch                      x1  (x)
+// Switch                      x2  (x)
+// Switch                      x3  (x)
+// sitemap tmp label="TMP" {
+// 	Switch item=x
+// 	Group item=x
+// }

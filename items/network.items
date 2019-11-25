@@ -1,0 +1,6 @@
+
+// https://www.smarthomeblog.net/presence-detection-with-openhab/
+Group:Switch:OR(ON, OFF)        gPresence      "Online: [(%d)]"
+Switch Network_Stefan_S7_Online <phone>(gPresence){ channel="network:pingdevice:stefan_s7:online" }
+Switch Network_Stefan_S5_Online <phone>(gPresence){ channel="network:pingdevice:stefan_s5:online" }
+Switch Network_Desi_N8_Online <phone>(gPresence){ channel="network:pingdevice:desi_note8:online" }

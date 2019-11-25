@@ -1,0 +1,15 @@
+//
+//
+//  Izpolzvam default ot Ntp binding:
+//  s kanali:
+//
+// ntp:ntp:local:dateTime
+// DateTime
+// 
+// ntp:ntp:local:string
+// String
+
+
+
+// Primer za setwane na nov thing ot tuk: 
+// ntp:ntp:demo  [ hostname="nl.pool.ntp.org", refreshInterval=60, refreshNtp=30 ]

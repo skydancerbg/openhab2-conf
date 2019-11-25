@@ -1,0 +1,77 @@
+// Group gAlarm, gSensors
+
+//   Shinzen Electronics Neo Coolcam Door/Window Sensors    *****
+//
+//Neo Coolcam Door/Window sensor - node 004
+// Contact 
+
+// //   Neo_DW_4 Neo Coolcam Door/Window sensor on node 4         
+
+Contact Neo_DW_4_C      "Right window Stefan's bedroom [%s]" <window>  (gAlarm,gSensors,gAll_DW_Sensors)                      {channel="zwave:device:24ba193b:node4:sensor_door"}
+Switch  Neo_DW_4_A      "Right window Stefan's bedroom Alarm (access)"   <siren>  (gAlarm,gSensors)                          {channel="zwave:device:24ba193b:node4:alarm_access"}
+Number  Neo_DW_4_Bat    "Right window Stefan's bedroom sensor Battery Level [%d %%]" <battery>  (gAlarm,gSensors, gAllBatteryLevel)   {channel="zwave:device:24ba193b:node4:battery-level"}
+
+// //   Neo_DW_7 Neo Coolcam Door/Window sensor on node 7
+
+Contact Neo_DW_7_C      "Left window Stefan's bedroom: [%s]" <window> (gRestore, gAll_DW_Sensors)          { channel="zwave:device:24ba193b:node7:sensor_door" }
+Switch  Neo_DW_7_A      "Left window Stefan's bedroom Alarm (access)"  <siren>  (gAlarm,gSensors)           {channel="zwave:device:24ba193b:node7:alarm_access"}
+Number  Neo_DW_7_Bat    "Left window Stefan's bedroom sensor Battery Level [%d %%]" <battery> (gAllBatteryLevel)    { channel="zwave:device:24ba193b:node7:battery-level" }
+
+//DOLNITE TRI REDA DAWAT GRE[KA I NE STAWAT!!!!!!!!!!!!!]
+// Contact     Zwave_contact_16_sensor "office - test door"                                             (doors,monitor)  {zwave="4:command=basic,respond_to_basic=true"}
+// Contact     Zwave_contact_16_tamper "office - test door tamper"                                      (doors,tamper)   {zwave="4:command=ALARM"}
+// Number      FrontDoorBattery        "office - test door battery [%d %%]"              <battery>      (doors,battery)  {zwave="4:command=BATTERY"}
+
+// //    Shinzen Electronics Neo Coolcam PIR sensors     *****
+// Vb. https://community.openhab.org/t/zwave-coolcam-motion-sensor-not-working/48827/24
+
+// //   NeoPIR_1
+Number  NeoPIR_1_Luninance      "Neo PIR sensor 1 - Luminance [%s]"         <sunrise>   (gAlarm, gSensors, gBattery)      { channel="zwave:device:24ba193b:node8:sensor_luminance" }
+Number  NeoPIR_1_Temperature    "Neo PIR sensor 1 - Temperature [%.1f °C]"  <temperature>   (gAlarm, gSensors, gBattery)  { channel="zwave:device:24ba193b:node8:sensor_temperature" }
+Number  NeoPIR_1_Bat_Level      "Neo PIR sensor 1 - Battery_Level [%d %%]"  <battery>   (gAlarm, gSensors, gAllBatteryLevel)      { channel="zwave:device:24ba193b:node8:battery-level" }
+Switch  NeoPIR_1_Alarm_Motion   "Neo PIR sensor 1 - Burglar_Alarm"          <siren>   (gAlarm, gSensors, gBattery)        { channel="zwave:device:24ba193b:node8:alarm_motion" } 
+
+// //   NeoPIR_2   STEFANS BEDROOM
+Number  NeoPIR_2_Luninance      "Neo MagnetPIR sensor 2 - Luminance [%s]"         <sunrise>   (gAlarm, gSensors, gBattery)      { channel="zwave:device:24ba193b:node9:sensor_luminance" }
+Number  NeoPIR_2_Temperature    "Neo MagnetPIR sensor 2 - Temperature [%.1f °C]"  <temperature>   (Gr_Temperature_measurments,Gr_S_Bdrm_Temperature)  { channel="zwave:device:24ba193b:node9:sensor_temperature" }
+Number  NeoPIR_2_Bat_Level      "Neo MagnetPIR sensor 2 - Battery_Level [%d %%]"  <battery>   (gAlarm, gSensors, gAllBatteryLevel)      { channel="zwave:device:24ba193b:node9:battery-level" }
+Switch  NeoPIR_2_Alarm_Motion   "Neo MagnetPIR sensor 2 - Burglar_Alarm"          <siren>   (gAlarm, gSensors, gStefansBedroomNightLightControll)        { channel="zwave:device:24ba193b:node9:alarm_motion" }
+
+// //   NeoWaterLeak_1
+Group gNEO_WL_sensor_1
+Switch  NeoWaterLeak_1_Alarm_flood  "Refrigerator Water Leak sensor NCC1 - Flood_Alarm"          <rain>   (gNEO_WL_sensor_1, gKitchen_Refrigerator_WF_Sensors, gAlarm,gSensors)       { channel="zwave:device:24ba193b:node10:alarm_flood" }
+Number  NeoWaterLeak_1_Bat_Level    "Refrigerator Water Leak sensor NCC1 - Battery_Level [%d %%]"  <battery>   (gNEO_WL_sensor_1, gAllBatteryLevel)   { channel="zwave:device:24ba193b:node10:battery-level" }
+
+// //
+
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+// //   Shinzen Electronics Neo Coolcam Door/Window Sensors    *****
+// //
+// Contact DeurSensor_1_Contact            "Voordeur is: [%s]"                                 <door>  (gAlarm,gSensors)           {channel="zwave:device:651ad746:node4:sensor_door"}
+// Switch  DeurSensor_1_Alarm_Access       "Voordeur Alarm (access)"                           <door>  (gAlarm,gSensors)           {channel="zwave:device:651ad746:node4:alarm_access"}
+// //Number  DeurSensor_1_Battery_Level      "Voordeur Battery Level [MAP(neobattery.map):%s]" <door>  (gAlarm,gSensors,gBattery)  {channel="zwave:device:651ad746:node4:battery-level"}
+// Number  DeurSensor_1_Battery_Level      "Voordeur Battery Level [%d %%]"                    <door>  (gAlarm,gSensors,gBattery)  {channel="zwave:device:651ad746:node4:battery-level"}
+// //
+// Contact DeurSensor_2_Contact            "Garagedeur is: [%s]"                               <door>  (gAlarm,gSensors)           {channel="zwave:device:651ad746:node6:sensor_door"}
+// Switch  DeurSensor_2_Alarm_Access       "Garagedeur Alarm (access)"                         <door>  (gAlarm,gSensors)           {channel="zwave:device:651ad746:node6:alarm_access"}
+// Number  DeurSensor_2_Battery_Level      "Garadedeur Battery Level [%d %%]"                  <door>  (gAlarm,gSensors,gBattery)  {channel="zwave:device:651ad746:node6:battery-level"}
+// //
+// Contact DeurSensor_3_Contact            "Serredeur is: [%s]"                                <door>  (gAlarm,gSensors)           {channel="zwave:device:651ad746:node7:sensor_door"}
+// Switch  DeurSensor_3_Alarm_Access       "Serredeur Alarm (access)"                          <door>  (gAlarm,gSensors)           {channel="zwave:device:651ad746:node7:alarm_access"}
+// Number  DeurSensor_3_Battery_Level      "Serredeur Battery Level [%d %%]"                   <door>  (gAlarm,gSensors,gBattery)  {channel="zwave:device:651ad746:node7:battery-level"}
+// //
+// Contact DeurSensor_4_Contact            "Schuifpui is: [%s]"                                <door>  (gAlarm,gSensors)           {channel="zwave:device:651ad746:node8:sensor_door"}
+// Switch  DeurSensor_4_Alarm_Access       "Schuifpui Alarm (access)"                          <door>  (gAlarm,gSensors)           {channel="zwave:device:651ad746:node8:alarm_access"}
+// Number  DeurSensor_4_Battery_Level      "Schuifpui Battery Level [%d %%]"                   <door>  (gAlarm,gSensors,gBattery)  {channel="zwave:device:651ad746:node8:battery-level"}
+// //
+// //    Shinzen Electronics Neo Coolcam PIR sensors     *****
+// // Vb. https://community.openhab.org/t/zwave-coolcam-motion-sensor-not-working/48827/24
+// //
+// Switch	NeoPIR_1_Sensor                 "Neo PIR sensor 1 - Sensor"                 <pir>   (gAlarm,gSensors,gBattery)          { channel="zwave:device:651ad746:node5:sensor_binary" }
+// Number  NeoPIR_1_Luninance              "Neo PIR sensor 1 - Luminance [%s]"         <pir>   (gAlarm,gSensors,gBattery)          { channel="zwave:device:651ad746:node5:sensor_luminance" }
+// Number  NeoPIR_1_Temperature            "Neo PIR sensor 1 - Temperature [%.1f Â°C]"  <pir>   (gAlarm,gSensors,gBattery)         { channel="zwave:device:651ad746:node5:sensor_temperature" }
+// Number  NeoPIR_1_Bat_Level              "Neo PIR sensor 1 - Battery_Level [%d %%]"  <pir>   (gAlarm,gSensors,gBattery)          { channel="zwave:device:651ad746:node5:battery-level" }
+// Switch  NeoPIR_1_Burglar                "Neo PIR sensor 1 - Burglar_Alarm"          <pir>   (gAlarm,gSensors,gBattery)          { channel="zwave:device:651ad746:node5:alarm_burglar" }
+// //

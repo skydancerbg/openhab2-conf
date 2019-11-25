@@ -1,0 +1,6 @@
+rule "Front Door Notification"
+when
+  Item KitchenRightWindowSwitch_Status changed to OPEN
+then
+  sendNotification("sshivarov@yahoo.com", "Проба, проба!")
+end

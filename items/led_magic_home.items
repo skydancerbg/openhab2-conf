@@ -1,0 +1,102 @@
+
+// /// // https://www.youtube.com/watch?v=0Lg7y6yLOks
+// // // Example config files: https://mega.nz/#!UrYhnSqT!_ri18L-UeEM0aqAcIYzfeAuK72RDP2rF1vz0nvM-sBI
+// // // Downloaded copy at D:\Users\Stefan Shivarov\Documents\Smart home\SHome 2019\Magic_Home-OH\MagicHomeLed+Openhab
+
+Group LEDPresets1 "LED 1 Presets" <colorwheel> (OG_Office) // RGB-Presets 1
+
+////////////////////////////
+// LED STRIP 1
+////////////////////////////
+
+Switch	LED_1_power         "LED 1 Power"             			<led_strip>		(gLight,OG_Office,OG_Office_Light)	[ "Lighting" ] 	{channel="wifiled:wifiled:C44F33AE9317:power"}
+Color  	LED_1_color         "LED 1 Color [%.0f]"      			<hue>         	(OG_Office)                         [ "Lighting" ] 	{channel="wifiled:wifiled:C44F33AE9317:color"}
+Dimmer 	LED_1_speed         "LED 1 Program speed"     			<volume_knob> 	(OG_Office)                      					{channel="wifiled:wifiled:C44F33AE9317:white"}
+Dimmer 	LED_1_white         "LED 1 white"     			<volume_knob> 	(OG_Office)                      					{channel="wifiled:wifiled:C44F33AE9317:white2"}
+Dimmer 	LED_1_white2        "LED 1 white2"     			<volume_knob> 	(OG_Office)                      					{channel="wifiled:wifiled:C44F33AE9317:programSpeed"}
+String 	LED_1_hsb  			"LED 1 current HSB numbers [%s]" 	<text> 			(OG_Office)
+// Dimmer 	LED_1_brightness    "LED 1 Brightness"        			<volume_knob> 	(OG_Office) //for Brightness tests not used...
+
+/////////// MODE Switches
+String LED_1_program      "LED 1 Preset [MAP(led_preset.map):%s]"    <menu>         (LEDPresets1,OG_Office)  {channel="wifiled:wifiled:C44F33AE9317:program"}
+Switch LED_1_preset_0     "Strobe"                                   <smoke>        (LEDPresets1)     // Mode: 48
+Switch LED_1_preset_1     "Strobe - Custom 1"                        <smoke>        (LEDPresets1)     // Mode: 96
+Switch LED_1_preset_2     "Strobe - Rot"                             <smoke>        (LEDPresets1)     // Mode: 49
+Switch LED_1_preset_3     "Strobe - Grün"                            <smoke>        (LEDPresets1)     // Mode: 50
+Switch LED_1_preset_4     "Strobe - Blau"                            <smoke>        (LEDPresets1)     // Mode: 51
+Switch LED_1_preset_5     "Strobe - Cyan"                            <smoke>        (LEDPresets1)     // Mode: 53
+Switch LED_1_preset_6     "Strobe - Lila"                            <smoke>        (LEDPresets1)     // Mode: 54
+Switch LED_1_preset_7     "Strobe - Gelb"                            <smoke>        (LEDPresets1)     // Mode: 52
+Switch LED_1_preset_8     "Strobe - Weiß"                            <smoke>        (LEDPresets1)     // Mode: 55
+Switch LED_1_preset_9     "Strobe - R/G/B"                           <smoke>        (LEDPresets1)     // Mode: 57
+Switch LED_1_preset_10    "CrossFade - Rot/Grün"                     <flow>         (LEDPresets1)     // Mode: 45
+Switch LED_1_preset_11    "CrossFade - Rot/Blau"                     <flow>         (LEDPresets1)     // Mode: 46
+Switch LED_1_preset_12    "CrossFade - Blau/Grün"                    <flow>         (LEDPresets1)     // Mode: 47
+Switch LED_1_preset_13    "Fade"                                     <colorlight>   (LEDPresets1)     // Mode: 37
+Switch LED_1_preset_14    "Fade - Weiß"                              <colorlight>   (LEDPresets1)     // Mode: 44
+Switch LED_1_preset_15    "Fade - Grün"                              <colorlight>   (LEDPresets1)     // Mode: 39
+Switch LED_1_preset_16    "Fade - Dunkelblau"                        <colorlight>   (LEDPresets1)     // Mode: 40
+Switch LED_1_preset_17    "Fade - Gelb"                              <colorlight>   (LEDPresets1)     // Mode: 41
+Switch LED_1_preset_18    "Fade - Rot "                              <colorlight>   (LEDPresets1)     // Mode: 38
+Switch LED_1_preset_19    "Fade - Hellblau "                         <colorlight>   (LEDPresets1)     // Mode: 42
+Switch LED_1_preset_20    "Fade - Lila"                              <colorlight>   (LEDPresets1)     // Mode: 43
+Switch LED_1_preset_21    "Fade - R/G/B"                             <colorlight>   (LEDPresets1)     // Mode: 45
+Switch LED_1_preset_22    "Jump"                                     <chart>        (LEDPresets1)     // Mode: 56
+Switch LED_1_preset_23    "Jump - R/G/B"                             <chart>        (LEDPresets1)     // Mode: 99
+// // // white from RGB - bluish with green edge :)
+Switch LED_1_preset_1000    "White from RGB"                   <colorlight>        (LEDPresets1)     
+
+
+
+
+
+/////////////////////////////////////////////
+// // РАБОТИ
+// Switch MyWiFiLight_power "Power_RGB" (Light) {channel="wifiled:wifiled:C44F33AE9317:power"}
+// Color  MyWiFiLight_color "Color_RGB" (Light) {channel="wifiled:wifiled:C44F33AE9317:color"}
+// String MyWiFiLight_progran "Program_RGB" (Light) {channel="wifiled:wifiled:C44F33AE9317:program"}
+// Dimmer MyWiFiLight_progranSpped "ProgramSpeed_RGB" (Light) {channel="wifiled:wifiled:C44F33AE9317:programSpeed"}
+
+///////////////////////////////////////
+
+
+
+
+
+
+// /// /// /// Example Items:
+
+// Switch MyWiFiLight_power "Power_RGB" (Light) {channel="wifiled:wifiled:F0FE6B19CB2A:power"}
+// Color  MyWiFiLight_color "Color_RGB" (Light) {channel="wifiled:wifiled:F0FE6B19CB2A:color"}
+
+// Switch 2MyWiFiLight_power  "Power_RGBW" (Light) {channel="wifiled:wifiled:F0FE6B19CB2B:power"}
+// Dimmer 2MyWiFiLight_white  "White_RGBW" (Light) {channel="wifiled:wifiled:F0FE6B19CB2B:white"}
+// Color  2MyWiFiLight_color  "Color_RGBW" (Light) {channel="wifiled:wifiled:F0FE6B19CB2B:color"}
+
+// Switch 3MyWiFiLight_power  "Power_RGBWWCW" (Light) {channel="wifiled:wifiled:F0FE6B19CB2C:power"}
+// Dimmer 3MyWiFiLight_white  "White_RGBWWCW" (Light) {channel="wifiled:wifiled:F0FE6B19CB2C:white"}
+// Color  3MyWiFiLight_white2 "Color_RGBWWCW" (Light) {channel="wifiled:wifiled:F0FE6B19CB2C:white2"}
+// Color  3MyWiFiLight_color  "Color_RGBWWCW" (Light) {channel="wifiled:wifiled:F0FE6B19CB2C:color"}
+
+
+// /// /// ///  Example Site map:
+
+			// Frame label=""
+			// 	{
+			// 	Switch       item=MyWiFiLight_power  label="Power_RGB"  	 
+			// 	Colorpicker  item=MyWiFiLight_color  label="Color_RGB"
+			// 	}
+			// 	Frame label=""
+			// 	{
+			// 	Switch       item=2MyWiFiLight_power  label="Power_RGBW" 
+			// 	Colorpicker  item=2MyWiFiLight_color  label="Color_RGBW"
+			// 	Slider       item=2MyWiFiLight_white  label="White_RGBW"  	 				
+			// 	}
+			// 	Frame label=""
+			// 	{
+			// 	Switch       item=3MyWiFiLight_power  label="Power_RGBWWCW" 
+			// 	Colorpicker  item=3MyWiFiLight_color  label="Color_RGBWWCW"				
+			// 	Slider       item=3MyWiFiLight_white  label="White_RGBWWCW"  
+			// 	Slider       item=3MyWiFiLight_white2 label="White2_RGBWWCW" 
+				
+			// 	}
