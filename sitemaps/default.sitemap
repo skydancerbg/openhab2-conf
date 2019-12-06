@@ -4,6 +4,10 @@ sitemap default label="Апартамента на Деси и Стефан" {
         Frame label="BENKOVSKI DEVICES:" icon="light" {    
             Group item=GF_Sonoff_TH16_1
             Group item=GF_Sonoff_TH16_2
+            Group item=GF_Sonoff_TH16_3
+            Group item=GF_Sonoff_TH16_4
+            Group item=GF_Sonoff_TH16_5
+            Group item=GF_Sonoff_TH16_6
             Group item=GF_Sonoff_S26_3
             Group item=GF_Sonoff_S20_1
             Text label="RF PIR СЕНЗОРИ КЪЩА:" icon="groundfloor" {

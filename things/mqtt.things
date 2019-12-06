@@ -38,7 +38,7 @@ Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secu
         Type string : reachable     "Reachable"             [ stateTopic="tele/sonoff_th16_1/LWT" ]
         Type switch : power         "Power"                 [ stateTopic="stat/sonoff_th16_1/POWER", commandTopic="cmnd/sonoff_th16_1/POWER" ]
         Type number : temperature   "Temperature"           [ stateTopic="tele/sonoff_th16_1/SENSOR", transformationPattern="JSONPATH:$.DS18B20.Temperature" ]
-        Type number : rssi      "WiFi Signal Strength"      [ stateTopic="tele/sonoff_th16_2/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+        Type number : rssi      "WiFi Signal Strength"      [ stateTopic="tele/sonoff_th16_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
     }
 
     Thing topic sonoff_th16_2 "SonoffTH16 2 AM2301 T/H" @ "Living Room" {
@@ -48,6 +48,42 @@ Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secu
         Type number : temperature   "Temperature"           [ stateTopic="tele/sonoff_th16_2/SENSOR", transformationPattern="JSONPATH:$.AM2301.Temperature" ]
         Type number : humidity      "Humidity"              [ stateTopic="tele/sonoff_th16_2/SENSOR", transformationPattern="JSONPATH:$.AM2301.Humidity" ]        
         Type number : rssi      "WiFi Signal Strength"      [ stateTopic="tele/sonoff_th16_2/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+// // !!!! Този сензор на ITEAD се разпознава като SI7021, а не като AM2301... Да се смени AM2301 в JSONPATH:$.SI7021.Temperature и JSONPATH:$.SI7021.Humidity
+    Thing topic sonoff_th16_3 "SonoffTH16 3 SI7021 T/H" @ "Living Room" {
+    Channels:
+        Type string : reachable     "Reachable"             [ stateTopic="tele/sonoff_th16_3/LWT" ]
+        Type switch : power         "Power"                 [ stateTopic="stat/sonoff_th16_3/POWER", commandTopic="cmnd/sonoff_th16_3/POWER" ]
+        Type number : temperature   "Temperature"           [ stateTopic="tele/sonoff_th16_3/SENSOR", transformationPattern="JSONPATH:$.SI7021.Temperature" ]
+        Type number : humidity      "Humidity"              [ stateTopic="tele/sonoff_th16_3/SENSOR", transformationPattern="JSONPATH:$.SI7021.Humidity" ]        
+        Type number : rssi      "WiFi Signal Strength"      [ stateTopic="tele/sonoff_th16_3/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+// // !!!! Този сензор на ITEAD се разпознава като SI7021, а не като AM2301... Да се смени AM2301 в JSONPATH:$.SI7021.Temperature и JSONPATH:$.SI7021.Humidity
+    Thing topic sonoff_th16_4 "SonoffTH16 4 SI7021 T/H" @ "Living Room" {
+    Channels:
+        Type string : reachable     "Reachable"             [ stateTopic="tele/sonoff_th16_4/LWT" ]
+        Type switch : power         "Power"                 [ stateTopic="stat/sonoff_th16_4/POWER", commandTopic="cmnd/sonoff_th16_4/POWER" ]
+        Type number : temperature   "Temperature"           [ stateTopic="tele/sonoff_th16_4/SENSOR", transformationPattern="JSONPATH:$.SI7021.Temperature" ]
+        Type number : humidity      "Humidity"              [ stateTopic="tele/sonoff_th16_4/SENSOR", transformationPattern="JSONPATH:$.SI7021.Humidity" ]        
+        Type number : rssi      "WiFi Signal Strength"      [ stateTopic="tele/sonoff_th16_4/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+    Thing topic sonoff_th16_5 "SonoffTH16 5 DS18B20 - T" @ "Living Room" {
+    Channels:
+        Type string : reachable     "Reachable"             [ stateTopic="tele/sonoff_th16_5/LWT" ]
+        Type switch : power         "Power"                 [ stateTopic="stat/sonoff_th16_5/POWER", commandTopic="cmnd/sonoff_th16_5/POWER" ]
+        Type number : temperature   "Temperature"           [ stateTopic="tele/sonoff_th16_5/SENSOR", transformationPattern="JSONPATH:$.DS18B20.Temperature" ]
+        Type number : rssi      "WiFi Signal Strength"      [ stateTopic="tele/sonoff_th16_5/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+    Thing topic sonoff_th16_6 "SonoffTH16 6 DS18B20 - T" @ "Living Room" {
+    Channels:
+        Type string : reachable     "Reachable"             [ stateTopic="tele/sonoff_th16_6/LWT" ]
+        Type switch : power         "Power"                 [ stateTopic="stat/sonoff_th16_6/POWER", commandTopic="cmnd/sonoff_th16_6/POWER" ]
+        Type number : temperature   "Temperature"           [ stateTopic="tele/sonoff_th16_6/SENSOR", transformationPattern="JSONPATH:$.DS18B20.Temperature" ]
+        Type number : rssi      "WiFi Signal Strength"      [ stateTopic="tele/sonoff_th16_6/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
     }
 
 
