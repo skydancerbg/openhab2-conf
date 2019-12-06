@@ -1,8 +1,16 @@
 
 //// LIGHTNING
+
 Group:Switch:OR(ON, OFF)    gAllLights   "Осветление всички [%d ВКЛЮЧЕН(И)]"
 Group:Switch:OR(ON, OFF)    gStefBedroomLights   "Осветление спалня Стефан [%d ON]"
 Group:Switch:OR(ON, OFF)    Gr_Kitchen_Lights   "Осветление кухня [%d ON]"
+
+// Къща БЕНКОВСКИ:
+// Групите в къщата ще са с главни букви!
+// За къщата групата всички светлини ще се казва:
+Group:Switch:OR(ON, OFF)    Gr_ALL_LIGHTS   "Осветление всички [%d ВКЛЮЧЕН(И)]"
+// ??? Group:Switch:OR(ON, OFF)    Gr_GF_LIGHTS   "Осветление кухня [%d ON]"
+
 //// DOOR WINDOW SENSORS
 // Group:Switch:OR(ON, OFF)    gAll_DW_Sensors   "Осветление всички [%d ON]"
 // Group:Switch:OR(OPEN, CLOSED)    gAll_DW_Sensors   "Датчици на врати и прозорци [%d OPEN]"
@@ -17,6 +25,8 @@ Group:Number:SUM     gKitchen_Refrigerator_WF_Sensors   "Кухня - хлади
 
 //// POWER
 Group:Switch:OR(ON, OFF)    gAllPower   "Консуматори  [%d ВКЛЮЧЕН(И)]"
+// Къща БЕНКОВСКИ:
+Group:Switch:OR(ON, OFF)    Gr_ALL_POWER   "Консуматори  [%d ВКЛЮЧЕН(И)]"
 
 //// LOW BATTERY ALERT
 Group:Switch:OR(ON, OFF)    gAllLowBattery  "Батерии за подмяна  [%d ИЗТОЩЕНА(И) БАТЕРИИ]"

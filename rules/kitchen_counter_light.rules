@@ -1,7 +1,7 @@
 
 
 ////////////////////////////
-rule "CORRIDOR Night Light on when motion is detected between sunset and sunrise - _AQ_1 PIR sensor + MI MotionSensor PIR sensor"
+rule "Kitchen counter workbench light on when motion is detected - _AQ_1 PIR sensor"
 
 when
     Item  GF_KN_AQ_Kitchen_Counter_Motion_MotionStatus changed
@@ -13,14 +13,14 @@ if (GF_KN_AQ_Kitchen_Counter_Motion_MotionStatus.state == ON)
                                         GF_KN_Top_Light_Power.sendCommand(ON)
                                         GF_KN_Sink_Light_Power.sendCommand(ON)
 
-                                    logInfo("RuleMotionCtrlNightLamp", "Motion switched CORRIDOR NIGHT LIGHT - ON")
+                                    logInfo("RuleMotionCtrlNightLamp", "Motion switched Kitchen counter LIGHT - ON")
                                     }
     
     else if ( GF_KN_AQ_Kitchen_Counter_Motion_MotionStatus.state == OFF) 
                                     {
                                         GF_KN_Top_Light_Power.sendCommand(OFF)
                                         GF_KN_Sink_Light_Power.sendCommand(OFF)
-                                    logInfo("RuleMotionCtrlNightLamp", "Motion switched CORRIDOR NIGHT LIGHT - OFF")
+                                    logInfo("RuleMotionCtrlNightLamp", "Motion switched Kitchen counter LIGHT - OFF")
                                     }
 
 end

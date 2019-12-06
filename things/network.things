@@ -3,4 +3,4 @@
 // https://www.smarthomeblog.net/presence-detection-with-openhab/Thing 
 Thing network:pingdevice:stefan_s7 [ hostname="192.168.1.174" ]
 Thing network:pingdevice:stefan_s5 [ hostname="192.168.1.151" ]
-Thing network:pingdevice:desi_note8 [ hostname="192.168.1.125" ]
+Thing network:pingdevice:desi_note8 [ hostname="192.168.1.202" ]

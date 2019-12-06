@@ -1,37 +1,60 @@
     
 sitemap default label="Апартамента на Деси и Стефан" {
 
+        Frame label="BENKOVSKI DEVICES:" icon="light" {    
+            Group item=GF_Sonoff_TH16_1
+            Group item=GF_Sonoff_TH16_2
+            Group item=GF_Sonoff_S26_3
+            Group item=GF_Sonoff_S20_1
+            Text label="RF PIR СЕНЗОРИ КЪЩА:" icon="groundfloor" {
+                Frame label="RF PIR СЕНЗОРИ КЪЩА:" icon="groundfloor" {
+                        Text  item=Sonoff_RF_PIR_1 label="PRI 1:" 
+                        Text  item=Sonoff_RF_PIR_2 label="PRI 2:" 
+                        Text  item=Sonoff_RF_PIR_3 label="PRI 3:" 
+                        Text  item=Sonoff_RF_PIR_4 label="PRI 4:" 
+                        Text  item=Sonoff_RF_PIR_5 label="PRI 5:" 
+                }
+            }
+            Text label="ТЕМПЕРАТУРИ КЪЩА:" icon="temperature" {
+                Frame label="ТЕМПЕРАТУРИ КЪЩА:" icon="groundfloor" {
+                        Text  item=GF_Sonoff_TH16_1_Temperature label="TH16_1:" 
+                        Text  item=GF_Sonoff_TH16_2_Temperature label="TH16_2:" 
+                        Text  item=XGW2_XA_THP_1_Temperature label="1:" 
+                        Text  item=XGW2_XA_THP_2_Temperature label="2:" 
+                        Text  item=XGW2_XA_THP_3_Temperature label="3:" 
+                        Text  item=XGW2_XA_THP_4_Temperature label="4:" 
+                        Text  item=XGW2_XA_THP_5_Temperature label="5:" 
+                        Text  item=XGW2_XA_THP_6_Temperature label="6:" 
+                }
+            }            
+        }
 
-     Frame label="RF PIR СЕНЗОРИ КЪЩА:" icon="groundfloor" {
-            Text  item=Sonoff_RF_PIR_1 label="PRI 1:" 
-            Text  item=Sonoff_RF_PIR_2 label="PRI 2:" 
-            Text  item=Sonoff_RF_PIR_3 label="PRI 3:" 
-            Text  item=Sonoff_RF_PIR_4 label="PRI 4:" 
-            Text  item=Sonoff_RF_PIR_5 label="PRI 5:" 
-    }
 
 
-     Frame label="ТЕМПЕРАТУРИ КЪЩА:" icon="groundfloor" {
-            Text  item=XGW2_XA_THP_1_Temperature label="1:" 
-            Text  item=XGW2_XA_THP_2_Temperature label="2:" 
-            Text  item=XGW2_XA_THP_3_Temperature label="3:" 
-            Text  item=XGW2_XA_THP_4_Temperature label="4:" 
-            Text  item=XGW2_XA_THP_5_Temperature label="5:" 
-            Text  item=XGW2_XA_THP_6_Temperature label="6:" 
-    }
+
 
         Frame label="ВЪНШНА ТЕМПЕРАТУРА:" icon="groundfloor" {
             Text  item=XGW2_XA_THP_1_Temperature label="БЕНКОВСКИ" 
             Text  item=Aeotec61_2_Temperature label="БИГЛА" 
     }
+    
+        // Frame label="ОСВЕТЛЕНИЕ КЪЩА:" icon="light" {    
+        //     Switch item=Gr_ALL_LIGHTS icon="light"
+        //     Group item=Gr_ALL_LIGHTS
+        // }
+
         Frame label="ОСВЕТЛЕНИЕ:" icon="light" {    
-            Switch item=gAllLights icon="light"
+            Switch item=gAllLights icon="light"  label="АПАРТАМЕНТ"
             Group item=gAllLights
+            Switch item=Gr_ALL_LIGHTS icon="light" label="КЪЩА"
+            Group item=Gr_ALL_LIGHTS
         }
 
         Frame label="РОЗЕТКИ, КОНТАКТИ И РАЗКЛОНИТЕЛИ:" icon="groundfloor" {    
-            Switch item=gAllPower icon="poweroutlet"
+            Switch item=gAllPower icon="poweroutlet"  label="АПАРТАМЕНТ"
             Group item=gAllPower
+            Switch item=Gr_ALL_POWER icon="poweroutlet" label="КЪЩА"
+            Group item=Gr_ALL_POWER
         }
 
         Frame label="ДАТЧИЦИ ВРАТИ И ПРОЗОРЦИ:" icon="groundfloor" {    
@@ -165,8 +188,8 @@ sitemap default label="Апартамента на Деси и Стефан" {
 
             Group item=Gr_GF_KN_Top_Light  label="Кухня осветление над шкафа"
             Group item=Gr_GF_KN_Sink_Light  label="Кухня осветление на плота"
-            Group item=GF_Sonoff_S26_3  label="Свободен outlet S26"
-            Group item=GF_Sonoff_S20_1  label="Свободен outlet S20"
+            // Group item=GF_Sonoff_S26_3  label="Свободен outlet S26" // преместен на къщата
+            // Group item=GF_Sonoff_S20_1  label="Свободен outlet S20" // преместен на къщата
             Group item=Gr_GF_SBdrm_Top_Light  label="Спалня на Стефан: Осветление таван"
 
         }
@@ -182,7 +205,7 @@ sitemap default label="Апартамента на Деси и Стефан" {
                     Setpoint item=Thermostat1_Set_Temp minValue=5 maxValue=35 step=0.5
                     Text item=Thermostat1_Weekly_Mod_Set_Temp
                     Text item=Thermostat1_LockUnlock
-                    // Setpoint item=Thermostat1_set_temp minValue=5 maxValue=35 step=0.1
+                    // Setpoint item=Thermostat1_set_temp minValue=5 maxValue=35 step=0.1  // стъпката е 0.5 !!! не става с 0.1...
                 }
             }
         }         
