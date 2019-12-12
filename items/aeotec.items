@@ -11,7 +11,7 @@ Number  Aeotec61_1_Bat_Level     "Aeotec6in1 sensor 1 - Battery_Level [%d %%]" <
 
 
 
-// //   Aeotec 6 in 1 PIR sensor 2
+// //   Aeotec 6 in 1 PIR sensor 2 outside
 Group Gr_Aeotec_6in1_2
 Number  Aeotec61_2_Temperature   "Aeotec6in1 sensor 2 - Temperature [%.1f °C]" <temperature> (Gr_Aeotec_6in1_2,Gr_Temperature_measurments) { channel="zwave:device:24ba193b:node12:sensor_temperature" }
 Number  Aeotec61_2_Luninance     "Aeotec6in1 sensor 2 - Luminance [%s]"        <sunrise>     (Gr_Aeotec_6in1_2) { channel="zwave:device:24ba193b:node12:sensor_luminance" }

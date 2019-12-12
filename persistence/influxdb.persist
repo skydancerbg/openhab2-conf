@@ -10,10 +10,11 @@ default = everyChange
 }
 
 Items {
-gAllBatteryLevel* : strategy = everyChange, restoreOnStartup
-Gr_Temperature_measurments* : strategy = everyChange, every1Minutes
+gAllBatteryLevel* , gAllPower*: strategy = everyChange, restoreOnStartup
+Gr_Temperature_measurments*, Gr_ALL_POWER* : strategy = everyChange, every1Minutes
 StefanBedNightLight_Rule_Switch, Corridor_NightLight_Rule_Switch : strategy = everyChange, restoreOnStartup
-
+// // Gr_ALL_POWER* : everyChange, restoreOnStartup 
+// gAllPower* : everyChange, restoreOnStartup
 }
 
 ////////////////EXAMPLE/////////////////////////////////////////

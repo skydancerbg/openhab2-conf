@@ -34,16 +34,17 @@ Group:Switch:OR(ON, OFF)    gAllLowBattery  "Батерии за подмяна 
 Group:Switch:OR(ON, OFF)    gAllBatteryLevel   "НИВО БАТЕРИИ  [БРОЙ УСТРОЙСТВА ДОКЛАДВАЩИ НИВО: %d]"
 
 
-Group Gr_GF             "Ground Floor"  <groundfloor>   ["GroundFloor"]
-Group Garden            "Garden"        <garden>        ["Garden"]
-Group Presence          "Presence"     <presence>     ["Presence"]
-Group HeatingCooling    "Heating and Cooling"     <presence>     ["HeatingCooling"]
+// Group Gr_GF             "Ground Floor"  <groundfloor>   ["GroundFloor"]
+// Group Garden            "Garden"        <garden>        ["Garden"]
+// Group Presence          "Presence"     <presence>     ["Presence"]
+// Group HeatingCooling    "Heating and Cooling"     <presence>     ["HeatingCooling"]
 
 // // // // TEMPERATURES
 Group Gr_Temperature_measurments
 Group:Number:AVG Gr_S_Bdrm_Temperature "Stefan's Temperatures [%.1f °C]"
 
-Group:Number:AVG Gr_House_Inside_Temperature "Къща средна температура: [%.1f °C]"
+Group:Number:AVG Gr_House_Inside_Temperature "Средна температура къща: [%.1f °C]"
+Group:Number:AVG Gr_House_Outside_Temperature "Средна външна температура къща: [%.1f °C]"
 
 Group gStefansBedroomNightLightControll
 Group gCorridorNightLightControll

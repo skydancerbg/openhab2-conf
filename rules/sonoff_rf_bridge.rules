@@ -8,7 +8,7 @@
 // String GF_Sonoff_RF_Received_RfKey
 // https://community.openhab.org/t/openhab-2-4-tasmota-mqtt-json-on-rf-bridge-and-pir-motion-sensor/74248/13
 
-rule "Sonof RF PIR 1 Sensor Processing"
+rule "Sonof RF codes processing"
 when
     Item GF_Sonoff_RF_Received_Data received update // Need received update if Data has not change but button still pressed
 then

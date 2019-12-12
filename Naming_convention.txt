@@ -3,6 +3,7 @@ Room_Device_Function
 
 Именуване на Items:
     GF_KN_AQ_Kitchen_Counter_Motion_Lux
+    GF_TE_XA_THP_Outside_Temperature
 
 1. Първи две букви - Местоположение в къщата/двора:
 
@@ -27,6 +28,8 @@ WG - зимна градина
 RF - (Roof) покрив от вън
 SR - (Storage room)   склад
 CR - (Cellar) Мазе
+TE - Terrace - Тераса
+BN - Balcony - Балкон
 
 ****-**** BEDROOMS:
 BR - (Bedroom) - Спалня 

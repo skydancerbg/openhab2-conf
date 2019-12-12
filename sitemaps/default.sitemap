@@ -10,35 +10,61 @@ sitemap default label="Апартамента на Деси и Стефан" {
             Group item=GF_Sonoff_TH16_6
             Group item=GF_Sonoff_S26_3
             Group item=GF_Sonoff_S20_1
+            Group item=GF_OF_sonoff_pow_2
+            Group item=GF_OF_sonoff_pow_3
+            Group item=Gr_GF_TE_XA_THP_1_Outside
+
             Text label="RF PIR СЕНЗОРИ КЪЩА:" icon="groundfloor" {
                 Frame label="RF PIR СЕНЗОРИ КЪЩА:" icon="groundfloor" {
-                        Text  item=Sonoff_RF_PIR_1 label="PRI 1:" 
-                        Text  item=Sonoff_RF_PIR_2 label="PRI 2:" 
-                        Text  item=Sonoff_RF_PIR_3 label="PRI 3:" 
-                        Text  item=Sonoff_RF_PIR_4 label="PRI 4:" 
-                        Text  item=Sonoff_RF_PIR_5 label="PRI 5:" 
+                        Text  item=Sonoff_RF_PIR_1 label="КЪЩА: PIR 1:" 
+                        Text  item=Sonoff_RF_PIR_2 label="КЪЩА: PIR 2:" 
+                        Text  item=Sonoff_RF_PIR_3 label="КЪЩА: PIR 3:" 
+                        Text  item=Sonoff_RF_PIR_4 label="КЪЩА: PIR 4:" 
+                        Text  item=Sonoff_RF_PIR_5 label="КЪЩА: PIR 5:" 
                 }
             }
             Text label="ТЕМПЕРАТУРИ КЪЩА:" icon="temperature" {
                 Frame label="ТЕМПЕРАТУРИ КЪЩА:" icon="groundfloor" {
-                        Text  item=GF_Sonoff_TH16_1_Temperature label="TH16_1:" 
-                        Text  item=GF_Sonoff_TH16_2_Temperature label="TH16_2:" 
-                        Text  item=XGW2_XA_THP_1_Temperature label="1:" 
-                        Text  item=XGW2_XA_THP_2_Temperature label="2:" 
-                        Text  item=XGW2_XA_THP_3_Temperature label="3:" 
-                        Text  item=XGW2_XA_THP_4_Temperature label="4:" 
-                        Text  item=XGW2_XA_THP_5_Temperature label="5:" 
-                        Text  item=XGW2_XA_THP_6_Temperature label="6:" 
+                        Text  item=GF_Sonoff_TH16_1_Temperature //label="КЪЩА: ЕТАЖ 1 TH16_1:" 
+                        Text  item=GF_Sonoff_TH16_2_Temperature //label="КЪЩА: ЕТАЖ 2 TH16_2:" 
+                        Text  item=GF_Sonoff_TH16_3_Temperature //label="КЪЩА: РАБОТИЛНИЦА TH16_3:" 
+                        Text  item=GF_Sonoff_TH16_4_Temperature //label="КЪЩА: TH16_4:" 
+                        Text  item=GF_Sonoff_TH16_5_Temperature //label="КЪЩА: TH16_5:" 
+                        Text  item=GF_Sonoff_TH16_6_Temperature //label="КЪЩА: TH16_6:"
+                        Text  item=GF_TE_XA_THP_1_Outside_Temperature 
+                        Text  item=XGW2_XA_THP_1_Temperature label="КЪЩА: AQARA THP_1:" 
+                        Text  item=XGW2_XA_THP_2_Temperature label="КЪЩА: AQARA THP_2:" 
+                        Text  item=XGW2_XA_THP_3_Temperature label="КЪЩА: AQARA THP_3:" 
+                        Text  item=XGW2_XA_THP_4_Temperature label="КЪЩА: AQARA THP_4:" 
+                        Text  item=XGW2_XA_THP_5_Temperature label="КЪЩА: AQARA THP_5:" 
+                        Text  item=XGW2_XA_THP_6_Temperature label="КЪЩА: AQARA THP_6:" 
                 }
             }            
+        }
+
+        Frame label="Температури къща:" icon="temperature" {
+                Group item=Gr_House_Inside_Temperature label="Средно измерена температура: [%.1f °C]" icon="temperature"
+            
+                Text label="Графика на измерените температури" icon="temperature" {
+                        Frame label="Температура в къщата:" 
+                            {
+                            // Chart [item=<itemname>] [icon="<iconname>"] [label="<labelname>"] [refresh=xxxx] [period=xxxx] [service="<service>"] [begin=yyyyMMddHHmm] [end=yyyyMMddHHmm] [legend=true/false]
+                            // period is the scale of the time axis. Valid values are h, 4h, 8h, 12h, D, 2D, 3D, W, 2W, M, 2M, 4M or Y
+                            // refresh defines the refresh period of the Image (in milliseconds).
+
+                                Chart item=Gr_House_Inside_Temperature refresh=6000 period=12h
+                                // Chart item=Gr_Temperature_measurments refresh=300 period=12h
+                                // Chart item=Aeotec61_1_Temperature refresh=300 period=h
+
+                            }
+                }
         }
 
 
 
 
-
         Frame label="ВЪНШНА ТЕМПЕРАТУРА:" icon="groundfloor" {
-            Text  item=XGW2_XA_THP_1_Temperature label="БЕНКОВСКИ" 
+            Text  item=GF_TE_XA_THP_1_Outside_Temperature label="БЕНКОВСКИ" 
             Text  item=Aeotec61_2_Temperature label="БИГЛА" 
     }
     

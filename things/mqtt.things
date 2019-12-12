@@ -92,17 +92,50 @@ Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secu
     
     // // RECUPERATOR on sonoff_pow_1 
     // https://community.openhab.org/t/solved-sonoff-pow-openhab2-integration/77122/8 
+
+    // {"Time":"2019-12-07T09:33:13","ENERGY":{"TotalStartTime":"2019-10-22T06:11:52","Total":12.739,"Yesterday":0.275,"Today":0.510,"Period":0,"Power":14,"ApparentPower":23,"ReactivePower":19,"Factor":0.58,"Voltage":229,"Current":0.103}}
     
     Thing topic recuperator "Recuperator" @ "Living Room" {
     Channels:
-        Type string : reachable "Reachable"              [ stateTopic="tele/sonoff_pow_1/LWT" ]
-        Type switch : power     "Power"                  [ stateTopic="stat/sonoff_pow_1/POWER", commandTopic="cmnd/sonoff_pow_1/POWER" ]
-        Type number : powerload "Power load"             [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
-        Type number : voltage   "Line voltage"           [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
-        Type number : current   "Line current"           [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
-        Type number : total     "Total energy today"     [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
-        Type number : totalyest "Total energy yesterday" [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
-        Type number : rssi      "WiFi Signal Strength"   [ stateTopic="tele/sonoff_pow_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+        Type string : reachable         "Reachable"                 [ stateTopic="tele/sonoff_pow_1/LWT" ]
+        Type switch : power             "Power"                     [ stateTopic="stat/sonoff_pow_1/POWER", commandTopic="cmnd/sonoff_pow_1/POWER" ]
+        Type number : powerload         "Power load"                [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+        Type number : voltage           "Line voltage"              [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
+        Type number : current           "Line current"              [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
+        Type number : totaltoday        "Total energy today"        [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+        Type number : totalyest         "Total energy yesterday"    [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+        //add more data from JSON
+        Type number : rssi              "WiFi Signal Strength"      [ stateTopic="tele/sonoff_pow_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    } 
+
+    Thing topic sonoff_pow_2 "House office POW 2" @ "Living Room" {
+    Channels:
+        Type string : reachable         "Reachable"                 [ stateTopic="tele/sonoff_pow_2/LWT" ]
+        Type switch : power             "Power"                     [ stateTopic="stat/sonoff_pow_2/POWER", commandTopic="cmnd/sonoff_pow_2/POWER" ]
+        Type number : powerload         "Power load"                [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+        Type number : voltage           "Line voltage"              [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
+        Type number : current           "Line current"              [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
+        Type number : totaltoday        "Total energy today"        [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+        Type number : totalyest         "Total energy yesterday"    [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+        Type number : totalstarttime    "Total energy start time"   [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.TotalStartTime"]
+        Type number : total             "Total energy from start"   [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
+        //add more data from JSON
+        Type number : rssi              "WiFi Signal Strength"      [ stateTopic="tele/sonoff_pow_2/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    } 
+
+    Thing topic sonoff_pow_3 "House office POW 3" @ "Living Room" {
+    Channels:
+        Type string : reachable         "Reachable"                 [ stateTopic="tele/sonoff_pow_3/LWT" ]
+        Type switch : power             "Power"                     [ stateTopic="stat/sonoff_pow_3/POWER", commandTopic="cmnd/sonoff_pow_3/POWER" ]
+        Type number : powerload         "Power load"                [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+        Type number : voltage           "Line voltage"              [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
+        Type number : current           "Line current"              [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
+        Type number : totaltoday        "Total energy today"        [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+        Type number : totalyest         "Total energy yesterday"    [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+        Type number : totalstarttime    "Total energy start time"   [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.TotalStartTime"]
+        Type number : total             "Total energy from start"   [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
+        //add more data from JSON
+        Type number : rssi              "WiFi Signal Strength"      [ stateTopic="tele/sonoff_pow_3/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
     } 
 
 

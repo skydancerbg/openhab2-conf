@@ -1,0 +1,11 @@
+
+// // TELEGESYS Zigbee device: outside temperature on the Ground floor terrace
+
+Group Gr_GF_TE_XA_THP_1_Outside "TE_XA_THP_1: КЪЩА ВЪНШНА ТЕМПЕРАТУРА"
+Number:Temperature      GF_TE_XA_THP_1_Outside_Temperature    <temperature>  (Gr_GF_TE_XA_THP_1_Outside,Gr_Temperature_measurments,Gr_House_Outside_Temperature)    { channel="zigbee:device:04000EBD:00158d00036bd3f5:00158D00036BD3F5_1_temperature" }
+Number:Dimensionless    GF_TE_XA_THP_1_Outside_Humidity       <humidity>     (Gr_GF_TE_XA_THP_1_Outside)                                                            { channel="zigbee:device:04000EBD:00158d00036bd3f5:00158D00036BD3F5_1_humidity" }
+Number:Pressure         GF_TE_XA_THP_1_Outside_Pressure       <pressure>     (Gr_GF_TE_XA_THP_1_Outside)                                                            { channel="zigbee:device:04000EBD:00158d00036bd3f5:00158D00036BD3F5_1_pressure" }
+Number                  GF_TE_XA_THP_1_Outside_Battery        <battery>      (Gr_GF_TE_XA_THP_1_Outside)                                                            { channel="zigbee:device:04000EBD:00158d00036bd3f5:00158D00036BD3F5_1_batteryLevel" }
+// // no channels on Telegesys Zigbee dongel for: 
+// Number                  GF_TE_XA_THP_Outside_Battery_1        <battery>      (gMIGW_XA_THP_sensor_1, gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d00036b1dc4:batteryLevel" }
+// Switch                  GF_TE_XA_THP_Outside_BatteryLow_1     <energy>       (gMIGW_XA_THP_sensor_1, gAllLowBattery) { channel="mihome:sensor_weather_v1:158d00036b1dc4:lowBattery" }
