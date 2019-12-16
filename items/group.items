@@ -51,6 +51,18 @@ Group gCorridorNightLightControll
 Group gKitchenNightLightControll
 Group gKitchenConterLightControll
 
+// // // // // // // / // // / / / / / / / / / / / / // / 
+// // // / 
+// // // // // ОТОПЛЕНИЕ
+// // // // // // // 
+
+Group Gr_GF_OF // Home Office
+Group:Number:AVG GF_OF_Temperature "Average Temperature [%.1f C]" <temperature> (Group_Room_Temperature)
+
+Group Group_Heating
+Group Group_SetPoint
+Group Group_SetPoint_Command
+Group Group_Room_Temperature
 
 
 

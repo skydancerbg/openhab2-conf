@@ -1,9 +1,9 @@
 
-// RF PIR 1 CODE: D3C22E
-// RF PIR 2 CODE: D511CE
-// RF PIR 3 CODE: D5053E
-// RF PIR 4 CODE: D48C4E
-// RF PIR 5 CODE: D3426E
+// RF PIR 1 CODE: D3C22E    ОФИС
+// RF PIR 2 CODE: D511CE    РАБОТИЛНИЦА
+// RF PIR 3 CODE: D5053E    ХОЛ
+// RF PIR 4 CODE: D48C4E    ГАРАЖ
+// RF PIR 5 CODE: D3426E    КОРИДОР ЕТ. 1
 
 // String GF_Sonoff_RF_Received_RfKey
 // https://community.openhab.org/t/openhab-2-4-tasmota-mqtt-json-on-rf-bridge-and-pir-motion-sensor/74248/13
@@ -100,8 +100,125 @@ then
         {
             Gr_ALL_LIGHTS.sendCommand(OFF)
             logInfo("benkovski BUTON 3", "prati - Gr_ALL_LIGHTS OFF")
+        
+
+    // // Benkovski RF 1 gang switch BATHROOM КЛЮЧ ТОАЛЕТНА
+   
+    } else if (GF_Sonoff_RF_Received_Data.state == "079EA2")
+        {
+            logInfo("BATHROOM", "poluchi koda")
+            if (GF_TR_Sonoff_4CH_1_Power2.state == OFF)  
+                                    { 
+                                        GF_TR_Sonoff_4CH_1_Power2.sendCommand(ON)
+                                        logInfo("BATHROOM", "dade on - ON")
+                                    }
+    
+            else if ( GF_TR_Sonoff_4CH_1_Power2.state == ON) 
+                                    {
+                                        GF_TR_Sonoff_4CH_1_Power2.sendCommand(OFF)
+                                      
+                                    logInfo("BATHROOM", "prati - OFF")
+                                    }
+
+
+        
+// // // // // // // // // // // // // // // // // // // // // // /
+    // // Benkovski RF Дистанционно 1 (сребристо)
+
+// Keychain remote 1
+//A // 04FBA1
+//B // 04FBA2
+//C // 04FBA4
+//D // 04FBA8    
+    // // A включва осветление работилница
+    } else if (GF_Sonoff_RF_Received_Data.state == "04FBA1")
+        {
+            if (GF_TR_Sonoff_4CH_1_Power3.state == OFF)  
+                                    { 
+                                        GF_TR_Sonoff_4CH_1_Power3.sendCommand(ON)
+                                    }
+    
+            else if ( GF_TR_Sonoff_4CH_1_Power3.state == ON) 
+                                    {
+                                        GF_TR_Sonoff_4CH_1_Power3.sendCommand(OFF)
+                                    }
+    // // B включва осветление офис 
+
+    } else if (GF_Sonoff_RF_Received_Data.state == "04FBA2")
+        {
+            if (GF_TR_Sonoff_4CH_1_Power1.state == OFF)  
+                                    { 
+                                        GF_TR_Sonoff_4CH_1_Power1.sendCommand(ON)
+                                    }
+    
+            else if ( GF_TR_Sonoff_4CH_1_Power1.state == ON) 
+                                    {
+                                        GF_TR_Sonoff_4CH_1_Power1.sendCommand(OFF)
+                                    }
+
+    // // C включва осветление гараж 
+
+    } else if (GF_Sonoff_RF_Received_Data.state == "04FBA4")
+        {
+            if (GF_Sonoff_TH16_4_Power.state == OFF)  
+                                    { 
+                                        GF_Sonoff_TH16_4_Power.sendCommand(ON)
+                                    }
+    
+            else if ( GF_Sonoff_TH16_4_Power.state == ON) 
+                                    {
+                                        GF_Sonoff_TH16_4_Power.sendCommand(OFF)
+                                    }
+        
+
+    // // D извключва цялото осветление 
+    // // BENKOVSKI ALL LIGHTS OFF
+    } else if (GF_Sonoff_RF_Received_Data.state == "04FBA8")
+        {
+            Gr_ALL_LIGHTS.sendCommand(OFF)
+            logInfo("benkovski BUTON 3", "prati - Gr_ALL_LIGHTS OFF")
+        
+
+
         }
     
 
 
 end
+
+// Keychain remote 1
+// 04FBA1
+// 04FBA2
+// 04FBA4
+// 04FBA8
+
+// Keychain remote 2 /blue
+// 214AC4
+// 214AC8
+// 214AC1
+// 214AC2
+
+// 8 channel RF remote 1
+// 627E68
+// 627E64
+// 627E62
+// 627E61
+
+// 627E6C
+// 627E69
+// 627E65
+// 627E63
+
+// 8 channel RF remote 2
+// 93A2A8
+// 93A2A4
+// 93A2A2
+// 93A2A1
+
+// 93A2AC
+// 93A2A9
+// B3A2A5
+// 93A2A3
+
+
+

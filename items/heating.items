@@ -1,0 +1,11 @@
+
+
+
+// Number Livingroom_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_Livingroom)
+// Number GuestBedroom_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_GuestBedroom)
+// Number MasterBedroom_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_MasterBedroom)
+// Number Bathroom_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_Bathroom)
+Switch Heating_ON_OFF 
+
+Number GF_OF_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_Home_Office)
+Switch GF_OF_Heating 

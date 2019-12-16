@@ -1,0 +1,63 @@
+
+
+
+rule "Update Heating"
+
+when
+	Member of Group_SetPoint_Command changed or 
+	Member of Group_Room_Temperature changed
+then
+            logInfo("heating", "vleze")
+            logInfo("heating", GF_OF_Temperature.state.toString)
+            logInfo("heating", ((GF_OF_Temperature.state as Number)-1.0).toString)
+
+    if(((GF_OF_Temperature.state as Number)-1.0< (GF_OF_Heating_Setpoint.state as Number) ) && Heating_ON_OFF.state == ON) {
+        // logInfo("heating", GF_OF_sonoff_pow_2_Power.state.toString)
+		if(GF_OF_sonoff_pow_2_Power.state == OFF) {
+                    // logInfo("heating", "komanda on")
+
+            GF_OF_sonoff_pow_2_Power.sendCommand(ON)
+        }
+        if(GF_OF_sonoff_pow_3_Power.state == OFF) {
+                    // logInfo("heating", "komanda on")
+
+            GF_OF_sonoff_pow_3_Power.sendCommand(ON)
+        }
+	}else if ((GF_OF_Temperature.state as Number) > (GF_OF_Heating_Setpoint.state as Number)){
+ 		if(GF_OF_sonoff_pow_2_Power.state == ON) {
+                    // logInfo("heating", "komanda OFF")
+            GF_OF_sonoff_pow_2_Power.sendCommand(OFF)
+        }
+        if(GF_OF_sonoff_pow_3_Power.state == ON) {
+                    // logInfo("heating", "komanda OFF")
+            GF_OF_sonoff_pow_3_Power.sendCommand(OFF)
+        }
+
+       
+    }
+	// else {
+	// 	if(GF_OF_sonoff_pow_2_Power.state = ON) GF_OF_sonoff_pow_2_Power.sendCommand(OFF)
+	// }
+
+
+end
+
+
+rule "Heating ON/OFF set to OFF"
+
+when
+	Item Heating_ON_OFF received command OFF
+then
+    if( Heating_ON_OFF.state == OFF) {
+        logInfo("heating", "testtttttttttt")
+
+		if(GF_OF_sonoff_pow_2_Power.state == ON) {
+                     logInfo("heating", " POW2komanda OFF")
+            GF_OF_sonoff_pow_2_Power.sendCommand(OFF)
+        }
+        if(GF_OF_sonoff_pow_3_Power.state == ON) {
+                    logInfo("heating", "POW3 komanda OFF")
+            GF_OF_sonoff_pow_3_Power.sendCommand(OFF)
+        }
+    }
+end

@@ -1,6 +1,13 @@
     
 sitemap default label="Апартамента на Деси и Стефан" {
 
+    Frame label="ОТОПЛЕНИЕ ДОМАШЕН ОФИС" {
+    Switch item=Heating_ON_OFF label="Виртуален термостат (ВКЛ./ИЗКЛ.)"
+	Setpoint item=GF_OF_Heating_Setpoint label="Желана температура [%.1f °C]" icon="temperature" minValue=1 maxValue=30 step=0.5
+	Text item=GF_OF_Temperature label="Измерена температура [%.1f °C]" icon="temperature"
+	Switch item=GF_OF_Heating  label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="temperature" 
+}
+ 
         Frame label="BENKOVSKI DEVICES:" icon="light" {    
             Group item=GF_Sonoff_TH16_1
             Group item=GF_Sonoff_TH16_2
@@ -13,6 +20,9 @@ sitemap default label="Апартамента на Деси и Стефан" {
             Group item=GF_OF_sonoff_pow_2
             Group item=GF_OF_sonoff_pow_3
             Group item=Gr_GF_TE_XA_THP_1_Outside
+            Group item=Gr_GF_TE_XA_THP_2_Office
+            Group item=GF_TR_Sonoff_4CH_1
+            Group item=Gr_GF_LR_TE_Sonoff_ZB_1
 
             Text label="RF PIR СЕНЗОРИ КЪЩА:" icon="groundfloor" {
                 Frame label="RF PIR СЕНЗОРИ КЪЩА:" icon="groundfloor" {
@@ -31,7 +41,8 @@ sitemap default label="Апартамента на Деси и Стефан" {
                         Text  item=GF_Sonoff_TH16_4_Temperature //label="КЪЩА: TH16_4:" 
                         Text  item=GF_Sonoff_TH16_5_Temperature //label="КЪЩА: TH16_5:" 
                         Text  item=GF_Sonoff_TH16_6_Temperature //label="КЪЩА: TH16_6:"
-                        Text  item=GF_TE_XA_THP_1_Outside_Temperature 
+                        Text  item=GF_TE_XA_THP_1_Outside_Temperature
+                        Group item= GF_TE_XA_THP_2_Office_Temperature label="TE_ZB_КЪЩА: Температура Офис:"
                         Text  item=XGW2_XA_THP_1_Temperature label="КЪЩА: AQARA THP_1:" 
                         Text  item=XGW2_XA_THP_2_Temperature label="КЪЩА: AQARA THP_2:" 
                         Text  item=XGW2_XA_THP_3_Temperature label="КЪЩА: AQARA THP_3:" 

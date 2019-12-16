@@ -5,7 +5,17 @@ Group Gr_GF_TE_XA_THP_1_Outside "TE_XA_THP_1: КЪЩА ВЪНШНА ТЕМПЕР
 Number:Temperature      GF_TE_XA_THP_1_Outside_Temperature    <temperature>  (Gr_GF_TE_XA_THP_1_Outside,Gr_Temperature_measurments,Gr_House_Outside_Temperature)    { channel="zigbee:device:04000EBD:00158d00036bd3f5:00158D00036BD3F5_1_temperature" }
 Number:Dimensionless    GF_TE_XA_THP_1_Outside_Humidity       <humidity>     (Gr_GF_TE_XA_THP_1_Outside)                                                            { channel="zigbee:device:04000EBD:00158d00036bd3f5:00158D00036BD3F5_1_humidity" }
 Number:Pressure         GF_TE_XA_THP_1_Outside_Pressure       <pressure>     (Gr_GF_TE_XA_THP_1_Outside)                                                            { channel="zigbee:device:04000EBD:00158d00036bd3f5:00158D00036BD3F5_1_pressure" }
-Number                  GF_TE_XA_THP_1_Outside_Battery        <battery>      (Gr_GF_TE_XA_THP_1_Outside)                                                            { channel="zigbee:device:04000EBD:00158d00036bd3f5:00158D00036BD3F5_1_batteryLevel" }
+// Number                  GF_TE_XA_THP_1_Outside_Battery        <battery>      (Gr_GF_TE_XA_THP_1_Outside)                                                            { channel="zigbee:device:04000EBD:00158d00036bd3f5:00158D00036BD3F5_1_batteryLevel" }
 // // no channels on Telegesys Zigbee dongel for: 
 // Number                  GF_TE_XA_THP_Outside_Battery_1        <battery>      (gMIGW_XA_THP_sensor_1, gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d00036b1dc4:batteryLevel" }
 // Switch                  GF_TE_XA_THP_Outside_BatteryLow_1     <energy>       (gMIGW_XA_THP_sensor_1, gAllLowBattery) { channel="mihome:sensor_weather_v1:158d00036b1dc4:lowBattery" }
+
+
+Group Gr_GF_TE_XA_THP_2_Office "TE_XA_THP_2: КЪЩА ТЕМПЕРАТУРА ОФИС"
+Number:Temperature      GF_TE_XA_THP_2_Office_Temperature    <temperature>  (Gr_GF_TE_XA_THP_2_Office,Gr_Temperature_measurments)   { channel="zigbee:device:04000EBD:00158d0004460675:00158D0004460675_1_temperature" }
+Number:Dimensionless    GF_TE_XA_THP_2_Office_Humidity       <humidity>     (Gr_GF_TE_XA_THP_2_Office)                              { channel="zigbee:device:04000EBD:00158d0004460675:00158D0004460675_1_humidity" }
+Number:Pressure         GF_TE_XA_THP_2_Office_Pressure       <pressure>     (Gr_GF_TE_XA_THP_2_Office)                              { channel="zigbee:device:04000EBD:00158d0004460675:00158D0004460675_1_pressure" }
+
+Group Gr_GF_LR_TE_Sonoff_ZB_1 "TE_Sonoff_ZB_1: КЪЩА ОСВЕТЛЕНИЕ ХОЛ"
+Switch GF_LR_TE_Sonoff_ZB_1_Power  "КЪЩА ОСВЕТЛЕНИЕ ХОЛ"          <switch>    (Gr_GF_LR_TE_Sonoff_ZB_1, Gr_ALL_LIGHTS) ["Lighting"]  { channel="zigbee:device:04000EBD:00124b001f668bc2:00124B001F668BC2_1_switch" }       
+
