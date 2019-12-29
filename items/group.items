@@ -64,8 +64,14 @@ Group Group_SetPoint
 Group Group_SetPoint_Command
 Group Group_Room_Temperature
 
+// // // // // STEFANS BEDROOM HEATING // // // // // // // // 
+Group Gr_AT_BR // Bedroom - Stefan's
+Group:Number:AVG Gr_AT_BR_Temperature "Average Temperature [%.1f C]" <temperature> (Group_Room_Temperature)
 
-
+Group Group_AT_Heating // APARTMENT HEATING GROUP
+Group Group_AT_BR_SetPoint
+Group Group_AT_BR_SetPoint_Command
+Group Group_AT_BR_Room_Temperature
 
 
 

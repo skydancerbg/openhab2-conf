@@ -1,4 +1,3 @@
-    
 sitemap default label="Апартамента на Деси и Стефан" {
 
     Frame label="ОТОПЛЕНИЕ ДОМАШЕН ОФИС" {
@@ -6,6 +5,16 @@ sitemap default label="Апартамента на Деси и Стефан" {
 	Setpoint item=GF_OF_Heating_Setpoint label="Желана температура [%.1f °C]" icon="temperature" minValue=1 maxValue=30 step=0.5
 	Text item=GF_OF_Temperature label="Измерена температура [%.1f °C]" icon="temperature"
 	Switch item=GF_OF_Heating  label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="temperature" 
+}
+    Frame label="ОТОПЛЕНИЕ СТАЯ СТЕФАН " {
+    Switch item=Heating_AT_ON_OFF label="Виртуален термостат (ВКЛ./ИЗКЛ.)"
+	Setpoint item=AT_BR_Heating_Setpoint label="Желана температура [%.1f °C]" icon="temperature" minValue=10 maxValue=30 step=0.5
+	Text item=Gr_AT_BR_Temperature label="Измерена температура [%.1f °C]" icon="temperature"
+	Switch item=AT_BR_Heating  label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="temperature" 
+    Text  item=GF_Sonoff_TH16_2_Temperature label="TH16_2:"
+    Text item=MIGW_XA_THP_Temperature_1    label="Aqara THP:"
+
+
 }
  
         Frame label="BENKOVSKI DEVICES:" icon="light" {    
@@ -75,7 +84,8 @@ sitemap default label="Апартамента на Деси и Стефан" {
 
 
         Frame label="ВЪНШНА ТЕМПЕРАТУРА:" icon="groundfloor" {
-            Text  item=GF_TE_XA_THP_1_Outside_Temperature label="БЕНКОВСКИ" 
+            // Text  item=GF_TE_XA_THP_1_Outside_Temperature label="БЕНКОВСКИ" 
+            Text  item=GF_Sonoff_TH16_4_Temperature label="БЕНКОВСКИ" 
             Text  item=Aeotec61_2_Temperature label="БИГЛА" 
     }
     
@@ -695,4 +705,3 @@ sitemap default label="Апартамента на Деси и Стефан" {
 //            Text item=Presence_StefanTablet 
 //        }
 // }
-

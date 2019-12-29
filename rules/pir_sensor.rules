@@ -1,0 +1,41 @@
+
+
+var Timer garrage_occupancyTimer = null
+var timeoutMinutes = 1
+
+rule "GarageMotionDetector1 received ON"
+when
+    Item GF_GR_MotionDetector1 received update ON
+then
+    if ( GF_Sonoff_TH16_4_Power.state == OFF )
+    {
+        GF_Sonoff_TH16_4_Power.sendCommand(ON)
+    }
+    
+    if(garrage_occupancyTimer === null || garrage_occupancyTimer.hasTerminated()) 
+    {
+        garrage_occupancyTimer = createTimer(now.plusMinutes(timeoutMinutes), [
+            GF_Sonoff_TH16_4_Power.sendCommand(OFF)
+            GF_GR_MotionDetector1.sendCommand(OFF)
+            garrage_occupancyTimer = null
+        ])
+    }
+    else {
+        garrage_occupancyTimer.reschedule(now.plusMinutes(timeoutMinutes ))
+    }
+end
+
+// rule "GarageMotionDetector1 received ON"
+// when
+//     Item GF_GR_MotionDetector1 received update ON
+// then
+//     if(garrage_occupancyTimer === null || garrage_occupancyTimer.hasTerminated()) {
+//         garrage_occupancyTimer = createTimer(now.plusMinutes(5), [
+//             GF_GR_MotionDetector1.sendCommand(OFF)
+//             garrage_occupancyTimer = null
+//         ])
+//     }
+//     else {
+//         garrage_occupancyTimer.reschedule(now.plusMinutes(timeoutMinutes ))
+//     }
+// end

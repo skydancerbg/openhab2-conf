@@ -1,0 +1,15 @@
+rule "Grafana - TH16_2 value 1 to the dummy item when power is set to ON"
+
+when
+	Item GF_Sonoff_TH16_2_Power received command ON
+then
+            GF_Sonoff_TH16_2_Grafana_0_1_Power.sendCommand(1)
+end
+
+rule "Grafana - TH16_2 value 0 to the dummy item when power is set to OFF"
+
+when
+	Item GF_Sonoff_TH16_2_Power received command OFF
+then
+            GF_Sonoff_TH16_2_Grafana_0_1_Power.sendCommand(0)
+end

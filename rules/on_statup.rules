@@ -1,0 +1,13 @@
+
+rule "Init virtual Items" when System started then logInfo("home.rules","System started")
+
+if (Group_SetPoint_Command.state == NULL) {
+      // if not yet initialized or restored
+   Group_SetPoint_Command.postUpdate(1.0)   // send a default value
+}
+end
+
+// if (myItem.state == NULL) {
+//       // if not yet initialized or restored
+//    myItem.postUpdate(xxx)   // send a default value
+// }

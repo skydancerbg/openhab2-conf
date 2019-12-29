@@ -104,6 +104,7 @@ Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secu
         Type number : current           "Line current"              [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
         Type number : totaltoday        "Total energy today"        [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
         Type number : totalyest         "Total energy yesterday"    [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+        Type number : total             "Total energy from start"   [ stateTopic="tele/sonoff_pow_1/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
         //add more data from JSON
         Type number : rssi              "WiFi Signal Strength"      [ stateTopic="tele/sonoff_pow_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
     } 
@@ -117,7 +118,7 @@ Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secu
         Type number : current           "Line current"              [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
         Type number : totaltoday        "Total energy today"        [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
         Type number : totalyest         "Total energy yesterday"    [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
-        Type number : totalstarttime    "Total energy start time"   [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.TotalStartTime"]
+        // Type number : totalstarttime    "Total energy start time"   [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.TotalStartTime"]
         Type number : total             "Total energy from start"   [ stateTopic="tele/sonoff_pow_2/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
         //add more data from JSON
         Type number : rssi              "WiFi Signal Strength"      [ stateTopic="tele/sonoff_pow_2/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
@@ -132,7 +133,7 @@ Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secu
         Type number : current           "Line current"              [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
         Type number : totaltoday        "Total energy today"        [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
         Type number : totalyest         "Total energy yesterday"    [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
-        Type number : totalstarttime    "Total energy start time"   [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.TotalStartTime"]
+        // Type number : totalstarttime    "Total energy start time"   [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.TotalStartTime"]
         Type number : total             "Total energy from start"   [ stateTopic="tele/sonoff_pow_3/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
         //add more data from JSON
         Type number : rssi              "WiFi Signal Strength"      [ stateTopic="tele/sonoff_pow_3/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
@@ -238,6 +239,16 @@ Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secu
         Type switch : power3     "Power3"                [ stateTopic="stat/sonoff_4ch_1/POWER3", commandTopic="cmnd/sonoff_4ch_1/POWER3" ]
         Type switch : power4     "Power4"                [ stateTopic="stat/sonoff_4ch_1/POWER4", commandTopic="cmnd/sonoff_4ch_1/POWER4" ]        
         Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/sonoff_4ch_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+    Thing topic sonoff_4ch_2 "Sonoff 4CH 2" @ "House" {
+    Channels:
+        Type string : reachable "Reachable"             [ stateTopic="tele/sonoff_4ch_2/LWT" ]
+        Type switch : power1     "Power1"               [ stateTopic="stat/sonoff_4ch_2/POWER1", commandTopic="cmnd/sonoff_4ch_2/POWER1" ]
+        Type switch : power2     "Power2"               [ stateTopic="stat/sonoff_4ch_2/POWER2", commandTopic="cmnd/sonoff_4ch_2/POWER2" ]        
+        Type switch : power3     "Power3"               [ stateTopic="stat/sonoff_4ch_2/POWER3", commandTopic="cmnd/sonoff_4ch_2/POWER3" ]
+        Type switch : power4     "Power4"               [ stateTopic="stat/sonoff_4ch_2/POWER4", commandTopic="cmnd/sonoff_4ch_2/POWER4" ]        
+        Type number : rssi      "WiFi Signal Strength"  [ stateTopic="tele/sonoff_4ch_2/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
     }
 
 }

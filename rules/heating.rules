@@ -1,30 +1,39 @@
 
 
-
+// HOME OFFICE HEATING RELATED:
 rule "Update Heating"
 
 when
-	Member of Group_SetPoint_Command changed or 
-	Member of Group_Room_Temperature changed
+	Item GF_OF_Heating_Setpoint received update or 
+	Item GF_Sonoff_TH16_6_Temperature received update or 
+    Item Heating_ON_OFF changed
 then
-            logInfo("heating", "vleze")
-            logInfo("heating", GF_OF_Temperature.state.toString)
-            logInfo("heating", ((GF_OF_Temperature.state as Number)-1.0).toString)
+            
+            // logInfo("heating_current_temp", GF_Sonoff_TH16_6_Temperature.state.toString)
+            // logInfo("heating_temp_minus_1", ((GF_OF_Heating_Setpoint.state as Number)-1.0).toString)
+            // logInfo("heating_setpoint_temp", GF_OF_Heating_Setpoint.state.toString)
 
-    if(((GF_OF_Temperature.state as Number)-1.0< (GF_OF_Heating_Setpoint.state as Number) ) && Heating_ON_OFF.state == ON) {
-        // logInfo("heating", GF_OF_sonoff_pow_2_Power.state.toString)
+
+    if(((GF_Sonoff_TH16_6_Temperature.state as Number)< (GF_OF_Heating_Setpoint.state as Number)-1.0 ) && Heating_ON_OFF.state == ON) {
+        logInfo("heating", GF_OF_sonoff_pow_2_Power.state.toString)
+        logInfo("heating", GF_OF_sonoff_pow_3_Power.state.toString)
 		if(GF_OF_sonoff_pow_2_Power.state == OFF) {
-                    // logInfo("heating", "komanda on")
+                     logInfo("heating", "komanda pow2 on")
 
             GF_OF_sonoff_pow_2_Power.sendCommand(ON)
+            GF_OF_Heating.sendCommand(ON)
         }
         if(GF_OF_sonoff_pow_3_Power.state == OFF) {
-                    // logInfo("heating", "komanda on")
-
+                    logInfo("heating", "komanda pow3 on")
+            Thread::sleep(2000) // Пусни втория калорифер след 2 секунди
             GF_OF_sonoff_pow_3_Power.sendCommand(ON)
+            GF_OF_Heating.sendCommand(ON)
         }
-	}else if ((GF_OF_Temperature.state as Number) > (GF_OF_Heating_Setpoint.state as Number)){
- 		if(GF_OF_sonoff_pow_2_Power.state == ON) {
+	}else if (((GF_Sonoff_TH16_6_Temperature.state as Number) >= (GF_OF_Heating_Setpoint.state as Number)) || Heating_ON_OFF.state == OFF)
+    {
+        logInfo("heating_temp_greater_than_set_point", "temperaturata e po-goliama")
+		
+         if(GF_OF_sonoff_pow_2_Power.state == ON) {
                     // logInfo("heating", "komanda OFF")
             GF_OF_sonoff_pow_2_Power.sendCommand(OFF)
         }
@@ -32,8 +41,11 @@ then
                     // logInfo("heating", "komanda OFF")
             GF_OF_sonoff_pow_3_Power.sendCommand(OFF)
         }
-
-       
+        if(GF_OF_sonoff_pow_2_Power.state == OFF && GF_OF_sonoff_pow_3_Power.state == OFF) {
+                    // logInfo("heating", "komanda OFF")
+            GF_OF_Heating.sendCommand(OFF)
+        }
+      
     }
 	// else {
 	// 	if(GF_OF_sonoff_pow_2_Power.state = ON) GF_OF_sonoff_pow_2_Power.sendCommand(OFF)

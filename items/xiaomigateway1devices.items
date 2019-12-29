@@ -111,7 +111,7 @@ Switch Xiaomi_Switch_2_BatteryLow <energy> (gXiGW_mia_wireless_switch_2, gAllLow
 
 // // STEFANS BEDROM TEMPERATURE
 Group gMIGW_XA_THP_sensor_1
-Number:Temperature      MIGW_XA_THP_Temperature_1    <temperature>  (gMIGW_XA_THP_sensor_1,Gr_Temperature_measurments,Gr_S_Bdrm_Temperature) { channel="mihome:sensor_weather_v1:158d00036b1dc4:temperature" }
+Number:Temperature      MIGW_XA_THP_Temperature_1    <temperature>  (gMIGW_XA_THP_sensor_1,Gr_Temperature_measurments,Gr_AT_BR_Temperature,Gr_S_Bdrm_Temperature) { channel="mihome:sensor_weather_v1:158d00036b1dc4:temperature" }
 Number:Dimensionless    MIGW_XA_THP_Humidity_1       <humidity>     (gMIGW_XA_THP_sensor_1) { channel="mihome:sensor_weather_v1:158d00036b1dc4:humidity" }
 Number:Pressure         MIGW_XA_THP_Pressure_1       <pressure>     (gMIGW_XA_THP_sensor_1) { channel="mihome:sensor_weather_v1:158d00036b1dc4:pressure" }
 Number                  MIGW_XA_THP_Battery_1        <battery>      (gMIGW_XA_THP_sensor_1, gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d00036b1dc4:batteryLevel" }

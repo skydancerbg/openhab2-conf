@@ -13,7 +13,7 @@ Switch StefanBedNightLight_Var_
 
 Switch Corridor_NightLight_Rule_Switch "Corridor's Night light Rule Switch" (gCorridorNightLightControll)
 
-
+Switch GF_GR_MotionDetector1
 
 
 

@@ -5,7 +5,35 @@
 // Number GuestBedroom_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_GuestBedroom)
 // Number MasterBedroom_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_MasterBedroom)
 // Number Bathroom_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_Bathroom)
-Switch Heating_ON_OFF 
+
+
+// // // HOUSE // // Heating_ON_OFF// //
+
+Switch Heating_ON_OFF (Gr_ALL_POWER)
+
+// // // HOUSE HOME OFFICE // // // //
+
 
 Number GF_OF_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_Home_Office)
 Switch GF_OF_Heating 
+
+// Switch Heating_ON_OFF (Gr_ALL_POWER)
+
+// Number GF_OF_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_Home_Office)
+// Switch GF_OF_Heating 
+
+
+// // // APARTMENT // // // // 
+
+Switch Heating_AT_ON_OFF  //(gAllPower)
+
+// // // APARTMENT STEFANS BEDROOM // // // // 
+
+
+Number AT_BR_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_AT_BR)
+Switch AT_BR_Heating 
+// // !!!!!!!!!!!
+// Make switch with 1 and 0 states in order to chart the switch in Grafana
+Switch GF_Sonoff_TH16_2_Grafana_0_1_Power  (GF_Sonoff_TH16_2, Gr_ALL_POWER)      
+
+

@@ -9,7 +9,6 @@ Room_Device_Function
 
 AТ - (Apartment) Апартамент
 GF - (Ground floor/First floor) - Партер (ет.1)
-GЕ - (Garage) - Гараж
 F2 - (Second floor) - Втори етаж (ет.2)
 F3 - (Third floor/Top floor) - Трети етаж (ет.3)
 GN - (Garden) - Градина
@@ -47,6 +46,8 @@ TO - (Toilet) toaletna
 TR - (Technical room)
 HR - (Heating technical room)
 WS - (Workshop) Работилница
+GR - (Garage) - Гараж
+
 
     коридор към гаража
     работилница
@@ -67,6 +68,7 @@ WS - (Workshop) Работилница
     MB - Modbus
     LN - LAN
     MT - MQTT ???
+    VI - Virtual placeholder item
 
 5. Вид устройство
 
