@@ -27,10 +27,10 @@ Number GF_Sonoff_Dual_RSSI      "WiFi Signal Strength [%d %%]"  <network>       
 // // * Sonoff TH16 * //
 
 // // TH16 with DS18B20 sensor
-Group  GF_Sonoff_TH16_1             "TH16_1: КЪЩА ЕТАЖ 1"                   <group>            (Sonoff_TH16_1)
+Group  GF_Sonoff_TH16_1             "TH16_1: Радиатор Апартамент ХОЛ"                   <group>            (Sonoff_TH16_1)
 String GF_Sonoff_TH16_1_Reachable   "TH16_1 Reachable: [%s]"                <presence>      (GF_Sonoff_TH16_1)                                  { channel="mqtt:topic:MyMQTTthing:sonoff_th16_1:reachable" }
 Switch GF_Sonoff_TH16_1_Power       "TH16_1 Power"                          <switch>        (GF_Sonoff_TH16_1, Gr_ALL_POWER) ["Switchable"]        { channel="mqtt:topic:MyMQTTthing:sonoff_th16_1:power" }       
-Number GF_Sonoff_TH16_1_Temperature "TH16_1: КЪЩА ЕТАЖ 1 [%.1f °C]"         <temperature>   (GF_Sonoff_TH16_1, Gr_Temperature_measurments, Gr_House_Inside_Temperature)      { channel="mqtt:topic:MyMQTTthing:sonoff_th16_1:temperature" }
+Number GF_Sonoff_TH16_1_Temperature "TH16_1: Радиатор Апартамент ХОЛ [%.1f °C]"         <temperature>   (GF_Sonoff_TH16_1, Gr_Temperature_measurments, Gr_House_Inside_Temperature)      { channel="mqtt:topic:MyMQTTthing:sonoff_th16_1:temperature" }
 // Number GF_Sonoff_TH16_1_Temperature "TH16_1 Temperature [%.1f °C]"          <temperature>   (GF_Sonoff_TH16_1, Gr_Temperature_measurments)      { channel="mqtt:topic:MyMQTTthing:sonoff_th16_1:temperature" }
 Number GF_Sonoff_TH16_1_RSSI        "TH16_1 WiFi Signal Strength [%d %%]"   <network>       (GF_Sonoff_TH16_1)                                  { channel="mqtt:topic:MyMQTTthing:sonoff_th16_1:rssi" }
 

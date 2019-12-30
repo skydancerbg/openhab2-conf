@@ -31,9 +31,19 @@ Switch Heating_AT_ON_OFF  //(gAllPower)
 
 
 Number AT_BR_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_AT_BR)
-Switch AT_BR_Heating 
+Switch AT_BR_Heating_Status
+Switch AT_BR_Heating_Enable
+
 // // !!!!!!!!!!!
 // Make switch with 1 and 0 states in order to chart the switch in Grafana
-Switch GF_Sonoff_TH16_2_Grafana_0_1_Power  (GF_Sonoff_TH16_2, Gr_ALL_POWER)      
+Switch GF_Sonoff_TH16_2_Grafana_0_1_Power  (GF_Sonoff_TH16_2, Gr_ALL_POWER)      // ???? Dont need this - REMOVE
+
+
+// // // APARTMENT KITCEHN DINING // // // // 
+
+
+Number AT_KN_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_AT_KN)
+Switch AT_KN_Heating_Status
+Switch AT_KN_Heating_Enable
 
 

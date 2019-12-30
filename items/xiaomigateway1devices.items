@@ -125,6 +125,22 @@ Number:Pressure         MIGW_XA_THP_Pressure_2       <pressure>     (gMIGW_XA_TH
 Number                  MIGW_XA_THP_Battery_2        <battery>      (gMIGW_XA_THP_sensor_2,gAllBatteryLevel) { channel="mihome:sensor_weather_v1:158d000322f4f5:batteryLevel" }
 Switch                  MIGW_XA_THP_BatteryLow_2     <energy>       (gMIGW_XA_THP_sensor_2, gAllLowBattery) { channel="mihome:sensor_weather_v1:158d000322f4f5:lowBattery" }
 
+// // KITCHEN TEMPERATURE 1
+Group gMIGW_XA_THP_sensor_3
+Number:Temperature      MIGW_XA_THP_Temperature_3    <temperature>  (gMIGW_XA_THP_sensor_3, Gr_Temperature_measurments, Gr_AT_KN_Temperature)   { channel="mihome:sensor_weather_v1:158d0004466114:temperature" }
+Number:Dimensionless    MIGW_XA_THP_Humidity_3       <humidity>     (gMIGW_XA_THP_sensor_3)                                                     { channel="mihome:sensor_weather_v1:158d0004466114:humidity" }
+Number:Pressure         MIGW_XA_THP_Pressure_3       <pressure>     (gMIGW_XA_THP_sensor_3)                                                     { channel="mihome:sensor_weather_v1:158d0004466114:pressure" }
+Number                  MIGW_XA_THP_Battery_3        <battery>      (gMIGW_XA_THP_sensor_3, gAllBatteryLevel)                                   { channel="mihome:sensor_weather_v1:158d0004466114:batteryLevel" }
+Switch                  MIGW_XA_THP_BatteryLow_3     <energy>       (gMIGW_XA_THP_sensor_3, gAllLowBattery)                                     { channel="mihome:sensor_weather_v1:158d0004466114:lowBattery" }
+
+// // KITCHEN TEMPERATURE 2
+Group gMIGW_XA_THP_sensor_4
+Number:Temperature      MIGW_XA_THP_Temperature_4    <temperature>  (gMIGW_XA_THP_sensor_4, Gr_Temperature_measurments, Gr_AT_KN_Temperature)   { channel="mihome:sensor_weather_v1:158d00044bb16c:temperature" }
+Number:Dimensionless    MIGW_XA_THP_Humidity_4       <humidity>     (gMIGW_XA_THP_sensor_4)                                                     { channel="mihome:sensor_weather_v1:158d00044bb16c:humidity" }
+Number:Pressure         MIGW_XA_THP_Pressure_4       <pressure>     (gMIGW_XA_THP_sensor_4)                                                     { channel="mihome:sensor_weather_v1:158d00044bb16c:pressure" }
+Number                  MIGW_XA_THP_Battery_4        <battery>      (gMIGW_XA_THP_sensor_4, gAllBatteryLevel)                                   { channel="mihome:sensor_weather_v1:158d00044bb16c:batteryLevel" }
+Switch                  MIGW_XA_THP_BatteryLow_4     <energy>       (gMIGW_XA_THP_sensor_4, gAllLowBattery)                                     { channel="mihome:sensor_weather_v1:158d00044bb16c:lowBattery" }
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // //                           AQARA WATER LEAK SENSOR

@@ -10,9 +10,24 @@ sitemap default label="Апартамента на Деси и Стефан" {
     Switch item=Heating_AT_ON_OFF label="Виртуален термостат (ВКЛ./ИЗКЛ.)"
 	Setpoint item=AT_BR_Heating_Setpoint label="Желана температура [%.1f °C]" icon="temperature" minValue=10 maxValue=30 step=0.5
 	Text item=Gr_AT_BR_Temperature label="Измерена температура [%.1f °C]" icon="temperature"
-	Switch item=AT_BR_Heating  label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="temperature" 
+	// Switch item=AT_BR_Heating  label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="temperature" 
+    Switch item=AT_BR_Heating_Status label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="temperature" 
+    Switch item=AT_BR_Heating_Enable label="AT_BR_Heating_Enable"  
     Text  item=GF_Sonoff_TH16_2_Temperature label="TH16_2:"
     Text item=MIGW_XA_THP_Temperature_1    label="Aqara THP:"
+
+
+}
+    Frame label="ОТОПЛЕНИЕ ДНЕВНА/КУХНЯ " {
+    Switch item=Heating_AT_ON_OFF label="АПАРТАМЕНТ: Виртуален КОНТРОЛЕР термостати (ВКЛ./ИЗКЛ.)"
+    Switch item=AT_KN_Heating_Enable label="РАЗРЕШАВАНЕ ОТОПЛЕНИЕ НА ВСЕКИДНЕВНАТА"  
+	Setpoint item=AT_KN_Heating_Setpoint label="Желана температура [%.1f °C]" icon="temperature" minValue=10 maxValue=30 step=0.5
+	Text item=Gr_AT_KN_Temperature label="СРЕДНО Измерена температура [%.1f °C]" icon="temperature"
+	// Switch item=AT_BR_Heating  label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="temperature" 
+    Text item=MIGW_XA_THP_Temperature_3    label="Aqara THP: БЮРО"
+    Text item=MIGW_XA_THP_Temperature_4    label="Aqara THP: МАСА"
+    Switch item=AT_KN_Heating_Status label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" 
+    Text  item=GF_Sonoff_TH16_1_Temperature label="TH16_1 ТЕМПЕРАТУРА РАДИАТОР:"
 
 
 }

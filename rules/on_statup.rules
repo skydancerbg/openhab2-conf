@@ -1,10 +1,22 @@
 
-rule "Init virtual Items" when System started then logInfo("home.rules","System started")
-
-if (Group_SetPoint_Command.state == NULL) {
+rule "Init virtual Items" 
+when System started 
+then logInfo("home.rules","System started")
+   AT_BR_Heating_Enable.sendCommand(ON)
+   AT_KN_Heating_Enable.sendCommand(ON)
+   if (Group_SetPoint_Command.state == NULL) {
       // if not yet initialized or restored
-   Group_SetPoint_Command.postUpdate(1.0)   // send a default value
-}
+         Group_SetPoint_Command.postUpdate(1.0)   // send a default value
+   }
+   if (AT_BR_Heating_Setpoint.state == NULL) {
+      // if not yet initialized or restored
+         AT_KN_Heating_Setpoint.postUpdate(1.0)   // send a default value
+   }
+   if (AT_KN_Heating_Setpoint.state == NULL) {
+      // if not yet initialized or restored
+         AT_KN_Heating_Setpoint.postUpdate(1.0)   // send a default value
+   }
+
 end
 
 // if (myItem.state == NULL) {

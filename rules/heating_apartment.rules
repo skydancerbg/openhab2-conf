@@ -1,10 +1,12 @@
-// HOME OFFICE HEATING RELATED:
+// STEFANS BEDROOM HEATING RELATED:
 rule "Update Heating STEFANS BEDROOM"
 
 when
 	Item AT_BR_Heating_Setpoint received update or 
 	Item GF_Sonoff_TH16_2_Temperature received update or 
-    Item Heating_AT_ON_OFF changed
+    Item Heating_AT_ON_OFF changed or
+    Item AT_BR_Heating_Enable  changed
+
 then
             
             // logInfo("heating_current_temp", GF_Sonoff_TH16_6_Temperature.state.toString)
@@ -12,23 +14,23 @@ then
             // logInfo("heating_setpoint_temp", GF_OF_Heating_Setpoint.state.toString)
 
 
-    if(((GF_Sonoff_TH16_2_Temperature.state as Number)< (AT_BR_Heating_Setpoint.state as Number)-0.5 ) && Heating_AT_ON_OFF.state == ON) {
+    if(((GF_Sonoff_TH16_2_Temperature.state as Number)< (AT_BR_Heating_Setpoint.state as Number)-0.5 ) && Heating_AT_ON_OFF.state == ON && AT_BR_Heating_Enable.state == ON) {
         // logInfo("heating", GF_OF_sonoff_pow_2_Power.state.toString)
         // logInfo("heating", GF_OF_sonoff_pow_3_Power.state.toString)
 		if(GF_Sonoff_TH16_2_Power.state == OFF) {
                     //  logInfo("heating", "komanda pow2 on")
 
             GF_Sonoff_TH16_2_Power.sendCommand(ON)
-            AT_BR_Heating.sendCommand(ON)
+            AT_BR_Heating_Status.sendCommand(ON)
         }
-	}else if (((GF_Sonoff_TH16_2_Temperature.state as Number) >= (AT_BR_Heating_Setpoint.state as Number)-0.1) || Heating_AT_ON_OFF.state == OFF)
+	}else if (((GF_Sonoff_TH16_2_Temperature.state as Number) >= (AT_BR_Heating_Setpoint.state as Number)-0.1) || Heating_AT_ON_OFF.state == OFF || AT_BR_Heating_Enable.state == OFF)
     {
         // logInfo("heating_temp_greater_than_set_point", "temperaturata e po-goliama")
 		
          if(GF_Sonoff_TH16_2_Power.state == ON) {
                     // logInfo("heating", "komanda OFF")
             GF_Sonoff_TH16_2_Power.sendCommand(OFF)
-            AT_BR_Heating.sendCommand(OFF)
+            AT_BR_Heating_Status.sendCommand(OFF)
         }
         // if(GF_Sonoff_TH16_2_Power.state == OFF) {
         //             // logInfo("heating", "komanda OFF")
@@ -54,6 +56,117 @@ then
 		if(GF_Sonoff_TH16_2_Power.state == ON) {
                     //  logInfo("heating", " POW2komanda OFF")
             GF_Sonoff_TH16_2_Power.sendCommand(OFF)
+            AT_BR_Heating_Status.sendCommand(OFF)
         }
     }
 end
+
+rule "heating off when window is open in Stefans bedroom"
+when
+  Item Neo_DW_4_C changed to OPEN or 
+  Item Neo_DW_7_C changed to OPEN
+then
+  sendNotification("sshivarov@yahoo.com", "Отворен е прозорец в спалнята на Стефан!")
+  AT_BR_Heating_Enable.sendCommand(OFF)
+end
+
+rule "heating back on when window is closwd in Stefans bedroom"
+when
+  Item Neo_DW_4_C changed to CLOSED or 
+  Item Neo_DW_7_C changed to CLOSED
+then
+    if( Neo_DW_4_C.state == CLOSED && Neo_DW_7_C.state == CLOSED ) {
+        AT_BR_Heating_Enable.sendCommand(ON)
+        sendNotification("sshivarov@yahoo.com", "Прозорците в спалнята на Стефан са затворени!")  
+    }
+end
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// KITCHEN/DINING HEATING RELATED:
+rule "Update Heating KITCHEN/DINING"
+
+when
+	Item AT_KN_Heating_Setpoint received update or 
+	Item Gr_AT_KN_Temperature received update or 
+    Item Heating_AT_ON_OFF changed or
+    Item AT_KN_Heating_Enable  changed
+
+then
+            
+            // logInfo("heating_current_temp", GF_Sonoff_TH16_6_Temperature.state.toString)
+            // logInfo("heating_temp_minus_1", ((GF_OF_Heating_Setpoint.state as Number)-1.0).toString)
+            // logInfo("heating_setpoint_temp", GF_OF_Heating_Setpoint.state.toString)
+
+
+    if(((Gr_AT_KN_Temperature.state as Number)< (AT_KN_Heating_Setpoint.state as Number)-0.5 ) && Heating_AT_ON_OFF.state == ON && AT_KN_Heating_Enable.state == ON) {
+        // logInfo("heating", GF_OF_sonoff_pow_2_Power.state.toString)
+        // logInfo("heating", GF_OF_sonoff_pow_3_Power.state.toString)
+		if(GF_Sonoff_TH16_1_Power.state == OFF) {
+                    //  logInfo("heating", "komanda pow2 on")
+
+            GF_Sonoff_TH16_1_Power.sendCommand(ON)
+            AT_KN_Heating_Status.sendCommand(ON)
+        }
+	// }else if (((GF_Sonoff_TH16_1_Temperature.state as Number) >= (AT_KN_Heating_Setpoint.state as Number)-0.1) || Heating_AT_ON_OFF.state == OFF || AT_KN_Heating_Enable.state == OFF)
+	}else if (((GF_Sonoff_TH16_1_Temperature.state as Number) >= (AT_KN_Heating_Setpoint.state as Number)) || Heating_AT_ON_OFF.state == OFF || AT_KN_Heating_Enable.state == OFF)
+    {
+        // logInfo("heating_temp_greater_than_set_point", "temperaturata e po-goliama")
+		
+         if(GF_Sonoff_TH16_1_Power.state == ON) {
+                    // logInfo("heating", "komanda OFF")
+            GF_Sonoff_TH16_1_Power.sendCommand(OFF)
+            AT_KN_Heating_Status.sendCommand(OFF)
+        }
+        // if(GF_Sonoff_TH16_2_Power.state == OFF) {
+        //             // logInfo("heating", "komanda OFF")
+        //     AT_BR_Heating.sendCommand(OFF)
+        // }
+      
+    }
+	// else {
+	// 	if(GF_OF_sonoff_pow_2_Power.state = ON) GF_OF_sonoff_pow_2_Power.sendCommand(OFF)
+	// }
+
+
+end
+
+rule "Heating ON/OFF KITCHEN/DINING set to OFF"
+
+when
+	Item Heating_AT_ON_OFF received command OFF or 
+	Item AT_KN_Heating_Enable received command OFF
+    
+then
+    if( Heating_AT_ON_OFF.state == OFF || AT_KN_Heating_Enable.state == OFF) {
+        // logInfo("heating", "testtttttttttt")
+
+		if(GF_Sonoff_TH16_1_Power.state == ON) {
+                    //  logInfo("heating", " POW2komanda OFF")
+            GF_Sonoff_TH16_1_Power.sendCommand(OFF)
+            AT_KN_Heating_Status.sendCommand(OFF)
+        }
+    }
+end
+
+// rule "heating off when window is open in KITCHEN/DINING"
+// when
+//   Item Neo_DW_4_C changed to OPEN or 
+//   Item Neo_DW_7_C changed to OPEN
+// then
+//   sendNotification("sshivarov@yahoo.com", "Отворен е прозорец в спалнята на Стефан!")
+//   AT_BR_Heating_Enable.sendCommand(OFF)
+// end
+
+// rule "heating back on when window is closwd in KITCHEN/DINING"
+// when
+//   Item Neo_DW_4_C changed to CLOSED or 
+//   Item Neo_DW_7_C changed to CLOSED
+// then
+//     if( Neo_DW_4_C.state == CLOSED && Neo_DW_7_C.state == CLOSED ) {
+//         AT_BR_Heating_Enable.sendCommand(ON)
+//         sendNotification("sshivarov@yahoo.com", "Прозорците в спалнята на Стефан са затворени!")  
+//     }
+// end
