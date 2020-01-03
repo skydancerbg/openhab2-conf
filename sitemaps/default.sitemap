@@ -1,5 +1,20 @@
 sitemap default label="Апартамента на Деси и Стефан" {
 
+    Frame label="SITEMAPS" {
+        Text item=admin_site 
+        // Text item=admin_site label="http://192.168.1.201:8080/basicui/app?sitemap=administration"
+}
+
+
+    Frame label="АЛАРМЕНА СИСТЕМА" {
+        Switch item=Pir_1_Motion
+        Switch item=Pir_2_Motion
+        Switch item=Pir_3_Motion
+        Switch item=Pir_4_Motion
+        Switch item=Pir_5_Motion
+        Group item=Gr_Sequrity_System_Motion icon="alarm"
+}
+
     Frame label="ОТОПЛЕНИЕ ДОМАШЕН ОФИС" {
     Switch item=Heating_ON_OFF label="Виртуален термостат (ВКЛ./ИЗКЛ.)"
 	Setpoint item=GF_OF_Heating_Setpoint label="Желана температура [%.1f °C]" icon="temperature" minValue=1 maxValue=30 step=0.5
@@ -28,6 +43,7 @@ sitemap default label="Апартамента на Деси и Стефан" {
     Text item=MIGW_XA_THP_Temperature_4    label="Aqara THP: МАСА"
     Switch item=AT_KN_Heating_Status label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" 
     Text  item=GF_Sonoff_TH16_1_Temperature label="TH16_1 ТЕМПЕРАТУРА РАДИАТОР:"
+    Switch item=GF_Sonoff_TH16_1_Power label="Вентилатори (ВКЛ./ИЗКЛ.)"
 
 
 }
@@ -123,7 +139,7 @@ sitemap default label="Апартамента на Деси и Стефан" {
             Group item=Gr_ALL_POWER
         }
 
-        Frame label="ДАТЧИЦИ ВРАТИ И ПРОЗОРЦИ:" icon="groundfloor" {    
+        Frame label="АПАРТАМЕНТ: ДАТЧИЦИ ВРАТИ И ПРОЗОРЦИ:" icon="groundfloor" {    
             Switch item=gAll_DW_Sensors icon="frontdoor"
             Group item=gAll_DW_Sensors // tuk ne stava s ikona????? icon ="frontdoor"
         }

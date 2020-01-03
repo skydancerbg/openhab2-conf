@@ -1,4 +1,9 @@
 
+
+//// SECURITY SYSTEM
+
+Group:Switch:OR(ON, OFF)    Gr_Sequrity_System_Motion   "Алармена система датчици [%d ЗАДЕЙСТВАНИ]"
+
 //// LIGHTNING
 
 Group:Switch:OR(ON, OFF)    gAllLights   "Осветление всички [%d ВКЛЮЧЕН(И)]"
@@ -78,13 +83,15 @@ Group Group_AT_BR_Room_Temperature
 Group Gr_AT_KN // Bedroom - Stefan's
 Group:Number:AVG Gr_AT_KN_Temperature "Kitchen Average Temperature [%.1f C]" <temperature> (Group_Room_Temperature)
 
-Group Group_AT_Heating // APARTMENT HEATING GROUP
 Group Group_AT_KN_SetPoint
 Group Group_AT_KN_SetPoint_Command
 Group Group_AT_KN_Room_Temperature
 
 
 
+
+// // LINKS TO SITEMAPS!!!!!!
+String admin_site  "http://192.168.1.201:8080/basicui/app?sitemap=administration"
 
 // // Template for devices ON/OFF counter group
 // Group:Switch:OR(ON, OFF)    x   "x[%d ON]"

@@ -1,0 +1,7 @@
+Switch Pir_1_Motion (Gr_Sequrity_System_Motion)
+Switch Pir_2_Motion (Gr_Sequrity_System_Motion)
+Switch Pir_3_Motion (Gr_Sequrity_System_Motion)
+Switch Pir_4_Motion 
+Switch Pir_5_Motion 
+// Switch Pir_4_Motion (Gr_Sequrity_System_Motion)
+// Switch Pir_5_Motion (Gr_Sequrity_System_Motion)

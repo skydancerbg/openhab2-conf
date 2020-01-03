@@ -90,34 +90,46 @@ rule "Update Heating KITCHEN/DINING"
 
 when
 	Item AT_KN_Heating_Setpoint received update or 
-	Item Gr_AT_KN_Temperature received update or 
+	Item MIGW_XA_THP_Temperature_3 received update or 
+	// Item Gr_AT_KN_Temperature received update or 
     Item Heating_AT_ON_OFF changed or
     Item AT_KN_Heating_Enable  changed
 
 then
             
-            // logInfo("heating_current_temp", GF_Sonoff_TH16_6_Temperature.state.toString)
+            logInfo("heating_kitchen", "zadeistwa se rula кухня!!!!!!!!!!!!!!!!!!!!!!!!!")
+            // logInfo("heating_kitchen_setpoint-05", (AT_KN_Heating_Setpoint.state as Number)-0.5)
+           // logInfo("heating_kitchen_current_avg_temp", (Gr_AT_KN_Temperature.state as Number).toString)
             // logInfo("heating_temp_minus_1", ((GF_OF_Heating_Setpoint.state as Number)-1.0).toString)
             // logInfo("heating_setpoint_temp", GF_OF_Heating_Setpoint.state.toString)
 
 
-    if(((Gr_AT_KN_Temperature.state as Number)< (AT_KN_Heating_Setpoint.state as Number)-0.5 ) && Heating_AT_ON_OFF.state == ON && AT_KN_Heating_Enable.state == ON) {
+    if(((MIGW_XA_THP_Temperature_3.state as Number)< (AT_KN_Heating_Setpoint.state as Number)-0.5 ) && Heating_AT_ON_OFF.state == ON && AT_KN_Heating_Enable.state == ON) {
+    // if(((Gr_AT_KN_Temperature.state as Number)< (AT_KN_Heating_Setpoint.state as Number)-0.5 ) && Heating_AT_ON_OFF.state == ON && AT_KN_Heating_Enable.state == ON) {
+        logInfo("heating_kitchen", "temp e po malka ot setpoint - 0.5")
         // logInfo("heating", GF_OF_sonoff_pow_2_Power.state.toString)
         // logInfo("heating", GF_OF_sonoff_pow_3_Power.state.toString)
-		if(GF_Sonoff_TH16_1_Power.state == OFF) {
+		if(GF_Sonoff_S20_2_Power.state == OFF) {
+		// if(GF_Sonoff_TH16_1_Power.state == OFF) {
                     //  logInfo("heating", "komanda pow2 on")
 
-            GF_Sonoff_TH16_1_Power.sendCommand(ON)
+            GF_Sonoff_S20_2_Power.sendCommand(ON)
+            // GF_Sonoff_TH16_1_Power.sendCommand(ON)
             AT_KN_Heating_Status.sendCommand(ON)
         }
-	// }else if (((GF_Sonoff_TH16_1_Temperature.state as Number) >= (AT_KN_Heating_Setpoint.state as Number)-0.1) || Heating_AT_ON_OFF.state == OFF || AT_KN_Heating_Enable.state == OFF)
-	}else if (((GF_Sonoff_TH16_1_Temperature.state as Number) >= (AT_KN_Heating_Setpoint.state as Number)) || Heating_AT_ON_OFF.state == OFF || AT_KN_Heating_Enable.state == OFF)
+	}else if (((MIGW_XA_THP_Temperature_3.state as Number) >= (AT_KN_Heating_Setpoint.state as Number)) || Heating_AT_ON_OFF.state == OFF || AT_KN_Heating_Enable.state == OFF)
+	// }else if (((Gr_AT_KN_Temperature.state as Number) >= (AT_KN_Heating_Setpoint.state as Number)) || Heating_AT_ON_OFF.state == OFF || AT_KN_Heating_Enable.state == OFF)
+	// }else if (((Gr_AT_KN_Temperature.state as Number) >= (AT_KN_Heating_Setpoint.state as Number)-0.1) || Heating_AT_ON_OFF.state == OFF || AT_KN_Heating_Enable.state == OFF)
+	// }else if (((MIGW_XA_THP_Temperature_3.state as Number) >= (AT_KN_Heating_Setpoint.state as Number)) || Heating_AT_ON_OFF.state == OFF || AT_KN_Heating_Enable.state == OFF)
     {
+        logInfo("heating_kitchen", "temp e po goliama ili rawna na setpoint")
         // logInfo("heating_temp_greater_than_set_point", "temperaturata e po-goliama")
 		
-         if(GF_Sonoff_TH16_1_Power.state == ON) {
+         if(GF_Sonoff_S20_2_Power.state == ON) {
+        //  if(GF_Sonoff_TH16_1_Power.state == ON) {
                     // logInfo("heating", "komanda OFF")
-            GF_Sonoff_TH16_1_Power.sendCommand(OFF)
+            GF_Sonoff_S20_2_Power.sendCommand(OFF)
+            // GF_Sonoff_TH16_1_Power.sendCommand(OFF)
             AT_KN_Heating_Status.sendCommand(OFF)
         }
         // if(GF_Sonoff_TH16_2_Power.state == OFF) {
@@ -136,18 +148,37 @@ end
 rule "Heating ON/OFF KITCHEN/DINING set to OFF"
 
 when
-	Item Heating_AT_ON_OFF received command OFF or 
+	Item GF_Sonoff_S20_2_Power received command OFF or 
 	Item AT_KN_Heating_Enable received command OFF
     
 then
     if( Heating_AT_ON_OFF.state == OFF || AT_KN_Heating_Enable.state == OFF) {
         // logInfo("heating", "testtttttttttt")
 
-		if(GF_Sonoff_TH16_1_Power.state == ON) {
+		if(GF_Sonoff_S20_2_Power.state == ON) {
+		// if(GF_Sonoff_TH16_1_Power.state == ON) {
                     //  logInfo("heating", " POW2komanda OFF")
-            GF_Sonoff_TH16_1_Power.sendCommand(OFF)
+            GF_Sonoff_S20_2_Power.sendCommand(OFF)
+            // GF_Sonoff_TH16_1_Power.sendCommand(OFF)
             AT_KN_Heating_Status.sendCommand(OFF)
         }
+    }
+end
+
+rule "FAN ON/OFF KITCHEN/DINING based on temperature"
+
+when
+    Item GF_Sonoff_TH16_1_Temperature received update    
+then
+    if( (GF_Sonoff_TH16_1_Temperature.state as Number) >= 26.0 ) {
+        // logInfo("heating", "testtttttttttt")
+
+		if(GF_Sonoff_TH16_1_Power.state == OFF) {
+                    //  logInfo("heating", " POW2komanda OFF")
+            GF_Sonoff_TH16_1_Power.sendCommand(ON)
+        }
+    }else{
+         GF_Sonoff_TH16_1_Power.sendCommand(OFF)
     }
 end
 

@@ -4,3 +4,11 @@ when
 then
   sendNotification("sshivarov@yahoo.com", "Проба, проба!")
 end
+
+rule "Security system Notification"
+when
+  Member of Gr_Sequrity_System_Motion received command ON
+then
+  sendNotification("sshivarov@yahoo.com", "Alarm, АЛАРМА! от "+ triggeringItem.name)
+end
+

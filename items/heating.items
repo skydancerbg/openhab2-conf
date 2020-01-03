@@ -36,7 +36,7 @@ Switch AT_BR_Heating_Enable
 
 // // !!!!!!!!!!!
 // Make switch with 1 and 0 states in order to chart the switch in Grafana
-Switch GF_Sonoff_TH16_2_Grafana_0_1_Power  (GF_Sonoff_TH16_2, Gr_ALL_POWER)      // ???? Dont need this - REMOVE
+// Switch GF_Sonoff_TH16_2_Grafana_0_1_Power  (GF_Sonoff_TH16_2, gAllPower)      // ???? Dont need this - REMOVE
 
 
 // // // APARTMENT KITCEHN DINING // // // // 

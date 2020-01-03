@@ -107,39 +107,59 @@ then
     if (rf_rcv_data.state == "D3C22E")
     {
         Sonoff_RF_PIR_1.postUpdate("DETECT")
+        Pir_1_Motion.sendCommand(ON)
+        logInfo("security_system", "PIR1 activated")
         Thread::sleep(5000)
         Sonoff_RF_PIR_1.postUpdate("")
+        Pir_1_Motion.sendCommand(OFF)
+        logInfo("security_system", "PIR1 off")
         // logInfo("PIR_", GF_Sonoff_RF_Received_Data.state.toString)
 
     } else if (rf_rcv_data.state == "D511CE")
   
     {
         Sonoff_RF_PIR_2.postUpdate("DETECT")
+        Pir_2_Motion.sendCommand(ON)
+        logInfo("security_system", "PIR2 activated")
         Thread::sleep(5000)
         Sonoff_RF_PIR_2.postUpdate("")
-
+        Pir_2_Motion.sendCommand(OFF)
+        logInfo("security_system", "PIR2 off")
 
     } else if (rf_rcv_data.state == "D5053E")
   
     {
         Sonoff_RF_PIR_3.postUpdate("DETECT")
+        Pir_3_Motion.sendCommand(ON)
+        logInfo("security_system", "PIR3 activated")
         Thread::sleep(5000)
         Sonoff_RF_PIR_3.postUpdate("")
+        Pir_3_Motion.sendCommand(OFF)
+        logInfo("security_system", "PIR3 off")
 
     } else if (rf_rcv_data.state == "D48C4E") //GARRAGE!!!!!!!
   
     {
         Sonoff_RF_PIR_4.postUpdate("DETECT")
         GF_GR_MotionDetector1.sendCommand (ON) // ZA LAMPATA
+        Pir_4_Motion.sendCommand(ON)
+        logInfo("security_system", "PIR4 activated garage")
         Thread::sleep(5000)
         Sonoff_RF_PIR_4.postUpdate("")
+        Pir_4_Motion.sendCommand(OFF)
+        logInfo("security_system", "PIR4 off garage")
 
     } else if (rf_rcv_data.state == "D3426E")
   
     {
         Sonoff_RF_PIR_5.postUpdate("DETECT")
+        Pir_5_Motion.sendCommand(ON)
+        logInfo("security_system", "PIR5 activated")
         Thread::sleep(5000)
         Sonoff_RF_PIR_5.postUpdate("")
+        Pir_5_Motion.sendCommand(OFF)
+        logInfo("security_system", "PIR5 off")
+
 
 // // // // // // // // // // // // // //
 // // // ИЗГАСИ ЦЯЛОТО ОСВЕТЛЕНИЕ  // // //
