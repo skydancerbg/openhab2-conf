@@ -251,6 +251,20 @@ Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secu
         Type number : rssi      "WiFi Signal Strength"  [ stateTopic="tele/sonoff_4ch_2/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
     }
 
+//    // TASMOTA NodeMCU DEVICES
+
+    Thing topic nmcu_security_info_1 "NodeMCU Security Info 1" @ "House" {
+    Channels:
+        Type string : reachable "Reachable"             [ stateTopic="tele/nmcu_security_info_1/LWT" ]
+        Type switch : power1     "Power1"               [ stateTopic="stat/nmcu_security_info_1/POWER1", commandTopic="cmnd/nmcu_security_info_1/POWER1" ]
+        Type switch : power2     "Power2"               [ stateTopic="stat/nmcu_security_info_1/POWER2", commandTopic="cmnd/nmcu_security_info_1/POWER2" ]        
+        Type switch : power3     "Power3"               [ stateTopic="stat/nmcu_security_info_1/POWER3", commandTopic="cmnd/nmcu_security_info_1/POWER3" ]
+        Type switch : power4     "Power4"               [ stateTopic="stat/nmcu_security_info_1/POWER4", commandTopic="cmnd/nmcu_security_info_1/POWER4" ]        
+        Type switch : power5     "Power5"               [ stateTopic="stat/nmcu_security_info_1/POWER5", commandTopic="cmnd/nmcu_security_info_1/POWER5" ]        
+        Type number : rssi      "WiFi Signal Strength"  [ stateTopic="tele/nmcu_security_info_1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+
 }
 
 

@@ -1,4 +1,6 @@
 
+// https://community.openhab.org/t/multi-state-switches/10939/6
+Number HeatingCoolingSwitch "СЪСТОЯНИЕ: [MAP(heatingcooling_states.map):%s]"
 
 
 // Number Livingroom_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_Livingroom)
@@ -10,6 +12,8 @@
 // // // HOUSE // // Heating_ON_OFF// //
 
 Switch Heating_ON_OFF (Gr_ALL_POWER)
+Switch Cooling_ON_OFF (Gr_ALL_POWER)
+Switch GF_OF_Heating_Enable
 
 // // // HOUSE HOME OFFICE // // // //
 
@@ -19,6 +23,7 @@ Switch GF_OF_Heating
 
 // Switch Heating_ON_OFF (Gr_ALL_POWER)
 
+
 // Number GF_OF_Heating_Setpoint (Group_SetPoint,Group_SetPoint_Command,Group_Home_Office)
 // Switch GF_OF_Heating 
 
@@ -26,6 +31,7 @@ Switch GF_OF_Heating
 // // // APARTMENT // // // // 
 
 Switch Heating_AT_ON_OFF  //(gAllPower)
+Switch Cooling_AT_ON_OFF  //(gAllPower)
 
 // // // APARTMENT STEFANS BEDROOM // // // // 
 

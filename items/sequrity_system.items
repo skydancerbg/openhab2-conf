@@ -1,0 +1,28 @@
+
+// // Group items:
+Group:Switch:OR(ON, OFF)    Gr_Sequrity_System_Motion   "Датчици за движение (Алармена система): [%d ЗАДЕЙСТВАНИ]"
+// https://community.openhab.org/t/multi-state-switches/10939/6
+
+
+Number Alarm_Arm_Disarm_Switch "СЪСТОЯНИЕ: [MAP(arm_disarm.map):%s]"
+Switch Alarm_Arm_Disarm
+//// SECURITY SYSTEM Group items:
+
+Switch Pir_1_Motion (Gr_Sequrity_System_Motion)
+Switch Pir_2_Motion (Gr_Sequrity_System_Motion)
+Switch Pir_3_Motion (Gr_Sequrity_System_Motion)
+Switch Pir_4_Motion 
+Switch Pir_5_Motion 
+// Switch Pir_4_Motion (Gr_Sequrity_System_Motion)
+// Switch Pir_5_Motion (Gr_Sequrity_System_Motion)
+
+// // * NodeMCU Alarm Status Display 1 * //
+
+Group  GF_WS_NU_WF_DIY_Alarm_Status_Display             "Диспей за състоянието (Алармена система):"      <alarm> 
+Switch GF_WS_NU_WF_DIY_Alarm_Status_Display_BlueLED1    "Син LED на NodeMCU"                <light>           (GF_WS_NU_WF_DIY_Alarm_Status_Display) { channel="mqtt:topic:MyMQTTthing:nmcu_security_info_1:power1" }       
+Switch GF_WS_NU_WF_DIY_Alarm_Status_Display_BlueLED2    "Син LED на 8266 Module"            <light>           (GF_WS_NU_WF_DIY_Alarm_Status_Display) { channel="mqtt:topic:MyMQTTthing:nmcu_security_info_1:power2" }       
+Switch GF_WS_NU_WF_DIY_Alarm_Status_Display_GreenLED    "Зелен LED"                         <light>           (GF_WS_NU_WF_DIY_Alarm_Status_Display) { channel="mqtt:topic:MyMQTTthing:nmcu_security_info_1:power3" }       
+Switch GF_WS_NU_WF_DIY_Alarm_Status_Display_RedLED      "Червен LED"                        <light>           (GF_WS_NU_WF_DIY_Alarm_Status_Display) { channel="mqtt:topic:MyMQTTthing:nmcu_security_info_1:power4" }       
+Switch GF_WS_NU_WF_DIY_Alarm_Status_Display_Buzzer      "Пиезо-говорител"                   <soundvolume>     (GF_WS_NU_WF_DIY_Alarm_Status_Display) { channel="mqtt:topic:MyMQTTthing:nmcu_security_info_1:power5" }       
+String GF_WS_NU_WF_DIY_Alarm_Status_Display_Reachable   "Модулът достъпен: [%s]"            <presence>        (GF_WS_NU_WF_DIY_Alarm_Status_Display) { channel="mqtt:topic:MyMQTTthing:nmcu_security_info_1:reachable" }
+Number GF_WS_NU_WF_DIY_Alarm_Status_Display_RSSI        "WiFi - Сила на сигнала [%d %%]"    <network>         (GF_WS_NU_WF_DIY_Alarm_Status_Display) { channel="mqtt:topic:MyMQTTthing:nmcu_security_info_1:rssi" }

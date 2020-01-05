@@ -1,8 +1,7 @@
 
 
 //// SECURITY SYSTEM
-
-Group:Switch:OR(ON, OFF)    Gr_Sequrity_System_Motion   "Алармена система датчици [%d ЗАДЕЙСТВАНИ]"
+// !!! All Group items for the security system are located in security_system.rules file
 
 //// LIGHTNING
 

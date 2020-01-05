@@ -61,12 +61,12 @@ Number GF_Sonoff_TH16_3_Humidity    "TH16_3 Humidity [%.1f %%]"             <hum
 Number GF_Sonoff_TH16_3_RSSI        "TH16_3 WiFi Signal Strength [%d %%]"   <network>     (GF_Sonoff_TH16_3)                                  { channel="mqtt:topic:MyMQTTthing:sonoff_th16_3:rssi" }
 
 // // TH16 with SI7021 sensor // v garaja!!!!
-Group  GF_Sonoff_TH16_4             "TH16_4: КЪЩА ВЪНШНА ТЕМПЕРАТУРА"                         <group>       (Sonoff_TH16_4)
-String GF_Sonoff_TH16_4_Reachable   "TH16_4 Reachable: [%s]"                <presence>    (GF_Sonoff_TH16_4)                                  { channel="mqtt:topic:MyMQTTthing:sonoff_th16_4:reachable" }
-Switch GF_Sonoff_TH16_4_Power       "TH16_4 Power"                          <switch>      (GF_Sonoff_TH16_4, Gr_ALL_LIGHTS) ["Switchable"]        { channel="mqtt:topic:MyMQTTthing:sonoff_th16_4:power" }       
-Number GF_Sonoff_TH16_4_Temperature "TH16_4 Temperature [%.1f °C]"          <temperature> (GF_Sonoff_TH16_4, Gr_Temperature_measurments)      { channel="mqtt:topic:MyMQTTthing:sonoff_th16_4:temperature" }
-Number GF_Sonoff_TH16_4_Humidity    "TH16_4 Humidity [%.1f %%]"             <humidity>    (GF_Sonoff_TH16_4)                                  { channel="mqtt:topic:MyMQTTthing:sonoff_th16_4:humidity" }
-Number GF_Sonoff_TH16_4_RSSI        "TH16_4 WiFi Signal Strength [%d %%]"   <network>     (GF_Sonoff_TH16_4)                                  { channel="mqtt:topic:MyMQTTthing:sonoff_th16_4:rssi" }
+Group  GF_Sonoff_TH16_4             "КЪЩА TH16_4"                         <group>       (Sonoff_TH16_4)
+Switch GF_Sonoff_TH16_4_Power       "LED ПРОЖЕКТОР ГАРАЖ (TH16_4)"              <light>       (GF_Sonoff_TH16_4, Gr_ALL_LIGHTS) ["Lighting"]      { channel="mqtt:topic:MyMQTTthing:sonoff_th16_4:power" }       
+Number GF_Sonoff_TH16_4_Temperature "ВЪНШНА ТЕМПЕРАТУРА (TH16_4) [%.1f °C]"     <temperature> (GF_Sonoff_TH16_4, Gr_Temperature_measurments)      { channel="mqtt:topic:MyMQTTthing:sonoff_th16_4:temperature" }
+Number GF_Sonoff_TH16_4_Humidity    "ВЛАЖНОСТ (TH16_4) [%.1f %%]"               <humidity>    (GF_Sonoff_TH16_4)                                  { channel="mqtt:topic:MyMQTTthing:sonoff_th16_4:humidity" }
+Number GF_Sonoff_TH16_4_RSSI        "WiFi СИЛА НА СИГНАЛА (TH16_4) [%d %%]"     <network>     (GF_Sonoff_TH16_4)                                  { channel="mqtt:topic:MyMQTTthing:sonoff_th16_4:rssi" }
+String GF_Sonoff_TH16_4_Reachable   "TH16_4 Reachable: [%s]"                    <presence>    (GF_Sonoff_TH16_4)                                  { channel="mqtt:topic:MyMQTTthing:sonoff_th16_4:reachable" }
 
 // // TH16 with DS18B20 sensor
 Group  GF_Sonoff_TH16_5             "КЪЩА: Sonoff TH16 5 коридор гараж"                         <group>       (Sonoff_TH16_5)

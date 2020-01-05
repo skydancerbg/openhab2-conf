@@ -1,5 +1,29 @@
 
-
+rule "Heating/cooling 3state switch"
+when
+    Item HeatingCoolingSwitch changed
+then
+    switch (HeatingCoolingSwitch.state as DecimalType) {
+        case 0 : {
+            Heating_AT_ON_OFF.sendCommand(OFF)
+            Heating_ON_OFF.sendCommand(OFF)
+            Cooling_AT_ON_OFF.sendCommand(OFF)
+            Cooling_ON_OFF.sendCommand(OFF)
+        }
+        case 1 : {
+            Heating_AT_ON_OFF.sendCommand(ON)
+            Heating_ON_OFF.sendCommand(ON)
+            Cooling_AT_ON_OFF.sendCommand(OFF)
+            Cooling_ON_OFF.sendCommand(OFF)
+        }
+        case 2 : {
+            Heating_AT_ON_OFF.sendCommand(OFF)
+            Heating_ON_OFF.sendCommand(OFF)
+            Cooling_AT_ON_OFF.sendCommand(ON)
+            Cooling_ON_OFF.sendCommand(ON)
+        }
+    }
+end
 // HOME OFFICE HEATING RELATED:
 rule "Update Heating"
 
@@ -7,6 +31,7 @@ when
 	Item GF_OF_Heating_Setpoint received update or 
 	Item GF_Sonoff_TH16_6_Temperature received update or 
     Item Heating_ON_OFF changed
+    Item GF_OF_Heating_Enable changed
 then
             
             // logInfo("heating_current_temp", GF_Sonoff_TH16_6_Temperature.state.toString)
@@ -14,7 +39,7 @@ then
             // logInfo("heating_setpoint_temp", GF_OF_Heating_Setpoint.state.toString)
 
 
-    if(((GF_Sonoff_TH16_6_Temperature.state as Number)< (GF_OF_Heating_Setpoint.state as Number)-1.0 ) && Heating_ON_OFF.state == ON) {
+    if(((GF_Sonoff_TH16_6_Temperature.state as Number)< (GF_OF_Heating_Setpoint.state as Number)-1.0 ) && Heating_ON_OFF.state == ON  && GF_OF_Heating_Enable.state == ON) {
         logInfo("heating", GF_OF_sonoff_pow_2_Power.state.toString)
         logInfo("heating", GF_OF_sonoff_pow_3_Power.state.toString)
 		if(GF_OF_sonoff_pow_2_Power.state == OFF) {
@@ -29,7 +54,7 @@ then
             GF_OF_sonoff_pow_3_Power.sendCommand(ON)
             GF_OF_Heating.sendCommand(ON)
         }
-	}else if (((GF_Sonoff_TH16_6_Temperature.state as Number) >= (GF_OF_Heating_Setpoint.state as Number)) || Heating_ON_OFF.state == OFF)
+	}else if (((GF_Sonoff_TH16_6_Temperature.state as Number) >= (GF_OF_Heating_Setpoint.state as Number)) || Heating_ON_OFF.state == OFF  || GF_OF_Heating_Enable.state == OFF)
     {
         logInfo("heating_temp_greater_than_set_point", "temperaturata e po-goliama")
 		

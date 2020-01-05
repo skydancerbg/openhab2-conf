@@ -170,7 +170,7 @@ rule "FAN ON/OFF KITCHEN/DINING based on temperature"
 when
     Item GF_Sonoff_TH16_1_Temperature received update    
 then
-    if( (GF_Sonoff_TH16_1_Temperature.state as Number) >= 26.0 ) {
+    if( (GF_Sonoff_TH16_1_Temperature.state as Number) >= 27.0 ) {
         // logInfo("heating", "testtttttttttt")
 
 		if(GF_Sonoff_TH16_1_Power.state == OFF) {

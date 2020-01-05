@@ -2,8 +2,9 @@
 Room_Device_Function
 
 Именуване на Items:
-    GF_KN_AQ_Kitchen_Counter_Motion_Lux
-    GF_TE_XA_THP_Outside_Temperature
+    GF_KN_XA_ZB_MN_Kitchen_Counter_Motion_Lux
+    GF_TE_XA_ZB_THP_Outside_Temperature
+    GF_WS_NU_WF_DIY_Alarm_Status_Display
 
 1. Първи две букви - Местоположение в къщата/двора:
 
@@ -72,8 +73,8 @@ GR - (Garage) - Гараж
 
 5. Вид устройство
 
-DW - (Door/Window sensor)
-MN - Motion sensor)
+DW - Door/Window sensor
+MN - Motion sensor
 TR - Temperature sensor
 TH - Temperature/Humidity
 THP - Temperature/Humidity/Pressure
@@ -81,7 +82,9 @@ THP - Temperature/Humidity/Pressure
 VV - Valve
 TH - Thermostat
 VT - Virtual Thermostat
-SW - Switch 
+SW - Switch
+DIY - Do It Youself device
+
 
 
  
@@ -94,4 +97,5 @@ SW - Switch
     AE - Aeon Labs
     DY - DIY WIFI
     DL - DIY LAN
-
+    NU - NodeMCU DIY device
+    AM - Adruino Mega DIY device

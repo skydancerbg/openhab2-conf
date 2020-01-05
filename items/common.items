@@ -1,0 +1,39 @@
+
+//https://community.openhab.org/t/solved-how-to-insert-an-empty-field-in-sitemap/48546/2
+String none "" <none>
+
+
+
+// for  “turn on a lamp when motion is detected but only after sunset until sunrise”
+// https://community.openhab.org/t/help-to-create-a-rule-turn-on-a-lamp-when-motion-is-detected-but-only-after-sunset-until-sunrise/43905
+
+
+
+Switch Is_Night_Sunset_to_Sunrise_Var_ (gCorridorNightLightControll, gStefansBedroomNightLightControll)
+
+
+Switch StefanBedNightLight_Rule_Switch "Stefan's Night light Rule Switch" (gStefansBedroomNightLightControll)
+Switch StefanBedNightLight_Var_
+
+
+Switch Corridor_NightLight_Rule_Switch "Corridor's Night light Rule Switch" (gCorridorNightLightControll)
+
+Switch GF_GR_MotionDetector1
+
+
+
+// // //
+Switch XiaomiGateway_Play_Sound_Dummy
+// // //
+Switch XiaomiGateway2_Play_Sound_Dummy
+
+// // /// 
+Switch Single_Click_Dummy  
+Switch Double_Click_Dummy 
+Switch Long_Press_Dummy  
+Switch Long_Press_End_Dummy 
+
+// Switch Xiaomi_Switch_Single_Click_Dummy "Single click" 
+// Switch Xiaomi_Switch_Double_Click_Dummy "Double click" 
+// Switch Xiaomi_Switch_Long_Press_Dummy "Long_Press Start" 
+// Switch Xiaomi_Switch_Long_Press_End_Dummy "Long_Press Release" 

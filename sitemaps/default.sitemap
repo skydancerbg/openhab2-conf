@@ -1,53 +1,91 @@
 sitemap default label="Апартамента на Деси и Стефан" {
 
-    Frame label="SITEMAPS" {
-        Text item=admin_site 
-        // Text item=admin_site label="http://192.168.1.201:8080/basicui/app?sitemap=administration"
-}
+    // Frame label="SITEMAPS" {
+    //     Text item=admin_site 
+    //     // Text item=admin_site label="http://192.168.1.201:8080/basicui/app?sitemap=administration"
+    // }
+
+    Frame label="ВЪНШНА ТЕМПЕРАТУРА:" icon="Temperature" {
+        // Text  item=GF_TE_XA_THP_1_Outside_Temperature label="БЕНКОВСКИ" 
+        Text  item=GF_Sonoff_TH16_4_Temperature label="КЪЩА" 
+        Text  item=Aeotec61_2_Temperature label="АПАРТАМЕНТ" 
+    }
+    
+
+    Frame label="ОСВЕТЛЕНИЕ:" icon="light" {    
+        Switch item=gAllLights icon="light"  label="АПАРТАМЕНТ"
+        Group item=gAllLights
+        Switch item=Gr_ALL_LIGHTS icon="light" label="КЪЩА"
+        Group item=Gr_ALL_LIGHTS
+    }
+
+        Frame label="РОЗЕТКИ, КОНТАКТИ И РАЗКЛОНИТЕЛИ:" icon="groundfloor" {    
+            Switch item=gAllPower icon="poweroutlet"  label="АПАРТАМЕНТ"
+            Group item=gAllPower
+            Switch item=Gr_ALL_POWER icon="poweroutlet" label="КЪЩА"
+            Group item=Gr_ALL_POWER
+        }
+
+        Frame label="АЛАРМЕНА СИСТЕМА:" icon="siren-off" {    
+            // Switch item=Alarm_Arm_Disarm_Switch mappings=[0="ИЗКЛЮЧЕНА",1="ВКЛЮЧЕНА"]   
+            Switch item=Alarm_Arm_Disarm_Switch visibility=[Alarm_Arm_Disarm_Switch==0] mappings=[0="ИЗКЛЮЧЕНА",1="ВКЛЮЧИ"]   
+            Switch item=Alarm_Arm_Disarm_Switch visibility=[Alarm_Arm_Disarm_Switch==1] mappings=[0="ИЗКЛЮЧИ",1="ВКЛЮЧЕНА"]   
+            // https://community.openhab.org/t/solved-how-to-insert-an-empty-field-in-sitemap/48546/2
+            Text item=none // String none "" <none> is defined in common.items
+            Switch item=Alarm_Arm_Disarm
+            Group item=GF_WS_NU_WF_DIY_Alarm_Status_Display
+            Group item=Gr_Sequrity_System_Motion icon="siren"
+            Switch item=Pir_1_Motion
+            Switch item=Pir_2_Motion
+            Switch item=Pir_3_Motion
+            Switch item=Pir_4_Motion
+            Switch item=Pir_5_Motion
+        }
+
+        Frame label="ОТОПЛЕНИЕ/ОХЛАЖДАНЕ" icon="radiator" {
+            Switch item=HeatingCoolingSwitch mappings=[0="OFF",1="HEATING",2="COOLING"]   
+            Text label="УПРАВЛЕНИЕ НА ОТОПЛЕНИЕТО:" icon="radiator" {
+                    Switch item=Heating_AT_ON_OFF label="АПАРТАМЕНТ: Виртуален КОНТРОЛЕР термостати (ВКЛ./ИЗКЛ.)"
+                    Switch item=Heating_ON_OFF label="КЪЩА: Виртуален КОНТРОЛЕР термостати (ВКЛ./ИЗКЛ.)"
+                    // https://community.openhab.org/t/solved-how-to-insert-an-empty-field-in-sitemap/48546/2
+                    Text item=none
+                    Frame label="ОТОПЛЕНИЕ ДОМАШЕН ОФИС" {
+                    Switch item=GF_OF_Heating_Enable label="ВКЛ./ИЗКЛ. ОТОПЛЕНИЕ НА ДОМАШЕН ОФИС"  
+                    Setpoint item=GF_OF_Heating_Setpoint label="Желана температура [%.1f °C]" icon="temperature" minValue=1 maxValue=30 step=0.5
+                    Text item=GF_OF_Temperature label="Измерена температура [%.1f °C]" icon="temperature"
+                    Switch item=GF_OF_Heating  label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="radiator" 
+                }
+                    Frame label="ОТОПЛЕНИЕ СТАЯ СТЕФАН " {
+                    Switch item=AT_BR_Heating_Enable label="ВКЛ./ИЗКЛ. ОТОПЛЕНИЕ НА СПАЛНЯТА"  
+                    Setpoint item=AT_BR_Heating_Setpoint label="Желана температура [%.1f °C]" icon="temperature" minValue=10 maxValue=30 step=0.5
+                    Text item=Gr_AT_BR_Temperature label="Измерена температура [%.1f °C]" icon="temperature"
+                    Text  item=GF_Sonoff_TH16_2_Temperature label="TH16_2:"
+                    Text item=MIGW_XA_THP_Temperature_1    label="Aqara THP:"
+                    Switch item=AT_BR_Heating_Status label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="radiator" 
 
 
-    Frame label="АЛАРМЕНА СИСТЕМА" {
-        Switch item=Pir_1_Motion
-        Switch item=Pir_2_Motion
-        Switch item=Pir_3_Motion
-        Switch item=Pir_4_Motion
-        Switch item=Pir_5_Motion
-        Group item=Gr_Sequrity_System_Motion icon="alarm"
-}
-
-    Frame label="ОТОПЛЕНИЕ ДОМАШЕН ОФИС" {
-    Switch item=Heating_ON_OFF label="Виртуален термостат (ВКЛ./ИЗКЛ.)"
-	Setpoint item=GF_OF_Heating_Setpoint label="Желана температура [%.1f °C]" icon="temperature" minValue=1 maxValue=30 step=0.5
-	Text item=GF_OF_Temperature label="Измерена температура [%.1f °C]" icon="temperature"
-	Switch item=GF_OF_Heating  label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="temperature" 
-}
-    Frame label="ОТОПЛЕНИЕ СТАЯ СТЕФАН " {
-    Switch item=Heating_AT_ON_OFF label="Виртуален термостат (ВКЛ./ИЗКЛ.)"
-	Setpoint item=AT_BR_Heating_Setpoint label="Желана температура [%.1f °C]" icon="temperature" minValue=10 maxValue=30 step=0.5
-	Text item=Gr_AT_BR_Temperature label="Измерена температура [%.1f °C]" icon="temperature"
-	// Switch item=AT_BR_Heating  label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="temperature" 
-    Switch item=AT_BR_Heating_Status label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="temperature" 
-    Switch item=AT_BR_Heating_Enable label="AT_BR_Heating_Enable"  
-    Text  item=GF_Sonoff_TH16_2_Temperature label="TH16_2:"
-    Text item=MIGW_XA_THP_Temperature_1    label="Aqara THP:"
+                }
+                    Frame label="ОТОПЛЕНИЕ ДНЕВНА/КУХНЯ " {
+                    Switch item=AT_KN_Heating_Enable label="ВКЛ./ИЗКЛ. ОТОПЛЕНИЕ НА ВСЕКИДНЕВНАТА"  
+                    Setpoint item=AT_KN_Heating_Setpoint label="Желана температура [%.1f °C]" icon="temperature" minValue=10 maxValue=30 step=0.5
+                    Text item=Gr_AT_KN_Temperature label="СРЕДНО Измерена температура [%.1f °C]" icon="temperature"
+                    Text item=MIGW_XA_THP_Temperature_3    label="Aqara THP: БЮРО"
+                    Text item=MIGW_XA_THP_Temperature_4    label="Aqara THP: МАСА"
+                    Switch item=AT_KN_Heating_Status label="Отоплителни уреди (ВКЛ./ИЗКЛ.)"  icon="radiator"
+                    Text  item=GF_Sonoff_TH16_1_Temperature label="TH16_1 ТЕМПЕРАТУРА РАДИАТОР:"
+                    Switch item=GF_Sonoff_TH16_1_Power label="Вентилатори (ВКЛ./ИЗКЛ.)" icon="fan"
 
 
-}
-    Frame label="ОТОПЛЕНИЕ ДНЕВНА/КУХНЯ " {
-    Switch item=Heating_AT_ON_OFF label="АПАРТАМЕНТ: Виртуален КОНТРОЛЕР термостати (ВКЛ./ИЗКЛ.)"
-    Switch item=AT_KN_Heating_Enable label="РАЗРЕШАВАНЕ ОТОПЛЕНИЕ НА ВСЕКИДНЕВНАТА"  
-	Setpoint item=AT_KN_Heating_Setpoint label="Желана температура [%.1f °C]" icon="temperature" minValue=10 maxValue=30 step=0.5
-	Text item=Gr_AT_KN_Temperature label="СРЕДНО Измерена температура [%.1f °C]" icon="temperature"
-	// Switch item=AT_BR_Heating  label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" icon="temperature" 
-    Text item=MIGW_XA_THP_Temperature_3    label="Aqara THP: БЮРО"
-    Text item=MIGW_XA_THP_Temperature_4    label="Aqara THP: МАСА"
-    Switch item=AT_KN_Heating_Status label="Отоплителни уреди (ВКЛ./ИЗКЛ.)" 
-    Text  item=GF_Sonoff_TH16_1_Temperature label="TH16_1 ТЕМПЕРАТУРА РАДИАТОР:"
-    Switch item=GF_Sonoff_TH16_1_Power label="Вентилатори (ВКЛ./ИЗКЛ.)"
+                }
+            } 
+        }   
+
+    Frame label="ИЗГРЕВ И ЗАЛЕЗ СЛЪНЦЕ:" {
+        Text item=Sunrise_Time
+        Text item=Sunset_Time
+    }    
 
 
-}
- 
         Frame label="BENKOVSKI DEVICES:" icon="light" {    
             Group item=GF_Sonoff_TH16_1
             Group item=GF_Sonoff_TH16_2
@@ -111,33 +149,6 @@ sitemap default label="Апартамента на Деси и Стефан" {
                 }
         }
 
-
-
-
-        Frame label="ВЪНШНА ТЕМПЕРАТУРА:" icon="groundfloor" {
-            // Text  item=GF_TE_XA_THP_1_Outside_Temperature label="БЕНКОВСКИ" 
-            Text  item=GF_Sonoff_TH16_4_Temperature label="БЕНКОВСКИ" 
-            Text  item=Aeotec61_2_Temperature label="БИГЛА" 
-    }
-    
-        // Frame label="ОСВЕТЛЕНИЕ КЪЩА:" icon="light" {    
-        //     Switch item=Gr_ALL_LIGHTS icon="light"
-        //     Group item=Gr_ALL_LIGHTS
-        // }
-
-        Frame label="ОСВЕТЛЕНИЕ:" icon="light" {    
-            Switch item=gAllLights icon="light"  label="АПАРТАМЕНТ"
-            Group item=gAllLights
-            Switch item=Gr_ALL_LIGHTS icon="light" label="КЪЩА"
-            Group item=Gr_ALL_LIGHTS
-        }
-
-        Frame label="РОЗЕТКИ, КОНТАКТИ И РАЗКЛОНИТЕЛИ:" icon="groundfloor" {    
-            Switch item=gAllPower icon="poweroutlet"  label="АПАРТАМЕНТ"
-            Group item=gAllPower
-            Switch item=Gr_ALL_POWER icon="poweroutlet" label="КЪЩА"
-            Group item=Gr_ALL_POWER
-        }
 
         Frame label="АПАРТАМЕНТ: ДАТЧИЦИ ВРАТИ И ПРОЗОРЦИ:" icon="groundfloor" {    
             Switch item=gAll_DW_Sensors icon="frontdoor"
@@ -221,15 +232,7 @@ sitemap default label="Апартамента на Деси и Стефан" {
 
                             }
                 }
-        }    
-
-
-
-
-        Frame label="ИЗГРЕВ И ЗАЛЕЗ СЛЪНЦЕ:" {
-            Text item=Sunrise_Time
-            Text item=Sunset_Time
-        }    
+        }
 
         Frame label="УПРАВЛЕНИЕ НА ПРАВИЛАТА ЗА АВТОМАТИЧНИ НОЩНИ ЛАМПИ:" icon="groundfloor" {
             Group item=gCorridorNightLightControll label="CORRIDOR Night Light Rules Control"
