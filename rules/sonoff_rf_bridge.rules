@@ -36,9 +36,8 @@ var rfcode_wallsw_3btn_1_right = "0BE4E1"
 // // // // // // // //  // // // // // // //
 // // // // KEYCHAIN REMOTES   // // // // // 
     
-// Keychain remote 1/ SILVER
-//  A 04FBA1
-var rfcode_keychain_1_A = "0BE4E1"
+// Keychain remote 1/ SILVER -Stefan
+var rfcode_keychain_1_A = "04FBA1"
 // B 04FBA2
 var rfcode_keychain_1_B = "04FBA2"
 // C 04FBA4
@@ -46,7 +45,7 @@ var rfcode_keychain_1_C = "04FBA4"
 // D 04FBA8
 var rfcode_keychain_1_D = "04FBA8"
 
-// Keychain remote 2 / BLUE
+// Keychain remote 2 / BLUE -Venci
 // A 214AC4
 var rfcode_keychain_2_A = "214AC4"
 // B 214AC8
@@ -55,6 +54,26 @@ var rfcode_keychain_2_B = "214AC8"
 var rfcode_keychain_2_C = "214AC1"
 // D 214AC2
 var rfcode_keychain_2_D = "214AC2"
+
+// Keychain remote 3 / BLUE - Simo
+// A 
+var rfcode_keychain_3_A = "7EB2A4"
+// B 
+var rfcode_keychain_3_B = "7EB2A1"
+// C 
+var rfcode_keychain_3_C = "7EB2A8"
+// D 
+var rfcode_keychain_3_D = "7EB2A2"  
+
+// Keychain remote 4 / BLUE - Desi
+// A 
+var rfcode_keychain_4_A = "170121"
+// B 
+var rfcode_keychain_4_B = "170122"
+// C 
+var rfcode_keychain_4_C = "170124"
+// D 
+var rfcode_keychain_4_D = "170128"  
 
 // // // // // // // //  // // // // // // //
 // // // // 8 CHANNEL REMOTES  // // // // // 
@@ -176,16 +195,61 @@ then
             
             Gr_ALL_LIGHTS.sendCommand(OFF)
 
-/////////////TEST!!!!!!!!!!????????
+// // // // // // // // // // // // // //
+// // // ВКЛЮЧИ АЛАРМАТА         // // //
+// // // SECURITY SYSTEM ON      // // //
+
+// Switched by:
+//keychain 1 A
+//keychain 2 A
+//keychain 3 A
+//keychain 4 A
+
+
+    } else if (rf_rcv_data.state == rfcode_keychain_1_A ||
+               rf_rcv_data.state == rfcode_keychain_2_A ||
+               rf_rcv_data.state == rfcode_keychain_3_A ||
+               rf_rcv_data.state == rfcode_keychain_4_A)
+        {
+            // logInfo("rfcode_keychain_1_A", "Buton A!!!!!")
+    
+            Alarm_Arm_Disarm_Switch.sendCommand(1)
+
+// // // // // // // // // // // // // //
+// // // ИЗКЛЮЧИ АЛАРМАТА        // // //
+// // // SECURITY SYSTEM OFF     // // //
+
+// Switched by:
+//keychain 1 C
+//keychain 2 C
+//keychain 3 C
+//keychain 4 C
+
+
+    } else if (rf_rcv_data.state == rfcode_keychain_1_C ||
+               rf_rcv_data.state == rfcode_keychain_2_C ||
+               rf_rcv_data.state == rfcode_keychain_3_C ||
+               rf_rcv_data.state == rfcode_keychain_4_C)
+        {
+            // logInfo("rfcode_keychain_1_A", "Buton A!!!!!")
+    
+            Alarm_Arm_Disarm_Switch.sendCommand(0)
+
 // // // // // // // // // // // // // //
 // // // ВКЛЮЧИ ЦЯЛОТО ОСВЕТЛЕНИЕ  // // //
 // // // ALL LIGHTS ON             // // //
 
 // Switched by:
 //keychain 1 B
+//keychain 2 B
+//keychain 3 B
+//keychain 4 B
 
 
-    } else if (rf_rcv_data.state == rfcode_keychain_1_B || rf_rcv_data.state == rfcode_keychain_2_B)
+    } else if (rf_rcv_data.state == rfcode_keychain_1_B ||
+               rf_rcv_data.state == rfcode_keychain_2_B ||
+               rf_rcv_data.state == rfcode_keychain_3_B ||
+               rf_rcv_data.state == rfcode_keychain_4_B)
         {
             logInfo("rfcode_keychain_1_B", "Buton B!!!!!")
     
@@ -198,11 +262,16 @@ then
 
 // Switched by:
 //wall switch 3btn 1 MIDDLE
-//keychain 1 C
-//keychain 2 C
+//keychain 1 D
+//keychain 2 D
+//keychain 3 D
+//keychain 4 D
 
-    } else if (rf_rcv_data.state == rfcode_wallsw_3btn_1_middle || rf_rcv_data.state == rfcode_keychain_1_C 
-                || rf_rcv_data.state == rfcode_keychain_2_C)
+    } else if (rf_rcv_data.state == rfcode_wallsw_3btn_1_middle || 
+    rf_rcv_data.state == rfcode_keychain_1_D ||
+    rf_rcv_data.state == rfcode_keychain_2_D ||
+    rf_rcv_data.state == rfcode_keychain_3_D ||
+    rf_rcv_data.state == rfcode_keychain_4_D)
         {
             
             Gr_ALL_POWER.sendCommand(OFF)

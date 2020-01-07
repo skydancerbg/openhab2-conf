@@ -33,6 +33,7 @@ sitemap default label="Апартамента на Деси и Стефан" {
             // https://community.openhab.org/t/solved-how-to-insert-an-empty-field-in-sitemap/48546/2
             Text item=none // String none "" <none> is defined in common.items
             Switch item=Alarm_Arm_Disarm
+            Switch item=Alarm_Detected
             Group item=GF_WS_NU_WF_DIY_Alarm_Status_Display
             Group item=Gr_Sequrity_System_Motion icon="siren"
             Switch item=Pir_1_Motion
@@ -45,8 +46,8 @@ sitemap default label="Апартамента на Деси и Стефан" {
         Frame label="ОТОПЛЕНИЕ/ОХЛАЖДАНЕ" icon="radiator" {
             Switch item=HeatingCoolingSwitch mappings=[0="OFF",1="HEATING",2="COOLING"]   
             Text label="УПРАВЛЕНИЕ НА ОТОПЛЕНИЕТО:" icon="radiator" {
-                    Switch item=Heating_AT_ON_OFF label="АПАРТАМЕНТ: Виртуален КОНТРОЛЕР термостати (ВКЛ./ИЗКЛ.)"
-                    Switch item=Heating_ON_OFF label="КЪЩА: Виртуален КОНТРОЛЕР термостати (ВКЛ./ИЗКЛ.)"
+                    Switch item=Heating_AT_ON_OFF label="АПАРТАМЕНТ: КОНТРОЛЕР термостати (ВКЛ./ИЗКЛ.)"
+                    Switch item=Heating_ON_OFF label="КЪЩА: КОНТРОЛЕР термостати (ВКЛ./ИЗКЛ.)"
                     // https://community.openhab.org/t/solved-how-to-insert-an-empty-field-in-sitemap/48546/2
                     Text item=none
                     Frame label="ОТОПЛЕНИЕ ДОМАШЕН ОФИС" {

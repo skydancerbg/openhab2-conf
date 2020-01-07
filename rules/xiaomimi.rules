@@ -106,11 +106,17 @@ rule "Play quiet knock-knock ringtone with the Xiaomi Gateway 2"
 when
     Item XiaomiGateway2_Play_Sound_Dummy changed to ON
 then
-    XGW_Gateway2_SoundVolume.sendCommand(2)
-    XGW_Gateway2_Sound.sendCommand(11)
-    Thread::sleep(4000) /* wait for 2 seconds */
+    XGW_Gateway2_SoundVolume.sendCommand(30)
+    XGW_Gateway2_Sound.sendCommand(2)
+    Thread::sleep(30000) /* wait for 2 seconds */
     XGW_Gateway2_Sound.sendCommand(10000)
     XGW_Gateway2_SoundVolume.sendCommand(0)
+    XiaomiGateway2_Play_Sound_Dummy.sendCommand(OFF)
+    // XGW_Gateway2_SoundVolume.sendCommand(2)
+    // XGW_Gateway2_Sound.sendCommand(11)
+    // Thread::sleep(4000) /* wait for 2 seconds */
+    // XGW_Gateway2_Sound.sendCommand(10000)
+    // XGW_Gateway2_SoundVolume.sendCommand(0)
 end
 ////////////////////////////////////////////////////////////////////////////
 

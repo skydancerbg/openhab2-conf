@@ -1,12 +1,14 @@
 
-// // Group items:
+//// SECURITY SYSTEM Group Items:
 Group:Switch:OR(ON, OFF)    Gr_Sequrity_System_Motion   "Датчици за движение (Алармена система): [%d ЗАДЕЙСТВАНИ]"
 // https://community.openhab.org/t/multi-state-switches/10939/6
 
 
+//// SECURITY SYSTEM Items:
 Number Alarm_Arm_Disarm_Switch "СЪСТОЯНИЕ: [MAP(arm_disarm.map):%s]"
 Switch Alarm_Arm_Disarm
-//// SECURITY SYSTEM Group items:
+Switch Alarm_Detected
+
 
 Switch Pir_1_Motion (Gr_Sequrity_System_Motion)
 Switch Pir_2_Motion (Gr_Sequrity_System_Motion)

@@ -12,7 +12,7 @@ default = everyChange
 Items {
 gAllBatteryLevel* , gAllPower*, Gr_ALL_POWER*, Alarm_Arm_Disarm_Switch, Heating_ON_OFF, Heating_AT_ON_OFF, GF_OF_Heating_Setpoint, AT_BR_Heating_Setpoint, AT_KN_Heating_Setpoint : strategy = everyChange, restoreOnStartup
 Gr_Temperature_measurments*, Gr_Sequrity_System_Motion*, Pir_4_Motion, Pir_5_Motion, Gr_AT_KN_Temperature, GF_Sonoff_TH16_1_Power, GF_Sonoff_TH16_2_Power, GF_Sonoff_TH16_2_Grafana_0_1_Power, GF_Sonoff_S20_2_Power, AT_BR_Heating_Status, AT_KN_Heating_Status, MIGW_XA_THP_Temperature_3, MIGW_XA_THP_Temperature_4 : strategy = everyChange, every1Minutes
-StefanBedNightLight_Rule_Switch, Corridor_NightLight_Rule_Switch : strategy = everyChange, restoreOnStartup
+StefanBedNightLight_Rule_Switch, Corridor_NightLight_Rule_Switch, HeatingCoolingSwitch : strategy = everyChange, restoreOnStartup
 // // Gr_ALL_POWER* : everyChange, restoreOnStartup 
 // gAllPower* : everyChange, restoreOnStartup
 }

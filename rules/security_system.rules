@@ -6,15 +6,36 @@
 // RF PIR 4 CODE: D48C4E    ГАРАЖ
 // RF PIR 5 CODE: D3426E    КОРИДОР ЕТ. 1
 
-rule "Security system Notification"
+rule "Security system ALARM DETECTED"
 when
-  Member of Gr_Sequrity_System_Motion received command ON
+  Member of Gr_Sequrity_System_Motion changed
 then
-    if(Alarm_Arm_Disarm.state == ON) {
-        logInfo("SECURITY_SYSTEM", "Motion detected in ARM mode: Sending notification!!!"))
-        sendNotification("sshivarov@yahoo.com", "Alarm, АЛАРМА! от "+ triggeringItem.name)
-    // TODO: Start the SECURITY SYSTEM SIREN  
+        logInfo("SECURITY_SYSTEM", "Member of Gr_Sequrity_System_Motion changed")
+    if(Alarm_Arm_Disarm.state == ON && Gr_Sequrity_System_Motion.state == ON) {
+        logInfo("SECURITY_SYSTEM", "Motion detected in ARM mode: SETING Alarm_Detected !!!")
+        Alarm_Detected.sendCommand(ON)
+        GF_WS_NU_WF_DIY_Alarm_Status_Display_Buzzer.sendCommand(ON)
+        // POLICE SIREN ON XIAOMI GATEWAY 2
+        XGW_Gateway2_SoundVolume.sendCommand(100)
+        XGW_Gateway2_Sound.sendCommand(2)
+        createTimer(now.plusMinutes(2), [|
+            logInfo("SECURITY_SYSTEM", "in the alarm timer")
+            XGW_Gateway2_Sound.sendCommand(10000)
+            XGW_Gateway2_SoundVolume.sendCommand(0)
+            GF_WS_NU_WF_DIY_Alarm_Status_Display_Buzzer.sendCommand(OFF)
+        ])
+
+    // TODO: Start the PARADOX SECURITY SYSTEM SIREN         
     }
+end
+
+rule "Security system ALARM Notification"
+when
+  Item Alarm_Detected received command ON
+then
+        logInfo("SECURITY_SYSTEM", "Motion detected in ARM mode: Sending notification!!!")
+        sendNotification("sshivarov@yahoo.com", "ВНИМАНИЕ: АЛАРМЕНАТА СИСТЕМА НА КЪЩАТА БЕШЕ ЗАДЕЙСТВАНА!")
+     
 end
 
 // GF_WS_NU_WF_DIY_Alarm_Status_Display_BlueLED1
@@ -30,14 +51,17 @@ then
     switch (Alarm_Arm_Disarm_Switch.state as DecimalType) {
         case 0 : { // DISARM
             Alarm_Arm_Disarm.sendCommand(OFF)
+            Alarm_Detected.sendCommand(OFF)
             GF_WS_NU_WF_DIY_Alarm_Status_Display_GreenLED.sendCommand(ON)
             GF_WS_NU_WF_DIY_Alarm_Status_Display_RedLED.sendCommand(OFF)
-            GF_WS_NU_WF_DIY_Alarm_Status_Display_Buzzer.sendCommand(OFF)           
+            GF_WS_NU_WF_DIY_Alarm_Status_Display_Buzzer.sendCommand(OFF)
+            sendNotification("sshivarov@yahoo.com", "АЛАРМЕНАТА СИСТЕМА БЕШЕ ДЕАКТИВИРАНА!")           
         }
         case 1 : { // ARM
             GF_WS_NU_WF_DIY_Alarm_Status_Display_GreenLED.sendCommand(OFF)
             GF_WS_NU_WF_DIY_Alarm_Status_Display_RedLED.sendCommand(ON)
             GF_WS_NU_WF_DIY_Alarm_Status_Display_Buzzer.sendCommand(ON)
+            sendNotification("sshivarov@yahoo.com", "АЛАРМЕНАТА СИСТЕМА Е АКТИВИРАНА!")           
                 logInfo("SECURITY_SYSTEM", "before timer")
             createTimer(now.plusMinutes(0.5), [|
                 logInfo("SECURITY_SYSTEM", "in the timer")
@@ -46,7 +70,18 @@ then
                 // .postUpdate(0)
                 // Alarm_Arm_Disarm
                 ])
-                logInfo("SECURITY_SYSTEM", "after timer")
+                // logInfo("SECURITY_SYSTEM", "after timer")
         }
     }
 end
+
+// rule "Security system Notification"
+// when
+//   Member of Gr_Sequrity_System_Motion received command ON
+// then
+//     if(Alarm_Arm_Disarm.state == ON) {
+//         logInfo("SECURITY_SYSTEM", "Motion detected in ARM mode: Sending notification!!!")
+//         sendNotification("sshivarov@yahoo.com", "Alarm, АЛАРМА! от "+ triggeringItem.name)
+ 
+//     }
+// end

@@ -2,6 +2,7 @@
 rule "Init virtual Items" 
 when System started 
 then logInfo("home.rules","System started")
+   Alarm_Detected.sendCommand(OFF) //??????????? алармата се нулира!!!!!!!!!!
    AT_BR_Heating_Enable.sendCommand(ON)
    AT_KN_Heating_Enable.sendCommand(ON)
    Gr_Sequrity_System_Motion.sendCommand(OFF)

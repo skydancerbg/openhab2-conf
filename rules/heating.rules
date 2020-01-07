@@ -24,13 +24,14 @@ then
         }
     }
 end
+
 // HOME OFFICE HEATING RELATED:
-rule "Update Heating"
+rule "Update Home office Heating"
 
 when
 	Item GF_OF_Heating_Setpoint received update or 
 	Item GF_Sonoff_TH16_6_Temperature received update or 
-    Item Heating_ON_OFF changed
+    Item Heating_ON_OFF changed or
     Item GF_OF_Heating_Enable changed
 then
             
@@ -83,9 +84,11 @@ end
 rule "Heating ON/OFF set to OFF"
 
 when
-	Item Heating_ON_OFF received command OFF
+	Item Heating_ON_OFF received command OFF or
+    Item GF_OF_Heating_Enable received command OFF
+
 then
-    if( Heating_ON_OFF.state == OFF) {
+    // if( Heating_ON_OFF.state == OFF || GF_OF_Heating_Enable.state == OFF) {
         logInfo("heating", "testtttttttttt")
 
 		if(GF_OF_sonoff_pow_2_Power.state == ON) {
@@ -96,5 +99,5 @@ then
                     logInfo("heating", "POW3 komanda OFF")
             GF_OF_sonoff_pow_3_Power.sendCommand(OFF)
         }
-    }
+    // }
 end
