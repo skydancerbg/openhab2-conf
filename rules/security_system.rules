@@ -4,7 +4,9 @@
 // RF PIR 2 CODE: D511CE    РАБОТИЛНИЦА
 // RF PIR 3 CODE: D5053E    ХОЛ
 // RF PIR 4 CODE: D48C4E    ГАРАЖ
-// RF PIR 5 CODE: D3426E    КОРИДОР ЕТ. 1
+// RF PIR 5 CODE: D3426E    НЕ РАБОТИ !!!
+// RF PIR 6 CODE: F3EB4E    КОРИДОР ЕТ. 1
+
 
 rule "Security system ALARM DETECTED"
 when
@@ -14,12 +16,14 @@ then
     if(Alarm_Arm_Disarm.state == ON && Gr_Sequrity_System_Motion.state == ON) {
         logInfo("SECURITY_SYSTEM", "Motion detected in ARM mode: SETING Alarm_Detected !!!")
         Alarm_Detected.sendCommand(ON)
+        GF_WS_NU_WF_DIY_Siren_Activator_NC_Contact.sendCommand(ON) // Включва релето и подава сигнал за задействана зона на Paradox EVO 192
         GF_WS_NU_WF_DIY_Alarm_Status_Display_Buzzer.sendCommand(ON)
         // POLICE SIREN ON XIAOMI GATEWAY 2
         XGW_Gateway2_SoundVolume.sendCommand(100)
         XGW_Gateway2_Sound.sendCommand(2)
         createTimer(now.plusMinutes(2), [|
             logInfo("SECURITY_SYSTEM", "in the alarm timer")
+            GF_WS_NU_WF_DIY_Siren_Activator_NC_Contact.sendCommand(OFF) // ИЗключва релето и спира сигнала за задействана зона на Paradox EVO 192
             XGW_Gateway2_Sound.sendCommand(10000)
             XGW_Gateway2_SoundVolume.sendCommand(0)
             GF_WS_NU_WF_DIY_Alarm_Status_Display_Buzzer.sendCommand(OFF)
@@ -74,6 +78,35 @@ then
         }
     }
 end
+///////////////
+// https://community.openhab.org/t/custom-icons-showing-in-basicui-but-not-in-openhab-android-app/23479/23
+// https://community.openhab.org/t/using-rules-variable-as-item-label/20665/3
+// https://community.openhab.org/t/adding-timestamp-in-my-label/29179/6
+
+//TODO не работи??? - трябва OpenHAB над версия 2.1? Да опитам.......
+
+// rule "Add timestamp to Alarm_Detected switch label"
+// when
+// 	Item Alarm_Detected received command ON
+// then
+// 	var label = Alarm_Detected.label.toString.split("   ")
+// 	Alarm_Detected.label = label.get(0) + " " + " " + " (" + Alarm_Detected.lastUpdate.toDateTime.toString("dd-MM-yy HH:mm") + ")"
+// end
+
+// rule "Add timestamp to Arm/Disarm switch label"    
+// when
+// 	Item Alarm_Arm_Disarm received command ON
+// then
+// logInfo("SECURITY_SYSTEM", "Alarm_Arm_Disarm received command ON")
+// logInfo("SECURITY_SYSTEM", Alarm_Arm_Disarm.label.toString)
+// logInfo("SECURITY_SYSTEM", Alarm_Arm_Disarm.label.toString.split("   "))
+// 	var label = Alarm_Arm_Disarm.label.toString.split("   ")
+// 	Alarm_Arm_Disarm.label = label.get(0) + " " + " " + " (" + Alarm_Arm_Disarm.lastUpdate.toDateTime.toString("dd-MM-yy HH:mm") + ")"
+// end
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
 // rule "Security system Notification"
 // when

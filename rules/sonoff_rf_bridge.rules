@@ -9,8 +9,10 @@ var rfcode_pir_2 = "D511CE"
 var rfcode_pir_3 = "D5053E"
 // RF PIR 4 CODE: D48C4E    ГАРАЖ
 var rfcode_pir_4 = "D48C4E"
-// RF PIR 5 CODE: D3426E    КОРИДОР ЕТ. 1
+// RF PIR 5 CODE: D3426E    НЕ РАБОТИ !!!
 var rfcode_pir_5 = "D3426E"
+// RF PIR 6 CODE: F3EB4E    КОРИДОР ЕТ. 1
+var rfcode_pir_6 = "F3EB4E"
 
 // // // // // // // //  // // // // // // //
 // // // // WALL SWITCHES   // // // // // // 
@@ -178,6 +180,17 @@ then
         Sonoff_RF_PIR_5.postUpdate("")
         Pir_5_Motion.sendCommand(OFF)
         // logInfo("security_system", "PIR5 off")
+
+    } else if (rf_rcv_data.state == rfcode_pir_6)
+  
+    {
+        Sonoff_RF_PIR_6.postUpdate("DETECT")
+        Pir_6_Motion.sendCommand(ON)
+        logInfo("security_system", "PIR6 activated")
+        Thread::sleep(5000)
+        Sonoff_RF_PIR_6.postUpdate("")
+        Pir_6_Motion.sendCommand(OFF)
+        logInfo("security_system", "PIR6 off")
 
 
 // // // // // // // // // // // // // //

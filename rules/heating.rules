@@ -43,13 +43,13 @@ then
     if(((GF_Sonoff_TH16_6_Temperature.state as Number)< (GF_OF_Heating_Setpoint.state as Number)-1.0 ) && Heating_ON_OFF.state == ON  && GF_OF_Heating_Enable.state == ON) {
         logInfo("heating", GF_OF_sonoff_pow_2_Power.state.toString)
         logInfo("heating", GF_OF_sonoff_pow_3_Power.state.toString)
-		if(GF_OF_sonoff_pow_2_Power.state == OFF) {
+		if(GF_OF_sonoff_pow_2_Power.state == OFF || GF_OF_sonoff_pow_2_Power.state == UNDEF) {
                      logInfo("heating", "komanda pow2 on")
 
             GF_OF_sonoff_pow_2_Power.sendCommand(ON)
             GF_OF_Heating.sendCommand(ON)
         }
-        if(GF_OF_sonoff_pow_3_Power.state == OFF) {
+        if(GF_OF_sonoff_pow_3_Power.state == OFF || GF_OF_sonoff_pow_3_Power.state == UNDEF) {
                     logInfo("heating", "komanda pow3 on")
             Thread::sleep(2000) // Пусни втория калорифер след 2 секунди
             GF_OF_sonoff_pow_3_Power.sendCommand(ON)
@@ -59,11 +59,11 @@ then
     {
         logInfo("heating_temp_greater_than_set_point", "temperaturata e po-goliama")
 		
-         if(GF_OF_sonoff_pow_2_Power.state == ON) {
+         if(GF_OF_sonoff_pow_2_Power.state == ON || GF_OF_sonoff_pow_2_Power.state == UNDEF) {
                     // logInfo("heating", "komanda OFF")
             GF_OF_sonoff_pow_2_Power.sendCommand(OFF)
         }
-        if(GF_OF_sonoff_pow_3_Power.state == ON) {
+        if(GF_OF_sonoff_pow_3_Power.state == ON  || GF_OF_sonoff_pow_3_Power.state == UNDEF) {
                     // logInfo("heating", "komanda OFF")
             GF_OF_sonoff_pow_3_Power.sendCommand(OFF)
         }
@@ -91,13 +91,18 @@ then
     // if( Heating_ON_OFF.state == OFF || GF_OF_Heating_Enable.state == OFF) {
         logInfo("heating", "testtttttttttt")
 
-		if(GF_OF_sonoff_pow_2_Power.state == ON) {
+		if(GF_OF_sonoff_pow_2_Power.state == ON || GF_OF_sonoff_pow_2_Power.state == UNDEF) {
                      logInfo("heating", " POW2komanda OFF")
             GF_OF_sonoff_pow_2_Power.sendCommand(OFF)
         }
-        if(GF_OF_sonoff_pow_3_Power.state == ON) {
+        if(GF_OF_sonoff_pow_3_Power.state == ON || GF_OF_sonoff_pow_2_Power.state == UNDEF) {
                     logInfo("heating", "POW3 komanda OFF")
             GF_OF_sonoff_pow_3_Power.sendCommand(OFF)
         }
+        if(GF_OF_sonoff_pow_2_Power.state == OFF && GF_OF_sonoff_pow_3_Power.state == OFF) {
+                    // logInfo("heating", "komanda OFF")
+            GF_OF_Heating.sendCommand(OFF)
+        }
+
     // }
 end

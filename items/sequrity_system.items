@@ -28,3 +28,18 @@ Switch GF_WS_NU_WF_DIY_Alarm_Status_Display_RedLED      "Червен LED"      
 Switch GF_WS_NU_WF_DIY_Alarm_Status_Display_Buzzer      "Пиезо-говорител"                   <soundvolume>     (GF_WS_NU_WF_DIY_Alarm_Status_Display) { channel="mqtt:topic:MyMQTTthing:nmcu_security_info_1:power5" }       
 String GF_WS_NU_WF_DIY_Alarm_Status_Display_Reachable   "Модулът достъпен: [%s]"            <presence>        (GF_WS_NU_WF_DIY_Alarm_Status_Display) { channel="mqtt:topic:MyMQTTthing:nmcu_security_info_1:reachable" }
 Number GF_WS_NU_WF_DIY_Alarm_Status_Display_RSSI        "WiFi - Сила на сигнала [%d %%]"    <network>         (GF_WS_NU_WF_DIY_Alarm_Status_Display) { channel="mqtt:topic:MyMQTTthing:nmcu_security_info_1:rssi" }
+
+
+                // Group item=GF_WS_NU_WF_DIY_Garden_Alarm_Transmitter
+Group  GF_WS_NU_WF_DIY_Garden_Alarm_Transmitter             "Двор сензори (Алармена система):"      <alarm> 
+Switch GF_WS_NU_WF_DIY_Garden_Alarm_Transmitter_power1    "не се използва power1"                <light>           (GF_WS_NU_WF_DIY_Garden_Alarm_Transmitter) { channel="mqtt:topic:MyMQTTthing:nmcu_security_activator_1:power1" }       
+Switch GF_WS_NU_WF_DIY_Garden_Alarm_Transmitter_power2    "power2 follows pir contact"            <light>           (GF_WS_NU_WF_DIY_Garden_Alarm_Transmitter) { channel="mqtt:topic:MyMQTTthing:nmcu_security_activator_1:power2" }       
+String GF_WS_NU_WF_DIY_Garden_Alarm_Transmitter_Reachable   "Модулът достъпен: [%s]"            <presence>        (GF_WS_NU_WF_DIY_Garden_Alarm_Transmitter) { channel="mqtt:topic:MyMQTTthing:nmcu_security_activator_1:reachable" }
+Number GF_WS_NU_WF_DIY_Garden_Alarm_Transmitter_RSSI        "WiFi - Сила на сигнала [%d %%]"    <network>         (GF_WS_NU_WF_DIY_Garden_Alarm_Transmitter) { channel="mqtt:topic:MyMQTTthing:nmcu_security_activator_1:rssi" }
+
+
+                // Group item=GF_WS_NU_WF_DIY_Siren_Activator
+Group  GF_WS_NU_WF_DIY_Siren_Activator             "Активиране на сирената (Алармена система):"      <alarm> 
+Switch GF_WS_NU_WF_DIY_Siren_Activator_NC_Contact    "Siren switch"                     <light>          (GF_WS_NU_WF_DIY_Siren_Activator) { channel="mqtt:topic:MyMQTTthing:nmcu_security_siren_1:power1" }       
+String GF_WS_NU_WF_DIY_Siren_Activator_Reachable   "Модулът достъпен: [%s]"            <presence>        (GF_WS_NU_WF_DIY_Siren_Activator) { channel="mqtt:topic:MyMQTTthing:nmcu_security_siren_1:reachable" }
+Number GF_WS_NU_WF_DIY_Siren_Activator_RSSI        "WiFi - Сила на сигнала [%d %%]"    <network>         (GF_WS_NU_WF_DIY_Siren_Activator) { channel="mqtt:topic:MyMQTTthing:nmcu_security_siren_1:rssi" }
