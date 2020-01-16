@@ -149,9 +149,9 @@ Number GF_OF_sonoff_pow_3_RSSI      "WiFi Signal Strength [%d %%]"      <wifi>  
 
 //     // Kitchen to lights on sonoff S26 OUTLETS   
 
-Group  Gr_GF_KN_Top_Light        "Kitchen top light"    <group> //(Kitchen_Top_Light)
+Group  Gr_GF_KN_Top_Light        "Кухня Радиатори"    <group> //(Kitchen_Top_Light)
 String GF_KN_Top_Light_Reachable "Reachable: [%s]"              <presence>  (Gr_GF_KN_Top_Light, Gr_GF_Kitchen)       { channel="mqtt:topic:MyMQTTthing:kithcen_top_light_on_s26:reachable" }
-Switch GF_KN_Top_Light_Power     "Kitchen top light"            <switch>    (Gr_GF_KN_Top_Light, Gr_GF_Kitchen, Gr_Kitchen_Lights, gAllLights, gAllPower) ["Lighting"]   { channel="mqtt:topic:MyMQTTthing:kithcen_top_light_on_s26:power" }       
+Switch GF_KN_Top_Light_Power     "Кухня Радиатори"            <switch>    (Gr_GF_KN_Top_Light, Gr_GF_Kitchen, Gr_Kitchen_Lights, gAllLights, gAllPower) ["Lighting"]   { channel="mqtt:topic:MyMQTTthing:kithcen_top_light_on_s26:power" }       
 Number GF_KN_Top_Light_RSSI      "WiFi Signal Strength [%d %%]" <network>   (Gr_GF_KN_Top_Light, Gr_GF_Kitchen) { channel="mqtt:topic:MyMQTTthing:kithcen_top_light_on_s26:rssi" }
 
 Group  Gr_GF_KN_Sink_Light        "Kitchen sink light"    <group> //(Kitchen_Sink_Light)
@@ -163,7 +163,7 @@ Number GF_KN_Sink_Light_RSSI      "WiFi Signal Strength [%d %%]" <network>   (Gr
 
 Group  GF_Sonoff_S26_3           "КЪЩА: Sonoff S26" <group> //(Sonoff_S26_3)
 String GF_Sonoff_S26_3_Reachable "Reachable: [%s]"                   <contactable>  (GF_Sonoff_S26_3) { channel="mqtt:topic:MyMQTTthing:s26_3_power_outlet:reachable" }
-Switch GF_Sonoff_S26_3_Power     "Sonoff_S26_3_Power"                <switch>       (GF_Sonoff_S26_3, Gr_ALL_POWER) { channel="mqtt:topic:MyMQTTthing:s26_3_power_outlet:power" }       
+Switch GF_Sonoff_S26_3_Power     "S26_3_Power Лампа Офис Стена"                <switch>       (GF_Sonoff_S26_3, Gr_ALL_POWER) { channel="mqtt:topic:MyMQTTthing:s26_3_power_outlet:power" }       
 Number GF_Sonoff_S26_3_RSSI      "WiFi Signal Strength [%d %%]"      <wifi>         (GF_Sonoff_S26_3) { channel="mqtt:topic:MyMQTTthing:s26_3_power_outlet:rssi" }
 
 // // * Sonoff S20 outlets * //

@@ -1,13 +1,3 @@
-// 
-
-// RF PIR 1 CODE: D3C22E    ОФИС
-// RF PIR 2 CODE: D511CE    РАБОТИЛНИЦА
-// RF PIR 3 CODE: D5053E    ХОЛ
-// RF PIR 4 CODE: D48C4E    ГАРАЖ
-// RF PIR 5 CODE: D3426E    НЕ РАБОТИ !!!
-// RF PIR 6 CODE: F3EB4E    КОРИДОР ЕТ. 1
-
-
 rule "Security system ALARM DETECTED"
 when
   Member of Gr_Sequrity_System_Motion changed

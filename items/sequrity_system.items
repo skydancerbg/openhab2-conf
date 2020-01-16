@@ -10,11 +10,13 @@ Switch Alarm_Arm_Disarm
 Switch Alarm_Detected
 
 
-Switch Pir_1_Motion (Gr_Sequrity_System_Motion)
-Switch Pir_2_Motion (Gr_Sequrity_System_Motion)
-Switch Pir_3_Motion (Gr_Sequrity_System_Motion)
-Switch Pir_4_Motion 
-Switch Pir_5_Motion 
+Switch Pir_1_Motion (Gr_Sequrity_System_Motion) // ОФИС
+Switch Pir_2_Motion (Gr_Sequrity_System_Motion) // РАБОТИЛНИЦА
+Switch Pir_3_Motion (Gr_Sequrity_System_Motion) // ХОЛ
+Switch Pir_4_Motion (Gr_Sequrity_System_Motion) // ГАРАЖ
+Switch Pir_5_Motion  //НЕ РАБОТИ !!!
+Switch Pir_6_Motion  (Gr_Sequrity_System_Motion) // КОРИДОР ЕТ. 1
+
 // Switch Pir_4_Motion (Gr_Sequrity_System_Motion)
 // Switch Pir_5_Motion (Gr_Sequrity_System_Motion)
 

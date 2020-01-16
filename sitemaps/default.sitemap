@@ -1,13 +1,13 @@
 sitemap default label="Апартамента на Деси и Стефан" {
-
     // Frame label="SITEMAPS" {
     //     Text item=admin_site 
     //     // Text item=admin_site label="http://192.168.1.201:8080/basicui/app?sitemap=administration"
     // }
 
     Frame label="ВЪНШНА ТЕМПЕРАТУРА:" icon="Temperature" {
+        Text  item=XGW2_XA_THP_1_Temperature label="КЪЩА" 
         // Text  item=GF_TE_XA_THP_1_Outside_Temperature label="БЕНКОВСКИ" 
-        Text  item=GF_Sonoff_TH16_4_Temperature label="КЪЩА" 
+        // Text  item=GF_Sonoff_TH16_4_Temperature label="КЪЩА" 
         Text  item=Aeotec61_2_Temperature label="АПАРТАМЕНТ" 
     }
     
