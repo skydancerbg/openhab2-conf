@@ -280,6 +280,19 @@ Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secu
     }
 
 
+
+    Thing topic nmcu_solar_tank_temperatures "NodeMCU Solar Tank Sensors 1" @ "House" {
+    Channels:
+        Type string : reachable         "Reachable"                         [ stateTopic="tele/nmcu_solar_tank_temperatures/LWT" ]
+        Type number : rssi              "WiFi Signal Strength"              [ stateTopic="tele/nmcu_solar_tank_temperatures/STATE",  transformationPattern="JSONPATH:$.Wifi.RSSI"]
+        // We need to change the - into an _ for the DS18B20s in tasmota in the console by setting: setoption64 1 
+        // https://community.openhab.org/t/mqtt-jsonpath-transformation-to-extract-values-from-multiple-ds18b20/84872 
+        Type number : tank_top_temp     "TEMPERATURE_TANK_TOP"              [ stateTopic="tele/nmcu_solar_tank_temperatures/SENSOR", transformationPattern="JSONPATH:$.DS18B20_1.Temperature"]
+        Type number : tank_cold_in_temp "TEMPERATURE_COLD_IN"               [ stateTopic="tele/nmcu_solar_tank_temperatures/SENSOR", transformationPattern="JSONPATH:$.DS18B20_2.Temperature"]
+        Type number : tank_hot_out_temp "TEMPERATURE_HOT_OUT"               [ stateTopic="tele/nmcu_solar_tank_temperatures/SENSOR", transformationPattern="JSONPATH:$.DS18B20_3.Temperature"]
+    }
+
+
 }
 
 

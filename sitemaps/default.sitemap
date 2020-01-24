@@ -4,6 +4,11 @@ sitemap default label="Апартамента на Деси и Стефан" {
     //     // Text item=admin_site label="http://192.168.1.201:8080/basicui/app?sitemap=administration"
     // }
 
+    Frame label="ТЕМПЕРАТУРИ НА СЛЪНЧЕВИЯ БОЙЛЕР:" icon="Temperature" {
+
+        Group item=GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES
+    }
+    
     Frame label="ВЪНШНА ТЕМПЕРАТУРА:" icon="Temperature" {
         Text  item=XGW2_XA_THP_1_Temperature label="КЪЩА" 
         // Text  item=GF_TE_XA_THP_1_Outside_Temperature label="БЕНКОВСКИ" 
