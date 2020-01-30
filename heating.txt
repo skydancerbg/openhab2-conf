@@ -24,3 +24,76 @@
 9
 10
 11 -етаж 3
+
+БГВ:
+Управление:
+1   Помпа солар - вкл./изкл.
+2   Помпа рециркулация - вкл./изкл.
+3   Трипътен вентил за защита от прегряване на бойлера - прехвърля входа от слънчевите колектори към серпентина в буферния съд
+4   Нагревател бойлер за БГВ ( на 3 степени 1 kW, 2 kW и 3 kW ????) да подгрява за легионела: 
+„антилегионела“, която загрява бойлера, предназначен за БГВ, като най-уязвима зона за развитие на микроорганизми, до 60 ˚С за определен период от време.
+Легионелните бактерии не могат да се размножават ако температурата на водата спадне под 20 С, а започват да умират във вода над 60 С. 
+При температура над 70 С легионелата умира почти моментално. Изглежда, че решението е лесно – просто оставяме бойлера да работи на максимална температура 
+и убиваме бактериите. За жалост при температура на водата над 60 С започва образуването на големи количества варовик във водосъдържателя. 
+Също така разхоите за електроенергия при постоянна работа на нагревателя на максимална температура са значително по-високи.
+Бойлерите Елдом с интелигентно електронно управление се произвеждат със специална анти-легионела функция. 
+Тази програма почиства и дезинфекцира водосъдържателя автоматично като нагрява водата в него до нужната температурата за ограничено и точно определено време. 
+След това отново се връща в икономичен режим, който пести електроенергия и ограничава натрупването на котлен камък.
+http://www.heatingandventilating.net/legionella-and-how-to-protect-against-it 
+Research shows that legionella bacteria breeds at its most prolific in water temperatures between 20 and 45 deg C. It is also known that at 60 deg C, 
+over 90 per cent of the bacteria is killed within a few minutes, while at 50 deg C it would take several hours to achieve the same level of elimination.
+!!!!!!
+The HSC document L8 is the approved code of practice and guidance for the control of legionella bacteria in water systems. It states that pasteurising should occur daily, 
+for a minimum period of one hour at 60 deg C to ensure elimination of any legionella bacteria.
+!!!!!
+During the anti-legionella cycle, it is essential that the cylinder is mixed evenly to the minimum 60 deg C temperature, using a de-stratification pump.
+!!!!!
+Traditionally, solar-powered systems are designed to allow hot water to stratify, with the hottest water at the top of the cylinder, the cold water feed towards
+the bottom, and the system return in between. During the anti-Legionella cycle, it is essential that the cylinder is mixed evenly to the minimum 60°C temperature, 
+using a de-stratification pump. In most cases, it will be necessary to reheat the water as the mixing occurs, and to maintain the temperature at 60°C for a minimum 
+of one hour. If solar energy is available during the cycle, this can be used to heat the water at no cost. However, if there is insufficient solar energy, then an 
+auxiliary heat source will need to supply the heat input.
+ANTI-LEGIONELLA VALVE FOR EXPANSION VESSELS
+Aside from temperature controls, another important anti-Legionella measure is to keep water turning over regularly, to prevent stagnation and the formation of biofilm. 
+One area of the plumbing system where stagnation could become a problem is in the expansion vessel, and one solution to this could be an anti-Legionella valve to 
+maintain circulation.
+Such valves essentially convert a standard single connection expansion vessel into a ’flow through’ type, by separating the inlet and outlet water supplies, 
+meaning that the water in the vessel is continually renewed.
+
+5   Дестратификационна помпа ???
+6   Трипътен вентил за байпас (стоп) на суперхиитъра ???
+
+Датчици:
+1   Слънчеви колектори температура в колектора /датчик на тръбата на колектора 
+(- ще има малка разлика с датчика на контролера на солара - датчика ни се намира извън колектора,  
+в тръбичка заварена на медната тръба)
+2   Слънчеви колектори температура към серпентината /датчик в помпената група
+3   Слънчеви колектори температура обратка след серпентината /датчик в помпената група
+4   Температура в горната част на бойлера
+5   Температура средата на бойлера
+6   Температура долу в бойлера
+7   Температура изходяща топла вода след смесител предпазващ от изгаряния - сетнат на 45 градуса 
+(може да е по-малка от 45 градуса, ако бойлера не е загрят до 45 градуса - да се следи тази стойност 
+с обратката от рециркулацията за стоп на рециркулационната помпа за стоп )
+8   Температура рециркулация връщане
+9   Помпа солар - вкл./изкл.
+10  Помпа рециркулация - вкл./изкл.
+11  Ел. нагревател бойлер  - вкл./изкл.
+
+Отопление:
+Управление:
+1   Помпа подово - вкл./изкл.
+2   Помпа конвектори - вкл./изкл.
+3   Трипътен вентил за защита от прегряване на бойлера - прехвърля входа от слънчевите колектори към серпентина в буферния съд
+4   Трипътен вентил за байпас (стоп) на суперхиитъра ???
+
+Датчици:
+1   Термо-помпа - вкл./изкл.
+2   Температура изход от термопомпа
+3   Температура обратка към термопомпа
+4   Температура изход от буферен съд
+5   Температура обратка към буферен съд ?? трябва ли??
+6   Температура буферен съд горе
+7
+8
+9

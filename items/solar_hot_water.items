@@ -5,11 +5,22 @@
         // Type number : tank_hot_out_temp      "TEMPERATURE_HOT_OUT"  [ stateTopic="tele/nmcu_solar_tank_temperatures/SENSOR", transformationPattern="JSONPATH:$.Wifi.RSSI"]
         // // Type number : tank_recirculation_back_temp      "TEMPERATURE_TANK_TOP"  [ stateTopic="tele/nmcu_solar_tank_temperatures/SENSOR", transformationPattern="JSONPATH:$.Wifi.RSSI"]
 
-// // * Sonoff Dual * //
+// // * DIY Tasmoata Temperatures Heating Room * //
 
-Group  GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES           "SOLAR TANK TEMPERATURES"                   //<group> (SOLAR_TANK_TEMPERATURES)
-String GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES_Reachable      "Reachable: [%s]"                                <presence>      (GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES)                                      { channel="mqtt:topic:MyMQTTthing:nmcu_solar_tank_temperatures:reachable" }
-Number GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES_RSSI           "WiFi Signal Strength [%d %%]"                   <network>       (GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES)                                      { channel="mqtt:topic:MyMQTTthing:nmcu_solar_tank_temperatures:rssi" }
-Number GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES_Cold_In        "Бойлер температура входяща [%.1f °C]"           <temperature>   (GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES, Gr_Temperature_measurments)          { channel="mqtt:topic:MyMQTTthing:nmcu_solar_tank_temperatures:tank_cold_in_temp" }
-Number GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES_Hot_Out        "Бойлер температура след смесител [%.1f °C]"     <temperature>   (GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES, Gr_Temperature_measurments)          { channel="mqtt:topic:MyMQTTthing:nmcu_solar_tank_temperatures:tank_hot_out_temp" }
-Number GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES_Tank_Top       "Бойлер температура вътре горе [%.1f °C]"        <temperature>   (GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES, Gr_Temperature_measurments)          { channel="mqtt:topic:MyMQTTthing:nmcu_solar_tank_temperatures:tank_top_temp" }
+    
+
+Group  Gr_GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES           "SOLAR TANK TEMPERATURES"                   //<group> (SOLAR_TANK_TEMPERATURES)
+String GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES_Reachable       "Reachable: [%s]"                                <presence>      (Gr_GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES)                                      { channel="mqtt:topic:MyMQTTthing:nmcu_solar_tank_temperatures:reachable" }
+Number GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES_Rssi            "WiFi Signal Strength [%d %%]"                   <network>       (Gr_GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES)                                      { channel="mqtt:topic:MyMQTTthing:nmcu_solar_tank_temperatures:rssi" }
+Number GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES_Cold_In         "Бойлер температура входяща [%.1f °C]"           <temperature>   (Gr_GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES, Gr_Temperature_measurments)          { channel="mqtt:topic:MyMQTTthing:nmcu_solar_tank_temperatures:tank_cold_in_temp" }
+Number GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES_Hot_Out         "Бойлер температура след смесител [%.1f °C]"     <temperature>   (Gr_GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES, Gr_Temperature_measurments)          { channel="mqtt:topic:MyMQTTthing:nmcu_solar_tank_temperatures:tank_hot_out_temp" }
+Number GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES_Tank_Top        "Бойлер температура вътре горе [%.1f °C]"        <temperature>   (Gr_GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES, Gr_Temperature_measurments)          { channel="mqtt:topic:MyMQTTthing:nmcu_solar_tank_temperatures:tank_top_temp" }
+Number GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES_Recirc_Back     "Рециркулация температура обратно [%.1f °C]"     <temperature>   (Gr_GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES, Gr_Temperature_measurments)          { channel="mqtt:topic:MyMQTTthing:nmcu_solar_tank_temperatures:tank_recircculation_back" }
+Number GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES_Superheater_out "Суперхиитър температура изход [%.1f °C]"        <temperature>   (Gr_GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES, Gr_Temperature_measurments)          { channel="mqtt:topic:MyMQTTthing:nmcu_solar_tank_temperatures:tank_superheater_out" }
+
+Group  Gr_GF_HR_NU_WF_DIY_Well_Pump_Ctrl        "Управление на сондажна помпа:"     <water> 
+String GF_HR_NU_WF_DIY_Well_Pump_Ctrl_Reachable         "Модулът достъпен: [%s]"                        <presence>      (Gr_GF_HR_NU_WF_DIY_Well_Pump_Ctrl)                                   { channel="mqtt:topic:MyMQTTthing:nmcu_well_pump_ctrl:reachable" }
+Number GF_HR_NU_WF_DIY_Well_Pump_Ctrl_RSSI              "WiFi - Сила на сигнала [%d %%]"                <network>       (Gr_GF_HR_NU_WF_DIY_Well_Pump_Ctrl)                                   { channel="mqtt:topic:MyMQTTthing:nmcu_well_pump_ctrl:rssi" }
+Switch GF_HR_NU_WF_DIY_Well_Pump_Ctrl_Power             "Помпа"                                         <switch>        (Gr_GF_HR_NU_WF_DIY_Well_Pump_Ctrl)                                   { channel="mqtt:topic:MyMQTTthing:nmcu_well_pump_ctrl:power" }       
+Number GF_HR_NU_WF_DIY_Well_Pump_Ctrl_TEMP_Solar_Col    "Температура слънчев колектор [%.1f °C]"        <temperature>   (Gr_GF_HR_NU_WF_DIY_Well_Pump_Ctrl, Gr_Temperature_measurments)       { channel="mqtt:topic:MyMQTTthing:nmcu_well_pump_ctrl:temp_solar_col" }
+Number GF_HR_NU_WF_DIY_Well_Pump_Ctrl_TEMP_Outside_Roof "Външна температура покрив [%.1f °C]"           <temperature>   (Gr_GF_HR_NU_WF_DIY_Well_Pump_Ctrl, Gr_Temperature_measurments)       { channel="mqtt:topic:MyMQTTthing:nmcu_well_pump_ctrl:temp_outside_roof" }

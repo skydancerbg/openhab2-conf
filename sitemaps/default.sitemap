@@ -4,9 +4,14 @@ sitemap default label="Апартамента на Деси и Стефан" {
     //     // Text item=admin_site label="http://192.168.1.201:8080/basicui/app?sitemap=administration"
     // }
 
+    Frame label="УПРАВЛЕНИЕ НА СОНДАЖНАТА ПОМПА:" icon="water" {
+
+        Group item=Gr_GF_HR_NU_WF_DIY_Well_Pump_Ctrl
+    }
+
     Frame label="ТЕМПЕРАТУРИ НА СЛЪНЧЕВИЯ БОЙЛЕР:" icon="Temperature" {
 
-        Group item=GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES
+        Group item=Gr_GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES
     }
     
     Frame label="ВЪНШНА ТЕМПЕРАТУРА:" icon="Temperature" {
