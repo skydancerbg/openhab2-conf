@@ -662,6 +662,7 @@ sitemap default label="Апартамента на Деси и Стефан" {
     		{
     		Switch item=Network_Stefan_S7_Online icon="boy_3" label="Стефан S7"
     		Switch item=Network_Stefan_S5_Online icon="boy_3" label="Стефан S5"
+    		Switch item=Network_Stefan_Note10_Online icon="boy_3" label="Стефан Note10"
             Switch item=Network_Desi_N8_Online icon="girl_3" label="Деси"	    		
     		}
          }
