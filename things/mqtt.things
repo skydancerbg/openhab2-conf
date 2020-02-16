@@ -306,7 +306,84 @@ Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secu
         Type number : temp_outside_roof "TEMPERATURE_OUTSIDE_ROOF"          [ stateTopic="tele/nmcu_well_pump_ctrl/SENSOR", transformationPattern="JSONPATH:$.DS18B20_2.Temperature"]
 
     }
-}
+
+
+    Thing topic ardu_mega_heating_ctrl_1 "Ardunino Mega Heating room Control 1" @ "House" {
+    Channels:
+        Type string : reachable         "Reachable"                         [ stateTopic="tele/ardu_mega_heating_ctrl_1/LWT" ]
+        // Type number : rssi              "WiFi Signal Strength"              [ stateTopic="tele/ardu_mega_heating_ctrl_1/STATE",  transformationPattern="JSONPATH:$.Wifi.RSSI"]
+        //!!! Power0 command 1 is used to request the status of all relays
+        Type switch : power0    "Stat_ALL"                           [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER0",  commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER0" ]
+        Type switch : power1    "Power1"                             [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER1",  commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER1" ]
+        Type switch : power2    "Power2"                             [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER2",  commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER2" ]
+        Type switch : power3    "Power3"                             [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER3",  commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER3" ]
+        Type switch : power4    "Power4"                             [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER4",  commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER4" ]
+        Type switch : power5    "Power5"                             [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER5",  commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER5" ]
+        Type switch : power6    "Power6"                             [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER6",  commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER6" ]
+        Type switch : power7    "Power7"                             [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER7",  commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER7" ]
+        Type switch : power8    "Power8"                             [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER8",  commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER8" ]
+        Type switch : power9    "Power9"                             [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER9",  commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER9" ]
+        Type switch : power10   "Power10"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER10", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER10" ]
+        Type switch : power11   "Power11"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER11", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER11" ]
+        Type switch : power12   "Power12"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER12", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER12" ]
+        Type switch : power13   "Power13"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER13", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER13" ]
+        Type switch : power14   "Power14"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER14", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER14" ]
+        Type switch : power15   "Power15"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER15", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER15" ]
+        Type switch : power16   "Power16"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER16", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER16" ]
+        Type switch : power17   "Power17"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER17", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER17" ]
+        Type switch : power18   "Power18"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER18", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER18" ]
+        Type switch : power19   "Power19"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER19", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER19" ]
+        Type switch : power20   "Power20"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER20", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER20" ]
+        Type switch : power21   "Power21"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER21", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER21" ]
+        Type switch : power22   "Power22"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER22", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER22" ]
+        Type switch : power23   "Power23"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER23", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER23" ]
+        Type switch : power24   "Power24"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER24", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER24" ]
+        Type switch : power25   "Power25"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER25", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER25" ]
+        Type switch : power26   "Power26"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER26", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER26" ]
+        Type switch : power27   "Power27"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER27", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER27" ]
+        Type switch : power28   "Power28"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER28", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER28" ]
+        Type switch : power29   "Power29"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER29", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER29" ]
+        Type switch : power30   "Power30"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER30", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER30" ]
+        Type switch : power31   "Power31"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER31", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER31" ]
+        Type switch : power32   "Power32"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER32", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER32" ]
+        // // We need to change the - into an _ for the DS18B20s in tasmota in the console by setting: setoption64 1 
+        // // https://community.openhab.org/t/mqtt-jsonpath-transformation-to-extract-values-from-multiple-ds18b20/84872 
+        // Type number : temp_solar_col    "TEMPERATURE_SOLAR_COLLECTOR"       [ stateTopic="tele/nmcu_well_pump_ctrl/SENSOR", transformationPattern="JSONPATH:$.DS18B20_1.Temperature"]
+        // Type number : temp_outside_roof "TEMPERATURE_OUTSIDE_ROOF"          [ stateTopic="tele/nmcu_well_pump_ctrl/SENSOR", transformationPattern="JSONPATH:$.DS18B20_2.Temperature"]
+
+    }
+
+    Thing topic ardu_m_heating_temp_hum "Ardunino Mega Heating room Sensors controler" @ "House" {
+    Channels:
+        Type string : reachable             "Reachable"                         [ stateTopic="tele/ardu_m_heating_temp_hum/LWT"]
+        // Type number : temp_solar_col        "TEMPERATURE_SOLAR_COLLECTOR"       [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_28192D94970E0344"]
+        // Type number : temp_outside_roof     "TEMPERATURE_OUTSIDE_ROOF"          [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_28642594970E03A8"]
+        // Type number : temp_1                "TEMPERATURE_1"                     [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_288A03949708035C"]
+        // Type number : temp_2                "TEMPERATURE_2"                     [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_2828229497120350"]
+        // Type number : temp_3                "TEMPERATURE_3"                     [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_281E5894970E037E"]
+        Type number : temp_4                "TEMPERATURE_4"                     [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_28382194970C0375"]
+        Type number : temp_5                "TEMPERATURE_5"                     [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_2863479497080315"]
+        Type number : temp_6                "TEMPERATURE_6"                     [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_286B1394970C0305"]
+        Type number : temp_7                "TEMPERATURE_7"                     [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_287BA6255F14018D"]
+        Type number : temp_8                "TEMPERATURE_8"                     [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_287B0A94970803EA"]
+
+        Type number : recirc_workshop       "RECIRCULATION WORKSHOP BATHROOM"   [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_28B906235F140146"]
+        Type number : recirc_sec_fl         "RECIRCULATION SECOND FLOOR"        [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_28E918235F1401B6"]
+        Type number : solar_col             "t solar colector"                  [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_28642594970E03A8"]
+        Type number : roof                  "t roof"                            [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DS18B20_28192D94970E0344"]
+
+
+        Type number : dht_1_temp                "ROOF DHT TEMPERATURE_"         [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DHT_1.Temperature"]
+        Type number : dht_1_hum                 "ROOF DHT HUMIDITY_1"           [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DHT_1.Humidity"]
+        Type number : dht_2_temp                "HEATING ROOM DHT TEMPERATURE"  [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DHT_2.Temperature"]
+        Type number : dht_2_hum                 "HEATING ROOM DHT HUMIDITY"     [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DHT_2.Humidity"]
+        // Type number : dht_2                "DHT TEMPERATURE_2"                  [ stateTopic="tele/ardu_m_heating_temp_hum/SENSOR", transformationPattern="JSONPATH:$.DHT_2"]
+
+        Type switch : pwr_detect_1              "Power detect 1"                [ stateTopic="cmnd/ardu_m_heating_temp_hum/POWERDETECT", transformationPattern="JSONPATH:$.PWR_1.PWRdetected"]        
+
+    }
+
+} 
 
 
 

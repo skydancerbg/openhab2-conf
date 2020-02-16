@@ -3,6 +3,15 @@ sitemap default label="Апартамента на Деси и Стефан" {
     //     Text item=admin_site 
     //     // Text item=admin_site label="http://192.168.1.201:8080/basicui/app?sitemap=administration"
     // }
+    Frame label="КОНТРОЛЕР СЕНЗОРИ КОТЕЛНО:" icon="water" {
+
+        Group item=Gr_GF_HR_AM_ET_DIY_Heating_Room_Sensors
+    }
+
+    Frame label="КОНТРОЛЕР УПРАВЛЕНИЕ КОТЕЛНО:" icon="water" {
+
+        Group item=Gr_GF_HR_AM_ET_DIY_Heating_Room_Ctrl
+    }
 
     Frame label="УПРАВЛЕНИЕ НА СОНДАЖНАТА ПОМПА:" icon="water" {
 

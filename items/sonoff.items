@@ -19,8 +19,8 @@ Group:Switch:OR(ON, OFF)        Lights      "All Lights [(%d)]"
 Group  GF_Sonoff_Dual           "Sonoff Dual"                   <group> (Sonoff_Dual)
 // String GF_Sonoff_Dual_Reachable "Reachable: [%s]"                   <contactable>   (GF_Sonoff_Dual, GF_Living, Lights)    ["Light"]    { channel="mqtt:topic:MyMQTTthing:sonoff_dual:reachable" }
 String GF_Sonoff_Dual_Reachable "Reachable: [%s]"               <presence>   (GF_Sonoff_Dual, GF_Living, Lights)        { channel="mqtt:topic:MyMQTTthing:sonoff_dual:reachable" }
-Switch GF_Sonoff_Dual_Power1     "Sonoff_Dual_Power1"           <switch> (GF_Sonoff_Dual, GF_Living, gAllPower) ["Switchable"] { channel="mqtt:topic:MyMQTTthing:sonoff_dual:power1" }       
-Switch GF_Sonoff_Dual_Power2     "Night light"                  <switch> (GF_Sonoff_Dual, gStefBedroomLights, gAllLights, gAllPower) ["Lighting"]  { channel="mqtt:topic:MyMQTTthing:sonoff_dual:power2" }       
+Switch GF_Sonoff_Dual_Power1     "Sonoff_Dual_Къща външна лампа"           <switch> (GF_Sonoff_Dual, Gr_ALL_LIGHTS) ["Switchable"] { channel="mqtt:topic:MyMQTTthing:sonoff_dual:power1" }       
+Switch GF_Sonoff_Dual_Power2     "Sonoff_Dual_Къща гараж"                  <switch> (GF_Sonoff_Dual, Gr_ALL_LIGHTS) ["Lighting"]  { channel="mqtt:topic:MyMQTTthing:sonoff_dual:power2" }       
 Number GF_Sonoff_Dual_RSSI      "WiFi Signal Strength [%d %%]"  <network>          (GF_Sonoff_Dual, GF_Living, Lights)       { channel="mqtt:topic:MyMQTTthing:sonoff_dual:rssi" }
 
 

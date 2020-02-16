@@ -4,38 +4,38 @@
 
 ///////////////////////////////
 // Dummy Switch StefanBedNightLight_Rule_Switch is used to turn on off the automatic Night lamp
-rule "Stefan's Bedroom Night light Rule Switched to OFF"
-when
-    Item StefanBedNightLight_Rule_Switch changed
-then
-    // When you turn off the Night lamp Rule execution, if the Night lamp is ON at the moment
-    // switch off the Night lamp
-    if(StefanBedNightLight_Rule_Switch.state == OFF && GF_Sonoff_Dual_Power2.state == ON ) {
-        GF_Sonoff_Dual_Power2.sendCommand(OFF)
-    }
-end
+// rule "Stefan's Bedroom Night light Rule Switched to OFF"
+// when
+//     Item StefanBedNightLight_Rule_Switch changed
+// then
+//     // When you turn off the Night lamp Rule execution, if the Night lamp is ON at the moment
+//     // switch off the Night lamp
+//     if(StefanBedNightLight_Rule_Switch.state == OFF && GF_Sonoff_Dual_Power2.state == ON ) {
+//         GF_Sonoff_Dual_Power2.sendCommand(OFF)
+//     }
+// end
 
 
 
 ////////////////////////////
-rule " STEFAN's Night Light on when motion is detected after 1900 or sunset - NeoPIR_1_Alarm_Motion PIR sensor "
+// rule " STEFAN's Night Light on when motion is detected after 1900 or sunset - NeoPIR_1_Alarm_Motion PIR sensor "
 
-when
-    Item NeoPIR_2_Alarm_Motion changed
-then
-    logInfo("NeoPIR_1_Alarm_Motion", NeoPIR_2_Alarm_Motion.state.toString)
+// when
+//     Item NeoPIR_2_Alarm_Motion changed
+// then
+//     logInfo("NeoPIR_1_Alarm_Motion", NeoPIR_2_Alarm_Motion.state.toString)
 
-if (StefanBedNightLight_Rule_Switch.state == ON && Is_Night_Sunset_to_Sunrise_Var_.state == ON && NeoPIR_2_Alarm_Motion.state == ON )  
-                                    {GF_Sonoff_Dual_Power2.sendCommand(ON)
-                                    // logInfo("RuleMotionCtrlNightLamp", "Motion switched GF_Sonoff_Dual_Power2 ON")
-                                    }
+// if (StefanBedNightLight_Rule_Switch.state == ON && Is_Night_Sunset_to_Sunrise_Var_.state == ON && NeoPIR_2_Alarm_Motion.state == ON )  
+//                                     {GF_Sonoff_Dual_Power2.sendCommand(ON)
+//                                     // logInfo("RuleMotionCtrlNightLamp", "Motion switched GF_Sonoff_Dual_Power2 ON")
+//                                     }
     
-    else if (StefanBedNightLight_Rule_Switch.state == ON && Is_Night_Sunset_to_Sunrise_Var_.state == ON && NeoPIR_2_Alarm_Motion.state == OFF) 
-                                    {GF_Sonoff_Dual_Power2.sendCommand(OFF)
-                                    // logInfo("RuleMotionCtrlNightLamp", "Motion switched GF_Sonoff_Dual_Power2 OFF")
-                                    }
+//     else if (StefanBedNightLight_Rule_Switch.state == ON && Is_Night_Sunset_to_Sunrise_Var_.state == ON && NeoPIR_2_Alarm_Motion.state == OFF) 
+//                                     {GF_Sonoff_Dual_Power2.sendCommand(OFF)
+//                                     // logInfo("RuleMotionCtrlNightLamp", "Motion switched GF_Sonoff_Dual_Power2 OFF")
+//                                     }
 
-end
+// end
 
 
 
