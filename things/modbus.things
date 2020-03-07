@@ -9,11 +9,150 @@
 
 // Note that entity begins counting at 1, data frame address at 0.
 
+/////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/////////////////////////
+    //!         !!! USEFULL LINKS  !!!
+    //
+    // MODBUS BINDING https://www.openhab.org/addons/bindings/modbus/
+    // USE Rapid SCADA Modbus Parser TO VISUALIZE MODBUS REQUEST/RESPONSE http://modbus.rapidscada.net/
+    // USE TERMITE TO TEST COMMUNICATION WITH THE DEVICE UNDER WIN10 http://s2-team.ru/wrkrs/prods/modbus-tools/termite/
+    // FOR ORNO ENERGY METERS USE THE WIN10 SOFTWARE PROVIDED ON THE MANUFACTURER SITE TO TEST COMMUNICATION AND SETUP THE METER 
+    // https://www.orno.pl/en/category/productData/4821/1-phase-multi-tariff-energy-meter-wtih-RS-485--100A
+//
 
 /////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/////////////////////////
-    // If you have been editing your Things, I would recommend a binding restart or a system reboot now. 
-    // Changes in Things do not make it into pollers that are already running. !!!!!!
+    //!         !!! IMPORTANT   !!!
+    //
+    //! WHEN editing Things, PERFORM a binding restart or a system reboot after editing. 
+    //! Changes in Things do not make it into pollers that are already running. !!!!!!
 /////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/////////////////////////
+
+/////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/////////////////////////
+    //!             !!! ATTENTION !!!
+    //!
+    //! THE WALL THERMOSTAT MODBUS SLAVE ADDRESSES SHOULD BE SET TO START AT  0x01 (1) FOR THE FIRST THERMOSTAT
+    //! AS FOLLOWS:
+    //! 0x01 (1) WALL THERMOSTAT RADIANT FLOOR HEATING ROOM 1 - (TO BE INSTALLED LATER) SEE COMMENTED CODE BELLOW
+    //! 0x02 (2) WALL THERMOSTAT FAN COIL (CONVECTOR) ROOM 1 - (TO BE INSTALLED LATER) 
+    //! 0x03 (3) WALL THERMOSTAT RADIANT FLOOR HEATING ROOM 2 - (TO BE INSTALLED LATER)
+    //! 0x04 (4) WALL THERMOSTAT FAN COIL (CONVECTOR) ROOM 1 - (TO BE INSTALLED LATER) 
+    //! AND SO ON....
+    //!
+    //!
+    //! THE ENERGY METTERS MODBUS SLAVE ADDRESSES SHOULD BE SET TO START AT  0x64 (100) FOR THE FIRST METER
+    //! AS FOLLOWS:
+    //!  0x64 (100) WHOLE HOUSE ENERGY METTER - (TO BE INSTALLED LATER) THREE PHASE
+    //!  0x65 (101) HEAT PUMP ENERGY METTER - ORNO 517 THREE PHASE
+    //!  0x66 (102) HOT WATER TANK (SOLAR) ELECTRIC HEATER ENERGY METTER - ORNO 515 SINGLE PHASE
+    //! AND SO ON....
+/////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/////////////////////////
+
+
+/////////----------------------------------------------------------/////////////////////////
+    //!             ORNO 515 SIGLE PHASE METER 
+    //!
+    //! ORNO 515 SIGLE PHASE METER SET AT Slave address 0x66 (102)
+    //! 
+ /////////----------------------------------------------------------/////////////////////////
+
+//
+// ORNO 515 ENERGY METER -SINGLE PHASE ---- HOT WATER TANK (SOLAR) ELECTRIC HEATER 
+//
+Bridge modbus:serial:energy_metters_slave102 [port="/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0",baud=9600,id=102,stopBits="1.0",parity="none",dataBits=8,encoding="rtu"]
+// Bridge modbus:serial:thermostat_slave1 [port="/dev/ttyUSB0",baud=9600,id=1,stopBits="1.0",parity="none",dataBits=8,encoding="rtu"]
+{  
+            // readStart - Input as zero-based index number, e.g. in place of 400001 (first holding register), 
+            // use the address "0". Must be between (poller start) and (poller start + poller length - 1) (inclusive).
+            // Also see : https://www.openhab.org/addons/bindings/modbus/#scaling-example
+
+            // //Holding Register start = 40001 + 1 = 40002
+
+        // Bridge poller energy_meter_slave102_holding [ start=0, length=7, refresh=1000, type="holding", maxTries=3 ] 
+        // {
+        //     // readStart - Input as zero-based index number, e.g. in place of 400001 (first holding register), 
+        //     // use the address "0". Must be between (poller start) and (poller start + poller length - 1) (inclusive).
+        //     // Also see : https://www.openhab.org/addons/bindings/modbus/#scaling-example
+
+        //     Thing data thermostat_slave1_onoff [ readStart="0", readValueType="int16", writeStart="0", writeValueType="int16", writeType="holding" ]
+        //     Thing data thermostat_slave1_temperature [ readStart="1", readValueType="int16",  readTransform="JS(divide10.js)", writeStart="1", writeValueType="int16", writeType="holding" , writeTransform="JS(multiply10.js)" ]
+        //     Thing data thermostat_slave1_ManualAuto [ readStart="2", readValueType="int16", writeStart="2", writeValueType="int16", writeType="holding"]
+        //     Thing data thermostat_slave1_HeatingOnOff [ readStart="3", readValueType="int16", writeStart="3", writeValueType="int16", writeType="holding"]
+        //     Thing data thermostat_slave1_set_temperature [ readStart="4", readValueType="int16",  readTransform="JS(divide10.js)", writeStart="4", writeValueType="int16", writeType="holding" , writeTransform="JS(multiply10.js)" ]
+        //     Thing data thermostat_slave1_weekly_mod_set_temperature [ readStart="5", readValueType="int16",  readTransform="JS(divide10.js)", writeStart="5", writeValueType="int16", writeType="holding" , writeTransform="JS(multiply10.js)" ]
+        //     // Thing data thermostat_slave1_set_temperature [ readStart="4", readValueType="int16",  readTransform="JS(divide10.js)", writeStart="4", writeValueType="int16", writeType="holding" , writeTransform="JS(multiply10.js)" ]
+        //     Thing data thermostat_slave1_LockUnlock [ readStart="6", readValueType="int16", writeStart="6", writeValueType="int16", writeType="holding" ]
+
+        // }
+
+        // Bridge poller kWh [start = 40960, length = 2, refresh = 60000, type = "holding"]
+        // {
+        //     Thing data kWh [readStart = "40960", readValueType = "uint32", readTransform = "JS (divide100.js)"]
+        // }
+    
+        // Bridge poller biernakWh [start = 40990, length = 2, refresh = 60000, type = "holding"]
+        // {
+        //     Thing data biernakWh [readStart = "40990", readValueType = "uint32", readTransform = "JS (divide100.js)"]
+        // }
+
+        // Bridge poller Hz [start = 304, length = 1, refresh = 10000, type = "holding"]
+        // {
+        //     Thing data Hz [readStart = "304", readValueType = "uint16", readTransform = "JS (divide100.js)"]
+        // }
+                // Part of Data Package	Description	Value
+                // 66	Slave address	0x66 (102)
+                // 03	Function code	0x03 (3) - Read Holding Registers
+                // 01 31	Starting address	0x0132 (306)
+                // 00 01	Quantity	0x0001 (1)
+                // DC 2E	CRC	0xDC2E (56366)                
+        Bridge poller volt [start = 102, length = 1, refresh = 10000, type = "holding"]
+        {
+            Thing data V [readStart = "305", readValueType = "uint16", readTransform = "JS (divide100.js)"]
+        }
+
+        // Bridge poller ampery [start = 313, length = 2, refresh = 10000, type = "holding"]
+        // {
+        //     Thing data A [readStart = "313", readValueType = "uint32", readTransform = "JS (divide1000.js)"]    
+        // }
+
+        // Bridge poller power [start = 320, length = 2, refresh = 10000, type = "holding"]
+        // {
+        //     Thing data P [readStart = "320", readValueType = "uint32"]  
+        // }
+
+        // Bridge poller biernapower [start = 328, length = 2, refresh = 10000, type = "holding"]
+        // {
+        //     Thing data biernaP [readStart = "328", readValueType = "uint32"]    
+        // }
+
+        // Bridge poller pozornapower [start = 336, length = 2, refresh = 10000, type = "holding"]
+        // {
+        //     Thing data pozornaP [readStart = "336", readValueType = "uint32"]    
+        // }
+
+        // Bridge poller fimocy [start = 344, length = 1, refresh = 10000, type = "holding"]
+        // {
+        //     Thing data fimocy [readStart = "344", readValueType = "uint16", readTransform = "JS (divide1000.js)"]    
+        // }           
+
+}
+
+
+/////////----------------------------------------------------------/////////////////////////
+
+    //! END ORNO 515 SIGLE PHASE METER Slave 0x66 (102)
+
+/////////----------------------------------------------------------/////////////////////////
+
+
+
+/////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/////////////////////////
+
+    //! WALL THERMOSTAT AT Slave address 0x01 (1)
+
+    // !!!!!!!! UNCOMMENT !!!!!!!!!!!!!!!!!!!!!!!!!!
+
+/////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/////////////////////////
+
+
 
 // https://community.openhab.org/t/modbus-2-configuration/69584/9
 //slave 0x80 = 128 - First Smoke Detector
@@ -64,7 +203,11 @@ Bridge modbus:serial:thermostat_slave1 [port="/dev/serial/by-id/usb-1a86_USB2.0-
 }
 
 
+/////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/////////////////////////
 
+    //! END WALL THERMOSTAT AT Slave address 0x01 (1)
+
+/////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/////////////////////////
 
 
 

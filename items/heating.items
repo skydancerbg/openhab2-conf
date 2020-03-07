@@ -16,7 +16,7 @@ Switch Heating_ON_OFF
 Switch Cooling_ON_OFF 
 // Switch Heating_ON_OFF (Gr_ALL_POWER)
 // Switch Cooling_ON_OFF (Gr_ALL_POWER)
-Switch GF_OF_Heating_Enable
+Switch GF_OF_Heating_Enable "Home office heating" [ "Switchable" ]
 
 // // // HOUSE HOME OFFICE // // // //
 

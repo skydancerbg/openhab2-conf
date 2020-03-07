@@ -21,6 +21,11 @@ var rfcode_pir_6 = "F3EB4E"
 // BUTTON 079EA2
 var rfcode_wallsw_1btn_1_btn = "079EA2"
 
+
+// 1 BUTTON RF SWITCH 2 // КОТЕЛНО БЕНКОВСКИ
+// BUTTON 6D7228
+var rfcode_wallsw_1btn_2_btn = "6D7228"
+
 // 2 BUTTON RF SWITCH 1
 // LEFT 
 // var rfcode_wallsw_2btn_1_left = ""
@@ -34,6 +39,7 @@ var rfcode_wallsw_3btn_1_left = "0BE4E4"
 var rfcode_wallsw_3btn_1_middle = "0BE4E2"
 // RIGHT 0BE4E1
 var rfcode_wallsw_3btn_1_right = "0BE4E1"
+
 
 // // // // // // // //  // // // // // // //
 // // // // KEYCHAIN REMOTES   // // // // // 
@@ -461,6 +467,23 @@ then
                                         GF_TR_Sonoff_4CH_1_Power2.sendCommand(OFF)
                                     }
 
+// // // // // // // // // // // // // //
+// // // ОСВЕТЛЕНИЕ КОТЕЛНО   // // //
+// // // TECHNICAL ROOM (HEATING) LIGHT      // // //
+
+// Switched by:
+//rfcode_wallsw_1btn_2_btn
+
+    } else if (rf_rcv_data.state == rfcode_wallsw_1btn_2_btn)
+        {
+            if (GF_TR_Sonoff_4CH_2_Power4.state == OFF)  
+                                    { 
+                                        GF_TR_Sonoff_4CH_2_Power4.sendCommand(ON)
+                                    }
+            else if ( GF_TR_Sonoff_4CH_2_Power4.state == ON) 
+                                    {
+                                        GF_TR_Sonoff_4CH_2_Power4.sendCommand(OFF)
+                                    }
 
 
 // // // // END
