@@ -305,6 +305,11 @@ Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secu
         Type number : temp_solar_col    "TEMPERATURE_SOLAR_COLLECTOR"       [ stateTopic="tele/nmcu_well_pump_ctrl/SENSOR", transformationPattern="JSONPATH:$.DS18B20_1.Temperature"]
         Type number : temp_outside_roof "TEMPERATURE_OUTSIDE_ROOF"          [ stateTopic="tele/nmcu_well_pump_ctrl/SENSOR", transformationPattern="JSONPATH:$.DS18B20_2.Temperature"]
 
+        // // We need to change the - into an _ for the DS18B20s in tasmota in the console by setting: setoption64 1 
+        // // https://community.openhab.org/t/mqtt-jsonpath-transformation-to-extract-values-from-multiple-ds18b20/84872 
+        // Type number : temp_solar_col    "TEMPERATURE_SOLAR_COLLECTOR"       [ stateTopic="tele/nmcu_well_pump_ctrl/SENSOR", transformationPattern="JSONPATH:$.DS18B20_1.Temperature"]
+        // Type number : temp_outside_roof "TEMPERATURE_OUTSIDE_ROOF"          [ stateTopic="tele/nmcu_well_pump_ctrl/SENSOR", transformationPattern="JSONPATH:$.DS18B20_2.Temperature"]
+
     }
 
 
@@ -346,10 +351,13 @@ Bridge mqtt:broker:MyMQTTthing "MyMQTTthing" [ host="127.0.0.1", port=1883, secu
         Type switch : power30   "Power30"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER30", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER30" ]
         Type switch : power31   "Power31"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER31", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER31" ]
         Type switch : power32   "Power32"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER32", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER32" ]
-        // // We need to change the - into an _ for the DS18B20s in tasmota in the console by setting: setoption64 1 
-        // // https://community.openhab.org/t/mqtt-jsonpath-transformation-to-extract-values-from-multiple-ds18b20/84872 
-        // Type number : temp_solar_col    "TEMPERATURE_SOLAR_COLLECTOR"       [ stateTopic="tele/nmcu_well_pump_ctrl/SENSOR", transformationPattern="JSONPATH:$.DS18B20_1.Temperature"]
-        // Type number : temp_outside_roof "TEMPERATURE_OUTSIDE_ROOF"          [ stateTopic="tele/nmcu_well_pump_ctrl/SENSOR", transformationPattern="JSONPATH:$.DS18B20_2.Temperature"]
+        Type switch : power32   "Power33"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER33", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER33" ]
+        Type switch : power32   "Power34"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER34", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER34" ]
+        Type switch : power32   "Power35"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER35", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER35" ]
+        Type switch : power32   "Power36"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER36", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER36" ]
+        Type switch : power32   "Power37"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER37", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER37" ]
+        Type switch : power32   "Power38"                            [ stateTopic="stat/ardu_mega_heating_ctrl_1/POWER38", commandTopic="cmnd/ardu_mega_heating_ctrl_1/POWER38" ]
+
 
     }
 

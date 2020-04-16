@@ -3,25 +3,26 @@ sitemap default label="Апартамента на Деси и Стефан" {
     //     Text item=admin_site 
     //     // Text item=admin_site label="http://192.168.1.201:8080/basicui/app?sitemap=administration"
     // }
-    Frame label="КОНТРОЛЕР СЕНЗОРИ КОТЕЛНО:" icon="water" {
 
-        Group item=Gr_GF_HR_AM_ET_DIY_Heating_Room_Sensors
-    }
+    // Frame label="КОНТРОЛЕР СЕНЗОРИ КОТЕЛНО:" icon="water" {
 
-    Frame label="КОНТРОЛЕР УПРАВЛЕНИЕ КОТЕЛНО:" icon="water" {
+    //     Group item=Gr_GF_HR_AM_ET_DIY_Heating_Room_Sensors
+    // }
 
-        Group item=Gr_GF_HR_AM_ET_DIY_Heating_Room_Ctrl
-    }
+    // Frame label="КОНТРОЛЕР УПРАВЛЕНИЕ КОТЕЛНО:" icon="water" {
 
-    Frame label="УПРАВЛЕНИЕ НА СОНДАЖНАТА ПОМПА:" icon="water" {
+    //     Group item=Gr_GF_HR_AM_ET_DIY_Heating_Room_Ctrl
+    // }
 
-        Group item=Gr_GF_HR_NU_WF_DIY_Well_Pump_Ctrl
-    }
+    // Frame label="УПРАВЛЕНИЕ НА СОНДАЖНАТА ПОМПА:" icon="water" {
 
-    Frame label="ТЕМПЕРАТУРИ НА СЛЪНЧЕВИЯ БОЙЛЕР:" icon="Temperature" {
+    //     Group item=Gr_GF_HR_NU_WF_DIY_Well_Pump_Ctrl
+    // }
 
-        Group item=Gr_GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES
-    }
+    // Frame label="ТЕМПЕРАТУРИ НА СЛЪНЧЕВИЯ БОЙЛЕР:" icon="Temperature" {
+
+    //     Group item=Gr_GF_HR_NU_TMP_DIY_SOLAR_TANK_TEMPERATURES
+    // }
     
     Frame label="ВЪНШНА ТЕМПЕРАТУРА:" icon="Temperature" {
         Text  item=XGW2_XA_THP_1_Temperature label="КЪЩА" 
