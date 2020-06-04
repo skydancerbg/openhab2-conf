@@ -1,3 +1,7 @@
+//      M O V E D   T O   B E N K O V S K I   S E R V E R   !  !  !  !  ! 
+
+
+
         // Type string : reachable "Reachable"                         [ stateTopic="tele/nmcu_solar_tank_temperatures/LWT" ]
         // Type number : rssi      "WiFi Signal Strength"              [ stateTopic="tele/nmcu_solar_tank_temperatures/STATE",  transformationPattern="JSONPATH:$.Wifi.RSSI"]
         // Type number : tank_top_temp      "TEMPERATURE_TANK_TOP"     [ stateTopic="tele/nmcu_solar_tank_temperatures/SENSOR", transformationPattern="JSONPATH:$.Wifi.RSSI"]
